@@ -1,7 +1,6 @@
-section.py-8
+section.py-28#about
   .container
-    h2 Чем занимаемся?
-
-    ul.grid.grid-cols-2.gap-4
+    h2.mb-8 Чем занимаемся?
+    ul.about-list.grid.grid-cols-2.gap-8
       each text in i18n.about.list
-        li #{text}
+        li.py-8.about-item #{text}

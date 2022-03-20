@@ -1,4 +1,4 @@
-const colors = require('tailwindcss/colors');
+// const colors = require('tailwindcss/colors');
 
 module.exports = {
   mode: 'jit',
@@ -7,12 +7,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: colors.indigo,
-        secondary: colors.yellow,
-        main: {
-          black: "#0D0D0D",
-          grey: "#F5F5F5",
-        },
+        primary: "#0D0D0D",
+        secondary: "#F5F5F5",
         accent: "#EF2500",
       },
       container: {
@@ -24,6 +20,9 @@ module.exports = {
       fontFamily: {
         sans: ['Rubik', 'sans-serif'],
       },
+      borderWidth: {
+        '3': '3px',
+      }
     },
   },
   variants: {

@@ -1,11 +1,11 @@
-header.py-4.bg-black.text-white
+header.py-4.bg-black.text-white.fixed.top-0.w-full.z-10
   .container
-    .flex.justify-between
-      a(href="").block
+    .flex.justify-between.items-center
+      a(href="/").block
         img(src="../images/logo.svg")
       div
         ul.flex
           each item in i18n.menu
-            li.flex-grow.p-2
-              a(href=item.link).block
+            li.flex-grow.p-4.text-sm.uppercase.font-meduim
+              a(href=`#${item.link}`).block
                 span #{item.title}

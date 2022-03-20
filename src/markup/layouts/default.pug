@@ -8,11 +8,12 @@ html(lang="en-us")
     link(rel="stylesheet", href="../css/main.css")
     link(rel="preconnect" href="https://fonts.googleapis.com")
     link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
-    link(href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap" rel="stylesheet")
   body
-    include ../components/header.pug
-    block page
-    include ../components/footer.pug
-    script(src="../js/main.js")
-    script.
-      console.info('Parcel JS user')
+    .wrapper
+      include ../components/header.pug
+      block page
+      include ../components/footer.pug
+      script(src="../js/main.js")
+      script.
+        console.info('Parcel JS user')

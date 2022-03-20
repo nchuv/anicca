@@ -1,34 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "base.css";
+@import "about.css";
 
-@layer base {
-    h1 {
-        @apply font-medium;
-    }
-    h2 {
-        @apply font-medium;
-    }
-    h3 {
-        @apply font-medium;
-    }
-    h4 {
-        @apply font-medium text-lg;
-    }
-    p {
-        @apply my-2;
-    }
-    .btn {
-        @apply bg-accent text-white px-2 py-2;
-    }
-    .btn-link {
-        border-bottom: 4px solid #ECEEF1;
-    }
-    .container {
-        @apply px-8;
-        /*border: 1px dashed deeppink;*/
-    }
-    .input {
-        @apply bg-white py-2 px-2;
-    }
-}
