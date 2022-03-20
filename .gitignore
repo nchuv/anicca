@@ -1,0 +1,8 @@
+.history
+.cache
+.idea
+dist
+node_modules
+.tailwind
+.parcel-cache
+.DS_Store

@@ -1,0 +1,23 @@
+mixin contact-item(img, title, link)
+  li.mb-2
+    a(href=link).flex.items-center
+      img(src=img).w-8
+      h3.px-4=title
+
+section.bg-main-grey.py-8
+  .container
+    h2.headline Связаться с нами
+    p Расскажите нам о своих IT-планах и задайте любые вопросы, мы очень быстро ответим!
+    div(class="xl:flex")
+      .flex-grow
+        ul
+          +contact-item('../images/location.svg', "191015, г. Санкт-Петербург, Таврическая ул., д. 37, лит. А, пом. 16Н, оф. 11", "#")
+          +contact-item('../images/email.svg', "namaste@anicca.su", "mailto:namaste@anicca.su")
+      .flex-grow
+        form(action="")
+          .flex
+            input(type="text" placeholder="Ваше имя").input
+            input(type="email" placeholder="E-mail").input
+          textarea( placeholder="Сообщение").textarea
+
+          button.btn Отправить
