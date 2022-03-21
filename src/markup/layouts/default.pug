@@ -1,4 +1,4 @@
-html(lang="en-us")
+html(lang="en-us").has-scroll-smooth
   head
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
@@ -10,10 +10,11 @@ html(lang="en-us")
     link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
     link(href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap" rel="stylesheet")
   body
-    .wrapper
+    div(data-scroll-container)#js-scroll.o-scroll
       include ../components/header.pug
       block page
       include ../components/footer.pug
-      script(src="../js/main.js")
-      script.
-        console.info('Parcel JS user')
+      svg(class="cursor" width="20" height="20" viewBox="0 0 20 20")
+        circle(class="cursor__inner" cx="10" cy="10" r="5")
+
+    script(src="../js/main.js" type="module")

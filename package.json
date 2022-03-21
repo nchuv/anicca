@@ -15,7 +15,10 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "parcel": "^2.0.1"
+    "gsap": "^3.9.1",
+    "locomotive-scroll": "^4.1.4",
+    "parcel": "^2.0.1",
+    "smooth-scrollbar": "^8.7.4"
   },
   "devDependencies": {
     "@parcel/transformer-pug": "^2.0.1",
