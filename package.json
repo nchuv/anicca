@@ -18,7 +18,7 @@
     "gsap": "^3.9.1",
     "locomotive-scroll": "^4.1.4",
     "parcel": "^2.0.1",
-    "smooth-scrollbar": "^8.7.4"
+    "swiper": "8.0.7"
   },
   "devDependencies": {
     "@parcel/transformer-pug": "^2.0.1",

@@ -3,9 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    box-sizing: border-box;
-  }
   h1 {
       @apply font-medium text-2xl;
       @apply lg:text-5xl;
@@ -16,9 +13,6 @@
   }
   .btn {
       @apply bg-accent text-white px-2 py-2;
-  }
-  .btn-link {
-      border-bottom: 4px solid #ECEEF1;
   }
   .container {
       @apply px-8 text-lg;

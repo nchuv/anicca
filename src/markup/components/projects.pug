@@ -1,6 +1,18 @@
-section#projects.py-28(data-scroll-section)
+section#projects.py-28(data-scroll-section data-scroll-section-id="#projects")
   .container
     h2.mb-8 Проекты
-    .flex.gap-4
-      .flex-1
-      .flex-1.cube
+
+    .swiper.bg-black.text-white
+      .swiper-wrapper
+        each item in i18n.projects
+          .swiper-slide
+            .p-8
+              h4!=item.title
+              div!=item.text
+
+      //.swiper-pagination
+      //
+      //.swiper-button-prev
+      //.swiper-button-next
+      //
+      //.swiper-scrollbar
