@@ -13,5 +13,18 @@ const getMousePos = e => {
     y : e.clientY
   };
 };
+const calcWinsize = () => {
+  return {width: window.innerWidth, height: window.innerHeight};
+};
 
-export { map, lerp, clamp, getMousePos };
+const distance = (x1,y1,x2,y2) => {
+  var a = x1 - x2;
+  var b = y1 - y2;
+
+  return Math.hypot(a,b);
+}
+
+// Generate a random float.
+const getRandomFloat = (min, max) => (Math.random() * (max - min) + min).toFixed(2);
+
+export { map, lerp, clamp, getMousePos, distance, getRandomFloat, calcWinsize };
