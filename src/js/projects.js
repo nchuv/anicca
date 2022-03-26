@@ -1,4 +1,4 @@
-import Swiper, { Navigation, Pagination } from 'swiper';
+import Swiper, { Navigation, Pagination, Scrollbar } from 'swiper';
 import { projects } from "../i18n";
 
 function projectsSlider() {
@@ -7,15 +7,18 @@ function projectsSlider() {
         return;
     }
     const swiper = new Swiper('.swiper', {
-        modules: [Navigation, Pagination],
+        modules: [Navigation, Pagination, Scrollbar],
         loop: true,
-        // autoHeight
+        // scrollbar
+        scrollbar: {
+            el: ".projects-scrollbar",
+            draggable: true,
+        },
         // Navigation arrows
         navigation: {
             nextEl: '.projects-next',
             prevEl: '.projects-prev',
         },
-
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
@@ -23,7 +26,6 @@ function projectsSlider() {
                 return '<button class="' + className + '">' + (projects[index].title) + '</button>';
             },
         },
-
     });
 }
 

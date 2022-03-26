@@ -1,6 +1,5 @@
 .projects{
-    /*background:linear-gradient(to right, #ffffff 50%, #0D0D0D 50%);;*/
-
+    background:linear-gradient(to right, #ffffff 50%, #0D0D0D 50%);;
 }
 
 .projects
@@ -8,21 +7,25 @@
     background: #0D0D0D;
     @apply text-white;
 }
+
+.projects
+.swiper-wrapper {
+    height: auto;
+}
+
+
 .projects
 .swiper-pagination-bullets.swiper-pagination-horizontal {
-    position: relative;
-    bottom: 0;
-    @apply flex lg:flex-col;
+    @apply relative bottom-0 hidden lg:flex lg:flex-col;
 }
 
 .projects
 .swiper-pagination-bullet {
-    font-size: 0;
-    @apply lg:text-xs font-medium uppercase;
-    @apply relative block p-0 lg:py-8 px-16;
-    @apply border-solid border-y-4 border-x-0 lg:border-y-0 lg:border-l-4;
+    @apply text-xs font-medium uppercase;
+    @apply relative block p-0 py-8 px-16;
+    @apply border-solid border-r-0 border-y-0 border-l-4;
     @apply opacity-100;
-    @apply lg:w-full lg:h-auto;
+    @apply w-full h-auto;
     border-radius: 0;
     background: none;
     text-align: left;
@@ -56,3 +59,7 @@
 }
 
 .projects-next {}
+
+.projects-scrollbar {
+    @apply lg:hidden;
+}
