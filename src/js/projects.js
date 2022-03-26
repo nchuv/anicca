@@ -1,4 +1,5 @@
 import Swiper, { Navigation, Pagination } from 'swiper';
+import { projects } from "../i18n";
 
 function projectsSlider() {
     let el = document.querySelector('.swiper');
@@ -7,15 +8,20 @@ function projectsSlider() {
     }
     const swiper = new Swiper('.swiper', {
         modules: [Navigation, Pagination],
-        autoHeight: true,
-        pagination: {
-            el: '.swiper-pagination',
-        },
-
+        loop: true,
+        // autoHeight
         // Navigation arrows
         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: '.projects-next',
+            prevEl: '.projects-prev',
+        },
+
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            renderBullet: function (index, className) {
+                return '<button class="' + className + '">' + (projects[index].title) + '</button>';
+            },
         },
 
     });

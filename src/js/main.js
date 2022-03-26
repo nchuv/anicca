@@ -1,3 +1,4 @@
+import gsap from 'gsap';
 import LocomotiveScroll from 'locomotive-scroll';
 import 'swiper/swiper-bundle.css';
 
@@ -7,12 +8,18 @@ import ButtonCtrl from './buttonCtrl';
 
 projectsSlider();
 
+const buttonEl = document.querySelectorAll('.button')[0];
+const cursorEl = document.querySelectorAll('.cursor')[0];
 
-const cursor = new Cursor(document.querySelector('.cursor'));
-const button = new ButtonCtrl(document.querySelector('.button'));
+const cursor = new Cursor(cursorEl);
 
-button.on('enter', () => cursor.enter());
-button.on('leave', () => cursor.leave());
+if (buttonEl && cursorEl) {
+  const button = new ButtonCtrl(buttonEl);
+  button.on('enter', () => cursor.enter());
+  button.on('leave', () => cursor.leave());
+}
+
+
 
 // mouse effects on all links and others
 // [...document.querySelectorAll('a')].forEach(link => {
@@ -29,7 +36,18 @@ const lscroll = new LocomotiveScroll({
   direction: 'up',
 });
 
-const target = document.querySelector('#js-target');
-
-lscroll.scrollTo(target);
+// const hero = document.querySelector('[data-hero]')
+//
+// window.addEventListener('mousemove', (e) => {
+//   const { clientX, clientY } = e
+//   const x = Math.round((clientX / window.innerWidth) * 100)
+//   const y = Math.round((clientY / window.innerHeight * 100))
+//
+//   gsap.to(hero, {
+//     '--x': `${x}%`,
+//     '--y': `${y}%`,
+//     duration: 0.3,
+//     ease: 'sine.out'
+//   })
+// })
 

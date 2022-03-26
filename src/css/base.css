@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    @apply min-h-full;
+  }
   h1 {
       @apply font-medium text-2xl;
       @apply lg:text-5xl;
@@ -15,8 +18,7 @@
       @apply bg-accent text-white px-2 py-2;
   }
   .container {
-      @apply px-8 text-lg;
-      /*border: 1px dashed deeppink;*/
+      @apply px-4 md:px-8 lg:text-lg;
   }
   .textarea,
   .input {

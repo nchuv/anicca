@@ -4,7 +4,7 @@ mixin contact-item(img, title, link)
       img(src=img).w-8
       h3.px-4=title
 
-section#contacts.bg-secondary.py-28.font-light(data-scroll-section data-scroll-section-id="#contacts")
+section#contacts(data-scroll-section data-scroll-section-id="#contacts" class="py-8 lg:py-28 .bg-secondary font-light")
   .container
     h2.headline Связаться с нами
     div(class="lg:flex mt-8 gap-4")
@@ -14,12 +14,6 @@ section#contacts.bg-secondary.py-28.font-light(data-scroll-section data-scroll-s
           +contact-item('../images/location.svg', "191015, г. Санкт-Петербург, Таврическая ул., д. 37, лит. А, пом. 16Н, оф. 11", "#")
           +contact-item('../images/email.svg', "namaste@anicca.su", "mailto:namaste@anicca.su")
       .flex-1
-        form(action="")
-          .flex.gap-4
-            input(type="text" placeholder="Ваше имя").input
-            input(type="email" placeholder="E-mail").input
-          textarea( placeholder="Сообщение").textarea.w-full
-        button.button
-          .button__filler
-          .button__text
-            .button__text-inner Отправить
+        p форма
+        //iframe(width="650" src="https://forms.yandex.ru/cloud/62386f1234ca5557b6a6d1f3/?iframe=1" frameborder="0" name="ya-form-62386f1234ca5557b6a6d1f3" )
+

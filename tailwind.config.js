@@ -11,10 +11,11 @@ module.exports = {
         secondary: "#F5F5F5",
         accent: "#EF2500",
       },
-      container: {
+      c: {
         center: true,
         screens: {
-          '2xl': '1016px',
+          DEFAULT: '100%',
+          '2xl': '1080px',
         }
       },
       fontFamily: {

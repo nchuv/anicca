@@ -1,18 +1,29 @@
-section#projects.py-28(data-scroll-section data-scroll-section-id="#projects")
+section#projects(data-scroll-section data-scroll-section-id="#projects" class="py-8 lg:py-28")
   .container
     h2.mb-8 Проекты
+    p!=i18n.projects.length
+  .projects
+    .container
+      .relative
+        div(class="lg:flex")
+          div(class="lg:w-1/2")
+            .swiper-pagination
+          div(class="lg:w-1/2")
+            .swiper
+              .swiper-wrapper
+                each project in i18n.projects
+                  .swiper-slide
+                    div.flex.flex-col.h-full
+                      div(class="md:pr-24 md:text-2xl font-medium text-accent uppercase")!=project.title
+                      div.mb-auto.py-8!=project.text
+                      div.font-medium.uppercase.text-sm
+                        each item in project.stack
+                          p!=item
+                      div.text-accent!=project.year
 
-    .swiper.bg-black.text-white
-      .swiper-wrapper
-        each item in i18n.projects
-          .swiper-slide
-            .p-8
-              h4!=item.title
-              div!=item.text
+              .projects-controls
+                .projects-prev
+                  include ../general/arrow.pug
+                .projects-next.transform.rotate-180
+                  include ../general/arrow.pug
 
-      //.swiper-pagination
-      //
-      //.swiper-button-prev
-      //.swiper-button-next
-      //
-      //.swiper-scrollbar

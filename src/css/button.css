@@ -2,11 +2,8 @@ body {
     --button-border-radius: 4px;
     --button-bg: #EF2500;
     --button-bg-hover: #d8d4cf;
-    --button-stroke-hover: #000;
+    --button-stroke-hover: #fff;
     --button-stroke-width-hover: 1px;
-    --cursor-stroke: #fff;
-    --cursor-fill: #fff;
-    --cursor-stroke-width: 1px;
     --button-filler: #000;
     --color-bg: #ccc;
 }

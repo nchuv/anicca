@@ -9,6 +9,7 @@ export class Cursor {
   constructor(el) {
     this.DOM = {el: el};
     this.DOM.el.style.opacity = 0;
+    this.DOM.el.style.stroke = "#000";
 
     this.bounds = this.DOM.el.getBoundingClientRect();
 
@@ -16,7 +17,8 @@ export class Cursor {
       tx: {previous: 0, current: 0, amt: 0.15},
       ty: {previous: 0, current: 0, amt: 0.15},
       scale: {previous: 1, current: 1, amt: 0.15},
-      opacity: {previous: 1, current: 1, amt: 0.1}
+      opacity: {previous: 1, current: 1, amt: 0.1},
+      stroke: {previous: "#ffffff", current: "#ffffff", amt: 0.1},
     };
 
     this.onMouseMoveEv = () => {
@@ -30,11 +32,13 @@ export class Cursor {
   }
   enter() {
     this.renderedStyles['scale'].current = 2.5;
-    this.renderedStyles['opacity'].current = 0.5;
+    this.renderedStyles['opacity'].current = 1;
+    this.renderedStyles['stroke'].current ="#ffffff";
   }
   leave() {
     this.renderedStyles['scale'].current = 1;
     this.renderedStyles['opacity'].current = 1;
+    this.renderedStyles['stroke'].current ="#000000";
   }
   render() {
     this.renderedStyles['tx'].current = mouse.x - this.bounds.width/2;
@@ -46,6 +50,7 @@ export class Cursor {
 
     this.DOM.el.style.transform = `translateX(${(this.renderedStyles['tx'].previous)}px) translateY(${this.renderedStyles['ty'].previous}px) scale(${this.renderedStyles['scale'].previous})`;
     this.DOM.el.style.opacity = this.renderedStyles['opacity'].previous;
+    this.DOM.el.style.stroke = this.renderedStyles['stroke'].previous;
 
     requestAnimationFrame(() => this.render());
   }
