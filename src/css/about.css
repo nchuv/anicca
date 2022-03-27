@@ -1,52 +1,21 @@
 .about {
-  @apply bg-red-50;
-}
-
-.cube {
-  height: 620px;
-  @apply bg-black;
+  @apply py-12 lg:py-28;
+  @apply border border-x-0;
 }
 
 .about-list {
+  @apply md:grid md:grid-cols-2 md:gap-8;
   counter-reset: section;
 }
+
 .about-item {
   @apply relative;
-  @apply pl-16;
+  @apply pl-16 py-8;
 }
+
 .about-item:before {
   counter-increment: section;
   content: counter(section);
   @apply absolute w-12 h-12 flex justify-center items-center;
   @apply left-0 rounded-full border-3 border-accent;
-}
-
-.wrapper {
-  position: relative;
-}
-
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  /*background: rgb(9, 14, 23);*/
-}
-
-.hero__heading {
-  font-size: clamp(2rem, 5vw, 8rem);
-  text-transform: uppercase;
-  margin: 0;
-  padding: 0;
-}
-
-.hero--secondary {
-  position: absolute;
-  color: rgb(9, 14, 23);
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  --mask: radial-gradient(circle at var(--x, 10%) var(--y, 50%), black 25%, transparent 0);
-  -webkit-mask-image: var(--mask);
-  mask-image: var(--mask);
 }

@@ -11,7 +11,7 @@ function projectsSlider() {
         loop: true,
         // scrollbar
         scrollbar: {
-            el: ".projects-scrollbar",
+            el: ".swiper-scrollbar",
             draggable: true,
         },
         // Navigation arrows

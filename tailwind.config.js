@@ -23,6 +23,11 @@ module.exports = {
       },
       borderWidth: {
         '3': '3px',
+      },
+      fontSize: {
+        '3xl': ['32px', {
+          lineHeight: '40px',
+        }],
       }
     },
   },

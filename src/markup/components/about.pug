@@ -1,6 +1,6 @@
-section#about(data-scroll-section data-scroll-section-id="#about" class="py-8 lg:py-28")
+section#about(data-scroll-section data-scroll-section-id="#about" class="about")
   .container
     h2.mb-8 Чем занимаемся?
-    ul(class="about-list md:grid md:grid-cols-2 md:gap-8")
+    ul(class="about-list")
       each text in i18n.about.list
-        li.py-8.about-item #{text}
+        li.about-item #{text}

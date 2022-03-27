@@ -2,6 +2,9 @@
 @import "base.css";
 @import "cursor.css";
 @import "button.css";
+@import "hero.css";
 @import "about.css";
 @import "projects.css";
+@import "projects-controls.css";
+@import "projects-pagination.css";
 

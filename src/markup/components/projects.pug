@@ -1,30 +1,32 @@
-section#projects(data-scroll-section data-scroll-section-id="#projects" class="py-8 lg:py-28")
+section#projects.projects(data-scroll-section data-scroll-section-id="#projects")
   .container
-    h2.mb-8 Проекты
-    p!=i18n.projects.length
-  .projects
+    .flex.items-baseline
+      h2.mb-8 Проекты
+      span.text-accent!=i18n.projects.length
+  .projects-inner
     .container
       .relative
-        div(class="lg:flex")
+        div(class="lg:flex -mx-6 md:-mx-0")
           div(class="lg:w-1/2")
             .swiper-pagination
           div(class="lg:w-1/2")
-            .swiper
+            .swiper.projects-swiper
               .swiper-scrollbar.projects-scrollbar
               .swiper-wrapper
                 each project in i18n.projects
                   .swiper-slide
                     div.flex.flex-col.h-full
-                      div(class="md:pr-24 md:text-2xl font-medium text-accent uppercase")!=project.title
-                      div.mb-auto.py-8!=project.text
-                      div.font-medium.uppercase.text-sm
+                      div.swiper-title!=project.title
+                      div.swiper-text!=project.text
+                      div.swiper-stack
                         each item in project.stack
                           p!=item
-                      div.text-accent!=project.year
+                      div.swiper-year!=project.year
 
-              .projects-controls
-                .projects-prev
+            .projects-controls
+              .projects-prev.projects-arrow
+                .transform.rotate-180
                   include ../general/arrow.pug
-                .projects-next.transform.rotate-180
+              .projects-next.projects-arrow
                   include ../general/arrow.pug
 

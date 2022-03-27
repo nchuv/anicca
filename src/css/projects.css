@@ -1,65 +1,44 @@
-.projects{
-    background:linear-gradient(to right, #ffffff 50%, #0D0D0D 50%);;
+@media (min-width: 1024px) {
+    .projects-inner {
+        background: linear-gradient(to right, #ffffff 50%, #0D0D0D 50%);
+    }
 }
 
-.projects
-.swiper {
-    background: #0D0D0D;
-    @apply text-white;
+.projects {
+    @apply overflow-hidden;
+    @apply py-14 lg:py-28;
 }
 
-.projects
-.swiper-wrapper {
-    height: auto;
+.projects .swiper {
+    margin-top: 50px;
+    @apply bg-primary text-white ;
+    @apply overflow-visible;
+}
+.projects .swiper-wrapper {
+    @apply h-auto;
+}
+.projects .swiper-horizontal > .swiper-scrollbar {
+    left: 6%;
+    width: 88%;
 }
 
-
-.projects
-.swiper-pagination-bullets.swiper-pagination-horizontal {
-    @apply relative bottom-0 hidden lg:flex lg:flex-col;
-}
-
-.projects
-.swiper-pagination-bullet {
-    @apply text-xs font-medium uppercase;
-    @apply relative block p-0 py-8 px-16;
-    @apply border-solid border-r-0 border-y-0 border-l-4;
-    @apply opacity-100;
-    @apply w-full h-auto;
-    border-radius: 0;
-    background: none;
-    text-align: left;
-    box-sizing: border-box;
-    transition: color .5s ease-in-out;
-}
-.projects
-.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
-    @apply m-0;
-}
-
-.projects
-.swiper-pagination-bullet-active {
-    @apply text-accent;
-}
-
-.projects
-.swiper-slide {
+.projects .swiper-slide {
+    @apply h-auto lg:h-full;
     /*height: 620px;*/
-    @apply p-8 lg:p-20 lg:pr-0;
+    @apply py-9 px-7 lg:p-20 lg:pr-0;
 }
 
-.projects-controls {
-    @apply text-white absolute right-0 top-16 z-10;
-    @apply flex items-center gap-4;
+.swiper-title {
+    @apply text-lg md:text-2xl font-medium text-accent uppercase;
+    @apply md:pr-24;
+}
+.swiper-text {
+    @apply mb-auto py-4 leading-relaxed;
+}
+.swiper-stack {
+    @apply font-medium uppercase text-sm leading-relaxed;
+}
+.swiper-year {
+    @apply text-lg text-accent mt-6;
 }
 
-
-.projects-prev {
-
-}
-
-.projects-next {}
-
-.projects-scrollbar {
-    @apply lg:hidden;
-}
