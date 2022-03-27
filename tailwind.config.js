@@ -11,7 +11,7 @@ module.exports = {
         secondary: "#F5F5F5",
         accent: "#EF2500",
       },
-      c: {
+      container: {
         center: true,
         screens: {
           DEFAULT: '100%',
@@ -28,6 +28,15 @@ module.exports = {
         '3xl': ['32px', {
           lineHeight: '40px',
         }],
+        '5xl': ['50px', {
+          lineHeight: '50px',
+        }],
+      },
+      minWidth: {
+        '8': '2rem',
+      },
+      margin: {
+        '18': '4.5rem',
       }
     },
   },

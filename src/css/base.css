@@ -5,7 +5,7 @@
 @layer base {
   body {
     @apply antialiased;
-    @apply min-h-full pt-14;
+    /*@apply pt-14 lg:pt-20;*/
   }
   h1 {
       @apply font-medium text-2xl;
@@ -19,7 +19,7 @@
       @apply bg-accent text-white px-2 py-2;
   }
   .container {
-      @apply px-6 md:px-8 lg:text-lg m-auto;
+      @apply px-6 md:px-8 lg:text-lg;
   }
   .textarea,
   .input {
