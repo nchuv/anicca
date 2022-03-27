@@ -6,13 +6,13 @@
 
 .projects {
     @apply overflow-hidden;
-    @apply py-14 lg:py-28;
+    @apply pt-14 md:pt-20 lg:pt-32;
 }
 
 .projects .swiper {
-    margin-top: 50px;
     @apply bg-primary text-white ;
-    @apply overflow-visible;
+    @apply overflow-visible lg:overflow-hidden;
+    @apply mt-12 lg:mt-0;
 }
 .projects .swiper-wrapper {
     @apply h-auto;
@@ -23,20 +23,22 @@
 }
 
 .projects .swiper-slide {
-    @apply h-auto lg:h-full;
-    /*height: 620px;*/
-    @apply py-9 px-7 lg:p-20 lg:pr-0;
+    @apply h-auto;
+    @apply py-9 px-7 lg:pl-12 lg:pr-0 lg:py-14 xl:pl-20;
 }
 
 .swiper-title {
-    @apply text-lg md:text-2xl font-medium text-accent uppercase;
-    @apply md:pr-24;
+    @apply text-lg font-medium text-accent uppercase;
+    @apply md:text-2xl;
+    @apply xl:text-3xl;
 }
 .swiper-text {
     @apply mb-auto py-4 leading-relaxed;
+    @apply lg:py-8 lg:leading-7;
 }
 .swiper-stack {
     @apply font-medium uppercase text-sm leading-relaxed;
+    @apply xl:text-base;
 }
 .swiper-year {
     @apply text-lg text-accent mt-6;

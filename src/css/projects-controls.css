@@ -1,28 +1,27 @@
 .projects-controls {
   top: -108px;
   width: 108px;
-  @apply text-primary lg:text-white;
-  @apply absolute right-4 lg:top-16 z-10;
+  @apply text-primary;
+  /*@apply lg:text-white lg:top-16;*/
+  @apply absolute right-4 z-10 lg:-top-20;
   @apply flex items-center justify-between;
 }
 
 .projects-arrow {
   @apply relative flex-1 text-right;
 }
-
 .projects-arrow svg {
   @apply inline;
 }
-
 .projects-arrow:after {
   content: " ";
-  @apply absolute bg-primary lg:bg-white;
+  @apply absolute bg-primary;
+  /*@apply lg:bg-white;*/
   transition: .2s ease-in-out;
   width: 38px;
   height: 2px;
   top: 7px;
 }
-
 .projects-prev:after {
   left: 2px;
 }
@@ -33,15 +32,11 @@
 .projects-prev:hover:after {
   width: 56px;
 }
-
-.projects
-.swiper-scrollbar {
+.projects .swiper-scrollbar {
   bottom: initial;
   @apply lg:hidden relative;
   @apply -top-9 bg-primary;
 }
-
-.projects
-.swiper-scrollbar-drag {
+.projects .swiper-scrollbar-drag {
   @apply bg-accent;
 }
