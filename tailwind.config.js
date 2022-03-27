@@ -35,7 +35,7 @@ module.exports = {
       minWidth: {
         '8': '2rem',
       },
-      margin: {
+      spacing: {
         '18': '4.5rem',
       }
     },
