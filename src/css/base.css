@@ -5,7 +5,7 @@
 @layer base {
   body {
     @apply antialiased;
-    /*@apply pt-14 lg:pt-20;*/
+    @apply pt-14 lg:pt-20;
   }
   h1 {
       @apply font-medium text-2xl;

@@ -10,13 +10,14 @@ mixin hero-info()
 
 section(data-scroll-section class="py-8 lg:py-28 bg-secondary")
     .wrapper
-      .hero
+      .hero(class="text-center lg:text-left")
         .container
-          .flex
-            .flex-1
-              +hero-info()
+          div(class="lg:flex lg:flex-row-reverse")
             .flex-1
               img(src="../images/hero.svg")
+            .flex-1
+              +hero-info()
+
       //.hero.hero--secondary(area-hidden="true" data-hero)
       //  .container
       //    .flex
