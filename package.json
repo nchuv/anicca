@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "prebuild": "rimraf .cache && rimraf dist",
-    "build": "npm run prebuild && parcel build src/*.html",
+    "build": "parcel build src/*.html",
     "dev": "parcel src/*.html",
     "clean": "rm -rf dist .parcel-cache",
     "parcel:serve": "parcel serve src/markup/index.pug",
