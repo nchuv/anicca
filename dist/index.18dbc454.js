@@ -530,13 +530,10 @@ var _projects = require("./projects");
 var _projectsDefault = parcelHelpers.interopDefault(_projects);
 var _buttonCtrl = require("./buttonCtrl");
 var _buttonCtrlDefault = parcelHelpers.interopDefault(_buttonCtrl);
-// const nav = document.querySelectorAll(".menu")[0];
-//
-// if (nav) {
-//   nav.addEventListener("click", function () {
-//     nav.classList.toggle("opened");
-//   });
-// }
+const nav = document.querySelectorAll(".menu")[0];
+if (nav) nav.addEventListener("click", function() {
+    nav.classList.toggle("opened");
+});
 _projectsDefault.default();
 const buttonEl = document.querySelectorAll('.button')[0];
 const cursorEl = document.querySelectorAll('.cursor')[0];
@@ -559,19 +556,20 @@ const lscroll = new _locomotiveScrollDefault.default({
     el: document.querySelector('[data-scroll-container]'),
     smooth: true,
     direction: 'up'
-});
-const hero = document.querySelector('[data-hero]');
-window.addEventListener('mousemove', (e)=>{
-    const { clientX , clientY  } = e;
-    const x = Math.round(clientX / window.innerWidth * 100);
-    const y = Math.round(clientY / window.innerHeight * 100);
-    _gsapDefault.default.to(hero, {
-        '--x': `${x}%`,
-        '--y': `${y}%`,
-        duration: 0.3,
-        ease: 'sine.out'
-    });
-});
+}); // const hero = document.querySelector('[data-hero]')
+ //
+ // window.addEventListener('mousemove', (e) => {
+ //   const { clientX, clientY } = e
+ //   const x = Math.round((clientX / window.innerWidth) * 100)
+ //   const y = Math.round((clientY / window.innerHeight * 100))
+ //
+ //   gsap.to(hero, {
+ //     '--x': `${x}%`,
+ //     '--y': `${y}%`,
+ //     duration: 0.3,
+ //     ease: 'sine.out'
+ //   })
+ // })
 
 },{"gsap":"fPSuC","locomotive-scroll":"iDXE3","swiper/swiper-bundle.css":"aErfw","./cursor":"3v1v0","./projects":"82j8t","./buttonCtrl":"bnzgd","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fPSuC":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");

@@ -3,11 +3,14 @@
   @apply relative bottom-0 hidden lg:flex lg:flex-col;
 }
 
+.pagination {
+  @apply border-solid border-r-0 border-y-0 border-l-4 border-primary;
+}
+
 .projects
 .swiper-pagination-bullet {
   @apply text-sm font-medium uppercase text-left;
   @apply relative block w-full h-auto p-0 py-4 pl-16 pr-8;
-  @apply border-solid border-r-0 border-y-0 border-l-4;
   @apply opacity-100 bg-transparent rounded-none;
   @apply transition transition-colors ease-in-out;
 }

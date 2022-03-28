@@ -6,13 +6,13 @@ import { Cursor } from './cursor';
 import projectsSlider from "./projects";
 import ButtonCtrl from './buttonCtrl';
 
-// const nav = document.querySelectorAll(".menu")[0];
-//
-// if (nav) {
-//   nav.addEventListener("click", function () {
-//     nav.classList.toggle("opened");
-//   });
-// }
+const nav = document.querySelectorAll(".menu")[0];
+
+if (nav) {
+  nav.addEventListener("click", function () {
+    nav.classList.toggle("opened");
+  });
+}
 
 projectsSlider();
 
@@ -42,18 +42,18 @@ const lscroll = new LocomotiveScroll({
   direction: 'up',
 });
 
-const hero = document.querySelector('[data-hero]')
-
-window.addEventListener('mousemove', (e) => {
-  const { clientX, clientY } = e
-  const x = Math.round((clientX / window.innerWidth) * 100)
-  const y = Math.round((clientY / window.innerHeight * 100))
-
-  gsap.to(hero, {
-    '--x': `${x}%`,
-    '--y': `${y}%`,
-    duration: 0.3,
-    ease: 'sine.out'
-  })
-})
+// const hero = document.querySelector('[data-hero]')
+//
+// window.addEventListener('mousemove', (e) => {
+//   const { clientX, clientY } = e
+//   const x = Math.round((clientX / window.innerWidth) * 100)
+//   const y = Math.round((clientY / window.innerHeight * 100))
+//
+//   gsap.to(hero, {
+//     '--x': `${x}%`,
+//     '--y': `${y}%`,
+//     duration: 0.3,
+//     ease: 'sine.out'
+//   })
+// })
 
