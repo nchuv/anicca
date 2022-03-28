@@ -36,11 +36,11 @@ if (buttonEl && cursorEl) {
 // https://github.com/locomotivemtl/locomotive-scroll
 // https://locomotivemtl.github.io/locomotive-scroll/
 
-// const lscroll = new LocomotiveScroll({
-//   el: document.querySelector('[data-scroll-container]'),
-//   smooth: true,
-//   direction: 'up',
-// });
+const lscroll = new LocomotiveScroll({
+  el: document.querySelector('[data-scroll-container]'),
+  smooth: true,
+  direction: 'up',
+});
 
 const hero = document.querySelector('[data-hero]')
 
