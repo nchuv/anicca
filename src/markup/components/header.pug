@@ -3,7 +3,12 @@ header.py-4.bg-black.text-white.fixed.top-0.w-full.z-10
     .flex.justify-between.items-center
       a(href="/").block
         img(src="../images/logo.svg" class="h-4 md:h-auto")
-      div(class="hidden md:block")
+      nav(class="menu md:block")
+        button(class="md:hidden")
+          span(class="menu__icon")
+            include ../general/menu.pug
+          span(class="menu__close hidden")
+            include ../general/close.pug
         ul.menu__list
           each item in i18n.menu
             li.menu__item

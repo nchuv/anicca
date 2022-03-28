@@ -4,8 +4,7 @@
 
 @layer base {
   body {
-    @apply antialiased;
-    @apply pt-12 lg:pt-20;
+    @apply antialiased m-0 p-0 box-border;
   }
   h1,
   h2 {

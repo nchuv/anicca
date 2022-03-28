@@ -9,11 +9,11 @@ mixin hero-info()
           .button__text
             .button__text-inner Связаться
 
-section(data-scroll-section class="py-8 pb-20 md:py-20 lg:py-24 bg-secondary")
+section(data-scroll-section data-scroll-section-id="#hero" class="mt-2 pt-20 pb-20 md:py-20 lg:py-24 bg-secondary")
     .wrapper
       .hero(class="text-center md:text-left")
         .container
-          div(class="md:flex md:flex-row-reverse")
+          div(class="md:flex md:flex-row-reverse md:pt-20")
             .flex-1
               img(src="../images/hero.svg" class="w-30 h-30 mx-auto md:w-auto md:h-auto")
             .flex-1

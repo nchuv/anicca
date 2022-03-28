@@ -6,6 +6,14 @@ import { Cursor } from './cursor';
 import projectsSlider from "./projects";
 import ButtonCtrl from './buttonCtrl';
 
+// const nav = document.querySelectorAll(".menu")[0];
+//
+// if (nav) {
+//   nav.addEventListener("click", function () {
+//     nav.classList.toggle("opened");
+//   });
+// }
+
 projectsSlider();
 
 const buttonEl = document.querySelectorAll('.button')[0];

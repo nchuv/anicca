@@ -3,10 +3,8 @@
 }
 
 .hero {
-  /*min-height: 100vh;*/
   display: flex;
   align-items: center;
-  /*background: rgb(9, 14, 23);*/
 }
 
 .hero__heading {
