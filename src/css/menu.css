@@ -1,0 +1,7 @@
+.menu__list {
+  @apply flex;
+}
+.menu__item {
+  @apply flex-grow p-4 lg:ml-10 ;
+  @apply text-sm uppercase font-medium  tracking-wider;
+}

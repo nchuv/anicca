@@ -12,19 +12,11 @@ body {
     cursor: pointer;
     -moz-appearance: none;
     -webkit-appearance: none;
-    color: #fff;
     background: var(--button-bg);
     border-radius: var(--button-border-radius);
-    width: 180px;
-    height: 56px;
-    padding: 0;
-    margin: 1rem;
-    font-family: inherit;
-    font-size: 14px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @apply text-white text-sm uppercase font-medium;
+    @apply flex items-center justify-center px-4;
+    @apply h-12 lg:h-14 w-full overflow-hidden;
 }
 
 .button:focus,

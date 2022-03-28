@@ -19,8 +19,6 @@ if (buttonEl && cursorEl) {
   button.on('leave', () => cursor.leave());
 }
 
-
-
 // mouse effects on all links and others
 // [...document.querySelectorAll('a')].forEach(link => {
 //   link.addEventListener('mouseenter', () => cursor.enter());

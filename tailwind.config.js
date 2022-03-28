@@ -26,7 +26,7 @@ module.exports = {
       },
       fontSize: {
         '3xl': ['32px', {
-          lineHeight: '40px',
+          lineHeight: '34px',
         }],
         '5xl': ['50px', {
           lineHeight: '50px',
@@ -37,6 +37,8 @@ module.exports = {
       },
       spacing: {
         '18': '4.5rem',
+        '30': '7.5rem',
+        '44': '11rem',
       }
     },
   },

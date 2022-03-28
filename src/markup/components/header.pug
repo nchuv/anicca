@@ -2,10 +2,10 @@ header.py-4.bg-black.text-white.fixed.top-0.w-full.z-10
   .container
     .flex.justify-between.items-center
       a(href="/").block
-        img(src="../images/logo.svg")
+        img(src="../images/logo.svg" class="h-4 md:h-auto")
       div(class="hidden md:block")
-        ul.flex
+        ul.menu__list
           each item in i18n.menu
-            li.flex-grow.p-4.text-sm.uppercase.font-meduim
+            li.menu__item
               a(href=`#${item.link}` data-scroll-to).block
                 span(class="hover:text-accent") #{item.title}
