@@ -36,24 +36,24 @@ if (buttonEl && cursorEl) {
 // https://github.com/locomotivemtl/locomotive-scroll
 // https://locomotivemtl.github.io/locomotive-scroll/
 
-const lscroll = new LocomotiveScroll({
-  el: document.querySelector('[data-scroll-container]'),
-  smooth: true,
-  direction: 'up',
-});
+// const lscroll = new LocomotiveScroll({
+//   el: document.querySelector('[data-scroll-container]'),
+//   smooth: true,
+//   direction: 'up',
+// });
 
-// const hero = document.querySelector('[data-hero]')
-//
-// window.addEventListener('mousemove', (e) => {
-//   const { clientX, clientY } = e
-//   const x = Math.round((clientX / window.innerWidth) * 100)
-//   const y = Math.round((clientY / window.innerHeight * 100))
-//
-//   gsap.to(hero, {
-//     '--x': `${x}%`,
-//     '--y': `${y}%`,
-//     duration: 0.3,
-//     ease: 'sine.out'
-//   })
-// })
+const hero = document.querySelector('[data-hero]')
+
+window.addEventListener('mousemove', (e) => {
+  const { clientX, clientY } = e
+  const x = Math.round((clientX / window.innerWidth) * 100)
+  const y = Math.round((clientY / window.innerHeight * 100))
+
+  gsap.to(hero, {
+    '--x': `${x}%`,
+    '--y': `${y}%`,
+    duration: 0.3,
+    ease: 'sine.out'
+  })
+})
 

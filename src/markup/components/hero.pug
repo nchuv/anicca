@@ -1,28 +1,23 @@
-mixin hero-info()
-  div.flex-1
-    div(class="sm:w-80 m-auto md:m-0")
-      h1.my-8 Запускаем корпоративные <span class="text-accent">стартапы</span>
-      p(class="my-8") Расскажите нам о своем проекте и задайте любые вопросы! Мы ответим в самое ближайшее время
-      a(href="#contacts" data-scroll-to class="block w-60 m-auto md:w-44 md:m-0")
-        button.button
-          .button__filler
-          .button__text
-            .button__text-inner Связаться
-
-section(data-scroll-section data-scroll-section-id="#hero" class="mt-2 pt-20 pb-20 md:py-20 lg:py-24 bg-secondary")
-    .wrapper
-      .hero(class="text-center md:text-left")
-        .container
-          div(class="md:flex md:flex-row-reverse md:pt-20")
-            .flex-1
-              img(src="../images/hero.svg" class="w-30 h-30 mx-auto md:w-auto md:h-auto")
-            .flex-1
-              +hero-info()
-
-      //.hero.hero--secondary(area-hidden="true" data-hero)
-      //  .container
-      //    .flex
-      //      .flex-1
-      //        +hero-info()
-      //      .flex-1
-      //        img(src="../images/hero-invert.svg")
+section(data-scroll-section data-scroll-section-id="#hero" class="section")
+  .wrapper
+    .hero(class="")
+      .container
+        div(class="md:flex md:flex-row-reverse md:pt-20")
+          .flex-1
+            img(src="../images/hero.svg" class="w-30 h-30 mx-auto md:w-auto md:h-auto")
+          div.flex-1
+            div(class="sm:w-80 m-auto md:m-0")
+              h1.my-8 Запускаем корпоративные <span class="text-accent">стартапы</span>
+              p(class="my-8") Расскажите нам о своем проекте и задайте любые вопросы! Мы ответим в самое ближайшее время
+              a(href="#contacts" data-scroll-to class="block w-60 m-auto md:w-44 md:m-0")
+                button.button
+                  .button__filler
+                  .button__text
+                    .button__text-inner Связаться
+    .hero.hero--secondary(area-hidden="true" data-hero class="text-center md:text-left")
+      .container
+        div(class="md:flex md:flex-row-reverse md:pt-20")
+          .flex-1
+            img(src="../images/hero-invert.svg" class="w-30 h-30 mx-auto md:w-auto md:h-auto")
+          div.flex-1
+            div(class="sm:w-80 m-auto md:m-0")

@@ -80,7 +80,7 @@ export default class ButtonCtrl extends EventEmitter {
         this.emit('enter');
         this.state.hover = true;
         this.DOM.el.classList.add('button--hover');
-        document.body.classList.add('active');
+        // document.body.classList.add('active');
 
         gsap.killTweensOf(this.DOM.filler);
         gsap.killTweensOf(this.DOM.textinner);
