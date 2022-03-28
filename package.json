@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "rimraf": "./node_modules/rimraf/bin.js",
     "prebuild": "rimraf .cache && rimraf dist",
     "build": "npm run prebuild && parcel build src/*.html",
     "dev": "parcel src/*.html",
