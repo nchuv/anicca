@@ -142,10 +142,10 @@
       this[globalName] = mainExports;
     }
   }
-})({"g9TDx":[function(require,module,exports) {
+})({"6ARV3":[function(require,module,exports) {
 "use strict";
 var HMR_HOST = null;
-var HMR_PORT = null;
+var HMR_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
 module.bundle.HMR_BUNDLE_ID = "0bcb44a518dbc454";
@@ -527,14 +527,14 @@ var _locomotiveScrollDefault = parcelHelpers.interopDefault(_locomotiveScroll);
 var _swiperBundleCss = require("swiper/swiper-bundle.css");
 var _cursor = require("./cursor");
 var _projects = require("./projects");
-var _projectsDefault = parcelHelpers.interopDefault(_projects);
 var _buttonCtrl = require("./buttonCtrl");
 var _buttonCtrlDefault = parcelHelpers.interopDefault(_buttonCtrl);
 const nav = document.querySelectorAll(".menu")[0];
 if (nav) nav.addEventListener("click", function() {
     nav.classList.toggle("opened");
 });
-_projectsDefault.default();
+_projects.projectsSlider();
+_projects.productsSlider();
 const buttonEl = document.querySelectorAll('.button')[0];
 const cursorEl = document.querySelectorAll('.cursor')[0];
 const cursor = new _cursor.Cursor(cursorEl);
@@ -6899,13 +6899,17 @@ const getRandomFloat = (min, max)=>(Math.random() * (max - min) + min).toFixed(2
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"82j8t":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "projectsSlider", ()=>projectsSlider
+);
+parcelHelpers.export(exports, "productsSlider", ()=>productsSlider
+);
 var _swiper = require("swiper");
 var _swiperDefault = parcelHelpers.interopDefault(_swiper);
 var _i18N = require("../i18n");
 function projectsSlider() {
-    let el = document.querySelector('.swiper');
+    let el = document.querySelector('#projects .swiper');
     if (!el) return;
-    const swiper = new _swiperDefault.default('.swiper', {
+    const swiper = new _swiperDefault.default('#projects .swiper', {
         modules: [
             _swiper.Navigation,
             _swiper.Pagination,
@@ -6914,16 +6918,16 @@ function projectsSlider() {
         loop: true,
         // scrollbar
         scrollbar: {
-            el: ".swiper-scrollbar",
+            el: "#projects .swiper-scrollbar",
             draggable: true
         },
         // Navigation arrows
         navigation: {
-            nextEl: '.projects-next',
-            prevEl: '.projects-prev'
+            nextEl: '#projects .projects-next',
+            prevEl: '#projects .projects-prev'
         },
         pagination: {
-            el: '.swiper-pagination',
+            el: '#projects .swiper-pagination',
             clickable: true,
             renderBullet: function(index, className) {
                 return '<button class="' + className + '">' + _i18N.projects[index].title + '</button>';
@@ -6931,7 +6935,35 @@ function projectsSlider() {
         }
     });
 }
-exports.default = projectsSlider;
+function productsSlider() {
+    let el = document.querySelector('#products .swiper');
+    if (!el) return;
+    const swiper = new _swiperDefault.default('#products .swiper', {
+        modules: [
+            _swiper.Navigation,
+            _swiper.Pagination,
+            _swiper.Scrollbar
+        ],
+        loop: true,
+        // scrollbar
+        scrollbar: {
+            el: "#products .swiper-scrollbar",
+            draggable: true
+        },
+        // Navigation arrows
+        navigation: {
+            nextEl: '#products .projects-next',
+            prevEl: '#products .projects-prev'
+        },
+        pagination: {
+            el: '#products .swiper-pagination',
+            clickable: true,
+            renderBullet: function(index, className) {
+                return '<button class="' + className + '">' + _i18N.products[index].title + '</button>';
+            }
+        }
+    });
+}
 
 },{"swiper":"cCbRx","../i18n":"6LohX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cCbRx":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -15592,13 +15624,15 @@ exports.default = EffectCards;
 const menu = require('./menu.js');
 const about = require('./about.js');
 const projects = require('./projects.js');
+const products = require('./products.js');
 module.exports = {
     menu: menu,
     about: about,
-    projects: projects
+    projects: projects,
+    products: products
 };
 
-},{"./menu.js":"cAsPv","./about.js":"csC5d","./projects.js":"eXGfZ"}],"cAsPv":[function(require,module,exports) {
+},{"./menu.js":"cAsPv","./about.js":"csC5d","./projects.js":"eXGfZ","./products.js":"bEAbK"}],"cAsPv":[function(require,module,exports) {
 module.exports = [
     {
         title: 'Что делаем',
@@ -15627,79 +15661,105 @@ module.exports = {
 },{}],"eXGfZ":[function(require,module,exports) {
 module.exports = [
     {
-        title: 'СберОбразование Маркетплейс',
-        text: `<p>Маркетплейс СберОбразование — образовательная платформа для носителей знаний двух целевых аудиторий: для тех, кто хочет делиться знаниями и зарабатывать на этом; для тех, кто хочет узнавать новое.</p>
-        <p>Представляет собой маркетплейс, где находят друг друга различные компании и предприниматели - авторы курсов, заинтересованные в привлечении аудитории, и пользова тели, желающие пройти обучение.</p>`,
+        title: 'СберКласс',
+        text: `<p>СберКласс — это современная цифровая платформа для школы. Помогает учителю персонализировать обучающие материалы, развивать у детей актуальные навыки, автоматизировать рутину и вовлечь учеников в образовательный процесс.</p>`,
         stack: [
-            'Front WEB: React, Typescript, Effector, Gqless, Tailwind Backend: Go, бизнес-процессы в Camunda, identity provider: Keycloak',
-            'Databases: Hasura (GraphQL), PostgreSQL',
-            'Мобильные приложения: IOS - swift, Android - kotlin'
-        ],
-        year: '2020'
-    },
-    {
-        title: 'СберОбразование Маркетплейс. Личный кабинет',
-        text: `<p>ЛК поставщика — раздел Маркетплейса, предназначенный для тех, кто хочет размещать на нем свои образовательные материалы.</p>
-<p>В этом разделе можно создавать курс, управлять данными своей школы и ее сотрудников, настраивать эквайринг, знакомиться с аналитикой по процессу обучения.</p>`,
-        stack: [
-            'React, Typescript, Effector, Gqless, Tailwind, Camunda, Hasura (GraphQL)'
-        ],
-        year: '2020'
-    },
-    {
-        title: 'SBO AI Elementary',
-        text: `<p>
-Мобильное приложение для обучения детей 5-7 лет основам понимания искусственного интеллекта и программирования в игровой форме.</p> 
-<p>Версия для ребенка: планеты с играми и библиотека контента с видео, мини-играми, тренажерами.</p>
-<p>Версия для родителя: личный кабинет, прогресс детей в обучении и аналитика по обретенным навыкам.</p>`,
-        stack: [
-            'iOS — Swift, Combine, MVVM, GraphQL, Apollo, SwiftPM.',
-            'Android — Kotlin, Coroutines, LiveData, MVVM, Dagger Hilt, Apollo, Hasura (GraphQL), Retrofit, OkHttp3'
-        ],
-        year: '2020'
-    },
-    {
-        title: 'СберКласс. Dashboard',
-        text: `<p>СберКласс — это современная цифровая платформа для школы. Помогает учителю персонализировать обучающие материалы, развивать у детей актуальные навыки, автоматизировать рутину и вовлечь учеников в образовательный процесс.</p>
-<p>Dashboard — первая страница, на которую попадают пользователи после авторизации, она является ключевым элементом взаимодействия пользователя с платформой.</p>`,
-        stack: [
-            'React, Typescript, Effector, Gqless, GraphQL, Apollo, Tailwind; Java, Spring, MongoDB, PostgreSQL Docker/Kubernetes'
-        ],
-        year: '2020'
-    },
-    {
-        title: 'СберКласс. Конструктор контента (Web-версия)',
-        text: `<p>СберКласс — это современная цифровая платформа для школы. Помогает учителю построить персонализированную образовательную траекторию для ребёнка, развить у него актуальные навыки, автоматизировать рутину и вовлечь учеников в образовательный процесс.</p>
-<p>Конструктор контента предназначен для создания учителем заданий для учеников, которые они выполняют в Плеере контента.</p>`,
-        stack: [
-            'React, Typescript, Effector, Gqless, GraphQL, Apollo, Tailwind; Java, Spring, MongoDB, PostgreSQL Docker/Kubernetes.'
-        ],
-        year: '2020'
-    },
-    {
-        title: 'СберКласс. Мобильная версия',
-        text: `<p>СберКласс — это современная цифровая платформа для школы. Помогает учителю персонализировать обучающие материалы, развивать у детей актуальные навыки, автоматизировать рутину и вовлечь учеников в образовательный процесс.</p>
-<p>Мобильное приложение для работы с платформой.</p>`,
-        stack: [
-            'React Native'
-        ],
-        year: '2020'
+            '#typescript   #react   #react native   #effector   #graphql   #java   #hasura   #camunda   #kafka'
+        ]
     },
     {
         title: 'Petshop',
         text: `<p>Мобильное eCommerce приложение для крупнейшего магазина зоотоваров в России. В нем реализован удобный личный кабинет для совершения покупок, записи питомцев в ветеринарную клинику от Petshop, а также для онлайн-заказа услуг по выгулу и грумингу.</p>`,
         stack: [
-            'Kotlin, Swift, Firebase'
-        ],
-        year: '2020'
+            '#swift   #kotlin   #firebase  '
+        ]
     },
     {
-        title: 'LIS',
+        title: 'LIS Sonata',
         text: `<p>ПО для настройки и управления потоками работ и документооборотом в лабораториях. Данный софт оптимизирует процесс сбора, анализа и возврата лабораторных данных, а также отчетности по ним.</p>`,
         stack: [
-            'Java+spring'
-        ],
-        year: '2020'
+            ' #java   #spring   #postgresql   #vaadin'
+        ]
+    }
+];
+
+},{}],"bEAbK":[function(require,module,exports) {
+module.exports = [
+    {
+        title: 'Платформа Радар',
+        text: `Решение для автоматизации работы Центра обеспечения кибербезопасности (SOC), позволяющее оптимизировать работу с инцидентами, следить за уязвимостями и сетевыми аномалиями.`
+    },
+    {
+        title: 'MailArchiva EE',
+        text: "Система архивации электронной почты от российского производителя с распределением нагрузки и дублированием информации в несколько хранилищ, позволяет создавать удобный архив почты с доступом через веб-интерфейс и мощным встроенным поиском."
+    },
+    {
+        title: 'CRM для детских учебных заведений',
+        text: "Специализированный продукт для организации работы между учебным заведением и родителями. Представляет собой простую CRM систему с элементами ERP и дополнительный сервис банковского, бухгалтерского, юридического и информационного сопровождения."
+    },
+    {
+        title: 'Altaro VM Backup',
+        text: "Система для управления бэкапами: полностью автоматизирует любую политику по резервному копированию виртуальных машин Hyper-V и Vmware."
+    },
+    {
+        title: 'Altaro Office 365 Backup',
+        text: "Система для резервного копирования данных с платформы Office 365. Позволяет автоматически настроить резервное копирование всех документов и писем, которые хранятся на платформе."
+    },
+    {
+        title: 'Acunetix',
+        text: "Система для аудита веб-приложений и процесса разработки на предмет наличия уязвимостей. Находит и помогает исправить все известные проблемы безопасности в веб-приложениях и организовать процесс разработки."
+    },
+    {
+        title: 'Thycotic Secret Server',
+        text: "Сервис для безопасного хранения и управления паролями, управления доступом к внутренним и внешним системам, смены паролей на любых системах и приведения сети в соответствие с парольной политикой компании."
+    },
+    {
+        title: 'Centrify AD Bridge',
+        text: "Сервис для организации работы с учётными записями Linux/Unix, позволяет присоединять Linux/Unix машины к Windows-домену, и управлять правами доступа через Active Directory, убрав локальные учётные записи и LDAP каталоги."
+    },
+    {
+        title: 'Thycotic Privilege Manager',
+        text: "Позволяет управлять локальными учётными записями и локальными группами, доступом к запуску отдельных приложений и служб на каждом отдельном сервере, вплоть до предоставления одноразовых паролей для входа в Windows."
+    },
+    {
+        title: 'Thycotic Account Lifecycle Manager',
+        text: "Сервис для организации работы с техническими учетными записями, через систему заявок контролирует создание, учёт, своевременное выключение и удаление таких записей."
+    },
+    {
+        title: 'GFI LanGuard',
+        text: "Сервис для автоматизации обнаружения уязвимостей в сети, инвентаризации сетевых устройств, обновления операционных систем и прикладного программного обеспечения."
+    },
+    {
+        title: 'GFI MailEssentials',
+        text: "Почтовый спам-фильтр. Определяет спам и защищает от вредоносных писем любые почтовые сервера в сетях любых масштабов."
+    },
+    {
+        title: 'GFI Archiver',
+        text: "Сервис для архивации электронной почты. Архивирует электронную почту таким образом, чтобы можно было найти и восстановить любое письмо, почтовый ящик или целый сервер быстрее, чем это происходит в случае резервной копии сервера целиком."
+    },
+    {
+        title: 'Kerio Control',
+        text: "Программный маршрутизатор для безопасного доступа в интернет. Фаерволл помогает защититься от вторжений, может фильтровать доступ к развлекательным и опасным веб-сайтам."
+    },
+    {
+        title: 'Scirge',
+        text: "Сервис для контроля работы с корпоративными учетными записями и аккаунтами. Собирает учётные записи, которые сотрудники используют на сторонних сервисах, проверяет сложность паролей и наличие паролей в списках украденных."
+    },
+    {
+        title: 'MULTIFACTOR',
+        text: "Сервис для дополнительной верификации пользователя. Надежный дополнительный фактор для безопасной аутентификации с быстрой настройкой и интеграцией в любую сеть и поддерживает все популярные методы дополнительной аутентификации, включая SMS, звонки и Телеграмм."
+    },
+    {
+        title: 'Единое информационное пространство предприятия',
+        text: "Решение для создания эффективной системы управления предприятием посредством сквозных бизнес-процессов, основанных на движении документов: конфигурация 1С:Документо"
+    },
+    {
+        title: 'Voisi',
+        text: "Речевая и текстовая аналитика. Сервис позволяет сократить расходы на коммуникации с клиентами и повысить эффективность рабочих процессов за счет механизмов распознавания и автоматизации анализа и контроля."
+    },
+    {
+        title: 'Система Управления Информацией (аналог SAP)',
+        text: "Корпоративное ПО для автоматизации бизнес- процессов. Система позволяет улучшить автоматизацию, оптимизировать процессы любого уровня сложности и специфичности в организациях и на предприятиях."
     }
 ];
 
@@ -16196,6 +16256,6 @@ function eventTargetAgnosticAddListener(emitter, name, listener, flags) {
     else throw new TypeError('The "emitter" argument must be of type EventEmitter. Received type ' + typeof emitter);
 }
 
-},{}]},["g9TDx","1SICI"], "1SICI", "parcelRequire6b4d")
+},{}]},["6ARV3","1SICI"], "1SICI", "parcelRequire6b4d")
 
 //# sourceMappingURL=index.18dbc454.js.map

@@ -971,6 +971,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}@media (max-width: 540px) {
+  #products .projects-controls {
+    top: -67px;
+  }
 }.projects-arrow {
   position: relative;
   flex: 1 1 0%;
@@ -1053,7 +1057,7 @@ body {
   padding-top: 1rem;
   padding-bottom: 1rem;
   padding-left: 4rem;
-  padding-right: 2rem;
+  padding-right: 1rem;
   border-radius: 0px;
   background-color: transparent;
   opacity: 1;
@@ -1096,6 +1100,12 @@ body {
 .swiper-pagination-bullet-active:after {
   --tw-bg-opacity: 1;
   background-color: rgb(239 37 0 / var(--tw-bg-opacity));
+}
+
+#products.projects
+.swiper-pagination-bullet {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 

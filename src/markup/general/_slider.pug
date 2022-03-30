@@ -1,0 +1,33 @@
+mixin slider(title, list)
+    .container
+        .flex.items-baseline
+            h2.mb-8=title
+            span.pl-2.text-accent!=list.length
+    .projects-inner
+        .container
+            .relative
+                div(class="lg:flex -mx-6 md:-mx-8 lg:-mx-0 lg:mt-8")
+                    div(class="lg:w-1/2 pagination")
+                        .swiper-pagination
+                    div(class="lg:w-1/2")
+                        .swiper.projects-swiper
+                            .swiper-scrollbar.projects-scrollbar
+                            .swiper-wrapper
+                                each project in list
+                                    .swiper-slide
+                                        div.flex.flex-col.h-full
+                                            div.swiper-title!=project.title
+                                            div.swiper-text!=project.text
+                                            if(project.year)
+                                                div.swiper-stack
+                                                    each item in project.stack
+                                                        p!=item
+                                            if(project.year)
+                                                div.swiper-year!=project.year
+
+                        .projects-controls
+                            .projects-prev.projects-arrow
+                                .transform.rotate-180
+                                    include ../general/arrow.pug
+                            .projects-next.projects-arrow
+                                include ../general/arrow.pug

@@ -3,7 +3,7 @@ import LocomotiveScroll from 'locomotive-scroll';
 import 'swiper/swiper-bundle.css';
 
 import { Cursor } from './cursor';
-import projectsSlider from "./projects";
+import { projectsSlider, productsSlider } from "./projects";
 import ButtonCtrl from './buttonCtrl';
 
 const nav = document.querySelectorAll(".menu")[0];
@@ -15,6 +15,7 @@ if (nav) {
 }
 
 projectsSlider();
+productsSlider();
 
 const buttonEl = document.querySelectorAll('.button')[0];
 const cursorEl = document.querySelectorAll('.cursor')[0];

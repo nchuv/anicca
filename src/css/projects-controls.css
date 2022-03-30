@@ -7,6 +7,13 @@
   @apply flex items-center justify-between;
 }
 
+@media (max-width: 540px) {
+  #products .projects-controls {
+    top: -67px;
+  }
+}
+
+
 .projects-arrow {
   @apply relative flex-1 text-right;
 }
