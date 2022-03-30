@@ -8,6 +8,10 @@ module.exports = [
     link: 'projects'
   },
   {
+    title: 'Импортозамещение',
+    link: 'products'
+  },
+  {
     title: 'Контакты',
     link: 'contacts'
   },

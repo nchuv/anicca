@@ -1,5 +1,5 @@
 .menu__list {
-  @apply hidden md:flex;
+  @apply hidden sm:flex;
   @apply bg-white absolute text-primary left-0 w-full top-full;
   @apply md:bg-transparent md:relative md:text-white md:w-auto;
 }
@@ -10,7 +10,6 @@
   }
 }
 
-
 .menu.opened .menu__icon {
   @apply hidden;
 }
@@ -18,7 +17,7 @@
   @apply block;
 }
 .menu__item {
-  @apply flex-grow p-4 lg:ml-10;
+  @apply flex-grow p-4 lg:ml-4;
   @apply text-sm uppercase font-medium  tracking-wider;
 }
 
