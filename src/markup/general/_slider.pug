@@ -18,12 +18,8 @@ mixin slider(title, list)
                                         div.flex.flex-col.h-full
                                             div.swiper-title!=project.title
                                             div.swiper-text!=project.text
-                                            if(project.year)
-                                                div.swiper-stack
-                                                    each item in project.stack
-                                                        p!=item
-                                            if(project.year)
-                                                div.swiper-year!=project.year
+                                            if(project.stack)
+                                              div.swiper-stack!=project.stack
 
                         .projects-controls
                             .projects-prev.projects-arrow

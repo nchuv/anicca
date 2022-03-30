@@ -40,7 +40,5 @@
     @apply font-medium uppercase text-sm leading-relaxed;
     @apply xl:text-base;
 }
-.swiper-year {
-    @apply text-lg text-accent mt-6;
-}
+
 
