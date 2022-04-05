@@ -3,7 +3,7 @@ import LocomotiveScroll from 'locomotive-scroll';
 import 'swiper/swiper-bundle.css';
 
 import { Cursor } from './cursor';
-import { projectsSlider, productsSlider } from "./projects";
+import { sliderSlider, productsSlider, blockchainSlider } from "./sliders";
 import ButtonCtrl from './buttonCtrl';
 
 const nav = document.querySelectorAll(".menu")[0];
@@ -14,8 +14,9 @@ if (nav) {
   });
 }
 
-projectsSlider();
+sliderSlider();
 productsSlider();
+blockchainSlider();
 
 const buttonEl = document.querySelectorAll('.button')[0];
 const cursorEl = document.querySelectorAll('.cursor')[0];
@@ -40,7 +41,6 @@ if (buttonEl && cursorEl) {
 const lscroll = new LocomotiveScroll({
   el: document.querySelector('[data-scroll-container]'),
   smooth: true,
-  direction: 'up',
 });
 
 // const hero = document.querySelector('[data-hero]')

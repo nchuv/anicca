@@ -5,7 +5,7 @@ module.exports = [
   },
   {
     title: 'Проекты',
-    link: 'projects'
+    link: 'slider'
   },
   {
     title: 'Импортозамещение',

@@ -5,7 +5,6 @@
 @import "menu.css";
 @import "hero.css";
 @import "about.css";
-@import "projects.css";
-@import "projects-controls.css";
-@import "projects-pagination.css";
-
+@import "slider.css";
+@import "slider-controls.css";
+@import "slider-pagination.css";

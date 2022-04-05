@@ -1,2 +1,22 @@
-section#projects.projects(data-scroll-section data-scroll-section-id="#projects")
-  +slider("Проекты", i18n.projects)
+section#projects.slider(data-scroll-section data-scroll-section-id="#projects")
+  .container
+    .flex.items-baseline
+      h2.mb-8 Проекты
+      span.pl-2.text-accent!=i18n.projects.length
+      div(class="lg:flex -mx-6 md:-mx-8 lg:-mx-0 lg:mt-8")
+        .swiper.slider-swiper
+          .swiper-wrapper
+            each project in i18n.projects
+              .swiper-slide
+                div.flex.flex-col.h-full
+                  div.swiper-title!=project.title
+                  div.swiper-text!=project.text
+                  if(project.stack)
+                    div.swiper-stack!=project.stack
+
+          .slider-controls
+            .slider-prev.slider-arrow
+              .transform.rotate-180
+                include ../general/arrow.pug
+            .slider-next.slider-arrow
+              include ../general/arrow.pug

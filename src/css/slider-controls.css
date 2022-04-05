@@ -1,4 +1,4 @@
-.projects-controls {
+.slider-controls {
   top: -108px;
   width: 108px;
   @apply text-primary;
@@ -8,19 +8,19 @@
 }
 
 @media (max-width: 540px) {
-  #products .projects-controls {
+  #products .slider-controls {
     top: -67px;
   }
 }
 
 
-.projects-arrow {
+.slider-arrow {
   @apply relative flex-1 text-right;
 }
-.projects-arrow svg {
+.slider-arrow svg {
   @apply inline;
 }
-.projects-arrow:after {
+.slider-arrow:after {
   content: " ";
   @apply absolute bg-primary;
   /*@apply lg:bg-white;*/
@@ -29,21 +29,21 @@
   height: 2px;
   top: 7px;
 }
-.projects-prev:after {
+.slider-prev:after {
   left: 2px;
 }
-.projects-next:after {
+.slider-next:after {
   right: 2px;
 }
-.projects-next:hover:after,
-.projects-prev:hover:after {
+.slider-next:hover:after,
+.slider-prev:hover:after {
   width: 56px;
 }
-.projects .swiper-scrollbar {
+.slider .swiper-scrollbar {
   bottom: initial;
   @apply lg:hidden relative;
   @apply -top-9 bg-primary;
 }
-.projects .swiper-scrollbar-drag {
+.slider .swiper-scrollbar-drag {
   @apply bg-accent;
 }

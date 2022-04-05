@@ -1,4 +1,4 @@
-.projects
+.slider
 .swiper-pagination-bullets.swiper-pagination-horizontal {
   @apply relative bottom-0 hidden lg:flex lg:flex-col;
 }
@@ -7,7 +7,7 @@
   @apply border-solid border-r-0 border-y-0 border-l-4 border-primary;
 }
 
-.projects
+.slider
 .swiper-pagination-bullet {
   @apply text-sm font-medium uppercase text-left;
   @apply relative block w-full h-auto p-0 py-4 pl-16 pr-4;
@@ -15,25 +15,25 @@
   @apply transition transition-colors ease-in-out;
 }
 
-.projects
+.slider
 .swiper-pagination-bullet:after {
   content: " ";
   @apply w-1 h-full rounded-full absolute -left-1 top-0;
   @apply transition transition-colors ease-in-out;
 }
 
-.projects
+.slider
 .swiper-pagination-horizontal.swiper-pagination-bullets
 .swiper-pagination-bullet {
   @apply m-0;
 }
 
-.projects
+.slider
 .swiper-pagination-bullet-active:after {
   @apply bg-accent;
 }
 
-#products.projects
+#products.slider
 .swiper-pagination-bullet {
   @apply py-1;
 }

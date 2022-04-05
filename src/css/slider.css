@@ -1,28 +1,28 @@
 @media (min-width: 1024px) {
-    .projects-inner {
+    .slider-inner {
         background: linear-gradient(to right, #ffffff 50%, #0D0D0D 50%);
     }
 }
 
-.projects {
+.slider {
     @apply overflow-hidden;
     @apply pt-14 md:pt-20 lg:pt-32;
 }
 
-.projects .swiper {
+.slider .swiper {
     @apply bg-primary text-white ;
     @apply overflow-visible lg:overflow-hidden;
     @apply mt-12 lg:mt-0;
 }
-.projects .swiper-wrapper {
+.slider .swiper-wrapper {
     @apply h-auto;
 }
-.projects .swiper-horizontal > .swiper-scrollbar {
+.slider .swiper-horizontal > .swiper-scrollbar {
     left: 6%;
     width: 88%;
 }
 
-.projects .swiper-slide {
+.slider .swiper-slide {
     @apply h-auto;
     @apply py-9 px-7 lg:pl-12 lg:pr-0 lg:py-14 xl:pl-20;
 }
