@@ -1,44 +1,94 @@
 @media (min-width: 1024px) {
-    .slider-inner {
-        background: linear-gradient(to right, #ffffff 50%, #0D0D0D 50%);
-    }
+  #products .slider-inner {
+    background: linear-gradient(to right, #ffffff 50%, #0D0D0D 50%);
+  }
+  #blockchain .slider-inner {
+    background: linear-gradient(to right, #ffffff 50%, #EF2500 50%);
+  }
 }
 
 .slider {
-    @apply overflow-hidden;
-    @apply pt-14 md:pt-20 lg:pt-32;
+  @apply overflow-hidden;
+  @apply pt-14 md:pt-20 lg:pt-32;
 }
 
 .slider .swiper {
-    @apply bg-primary text-white ;
-    @apply overflow-visible lg:overflow-hidden;
-    @apply mt-12 lg:mt-0;
+  @apply overflow-visible lg:overflow-hidden;
+  @apply mt-12 lg:mt-0;
 }
 .slider .swiper-wrapper {
-    @apply h-auto;
+  @apply h-auto;
 }
 .slider .swiper-horizontal > .swiper-scrollbar {
-    left: 6%;
-    width: 88%;
+  left: 6%;
+  width: 88%;
 }
 
 .slider .swiper-slide {
-    @apply h-auto;
-    @apply py-9 px-7 lg:pl-12 lg:pr-0 lg:py-14 xl:pl-20;
+  @apply h-auto;
+  @apply py-9 px-7 lg:pl-12 lg:pr-0 lg:py-14 xl:pl-20;
 }
 
 .swiper-title {
-    @apply text-lg font-medium text-accent uppercase;
-    @apply md:text-2xl;
-    @apply xl:text-3xl;
+  @apply text-lg font-medium uppercase;
+  @apply md:text-2xl;
+  @apply xl:text-3xl;
 }
 .swiper-text {
-    @apply mb-auto py-4 leading-relaxed;
-    @apply lg:py-8 lg:leading-7;
+  @apply mb-auto py-4 leading-relaxed;
+  @apply lg:py-8 lg:leading-7;
 }
 .swiper-stack {
-    @apply font-medium uppercase text-sm leading-relaxed;
-    @apply xl:text-base;
+  @apply font-medium uppercase text-sm leading-relaxed;
+  @apply xl:text-base;
 }
 
+#products .slider .swiper {
+  @apply bg-primary text-white;
+}
 
+#products .swiper-title {
+  @apply text-accent;
+}
+
+#blockchain .slider .swiper {
+  @apply bg-accent text-white;
+}
+#blockchain .swiper-slide {
+  @apply bg-accent text-white;
+}
+
+.projects .swiper-slide {
+  @apply md:w-1/2 lg:w-98 h-auto px-2;
+  transition: .2s ease-in-out;
+}
+
+.projects-title {
+  @apply text-lg font-medium uppercase mb-8 text-accent;
+}
+
+.projects-stack {
+  @apply font-medium text-sm uppercase mt-auto pt-4;
+}
+
+.projects {
+  @apply py-14 md:py-20 lg:py-32;
+  @apply overflow-hidden;
+}
+
+.projects .swiper {
+  @apply lg:overflow-visible;
+}
+
+.projects .swiper-wrapper {
+  @apply h-auto;
+}
+
+.projects .swiper-slide-active {
+  /*@apply bg-primary text-white;*/
+}
+
+.projects-slide {
+  @apply border-2 border-black p-4 h-full;
+  @apply flex flex-col;
+}

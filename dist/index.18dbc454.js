@@ -142,10 +142,10 @@
       this[globalName] = mainExports;
     }
   }
-})({"g9TDx":[function(require,module,exports) {
+})({"6ARV3":[function(require,module,exports) {
 "use strict";
 var HMR_HOST = null;
-var HMR_PORT = null;
+var HMR_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
 module.bundle.HMR_BUNDLE_ID = "0bcb44a518dbc454";
@@ -167,8 +167,7 @@ function _createForOfIteratorHelper(o, allowArrayLike) {
         if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
             if (it) o = it;
             var i = 0;
-            var F = function F() {
-            };
+            var F = function F() {};
             return {
                 s: F,
                 n: function n() {
@@ -265,8 +264,7 @@ function Module(moduleName) {
         _acceptCallbacks: [],
         _disposeCallbacks: [],
         accept: function accept(fn) {
-            this._acceptCallbacks.push(fn || function() {
-            });
+            this._acceptCallbacks.push(fn || function() {});
         },
         dispose: function dispose(fn) {
             this._disposeCallbacks.push(fn);
@@ -275,7 +273,7 @@ function Module(moduleName) {
     module.bundle.hotData = undefined;
 }
 module.bundle.Module = Module;
-var checkedAssets, acceptedAssets, assetsToAccept;
+var checkedAssets, acceptedAssets, assetsToAccept /*: Array<[ParcelRequire, string]> */ ;
 function getHostname() {
     return HMR_HOST || (location.protocol.indexOf('http') === 0 ? location.hostname : 'localhost');
 }
@@ -289,10 +287,8 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
     var protocol = HMR_SECURE || location.protocol == 'https:' && !/localhost|127.0.0.1|0.0.0.0/.test(hostname) ? 'wss' : 'ws';
     var ws = new WebSocket(protocol + '://' + hostname + (port ? ':' + port : '') + '/'); // $FlowFixMe
     ws.onmessage = function(event) {
-        checkedAssets = {
-        };
-        acceptedAssets = {
-        };
+        checkedAssets = {} /*: {|[string]: boolean|} */ ;
+        acceptedAssets = {} /*: {|[string]: boolean|} */ ;
         assetsToAccept = [];
         var data = JSON.parse(event.data);
         if (data.type === 'update') {
@@ -499,8 +495,7 @@ function hmrAcceptCheckOne(bundle, id, depsByBundle) {
 }
 function hmrAcceptRun(bundle, id) {
     var cached = bundle.cache[id];
-    bundle.hotData = {
-    };
+    bundle.hotData = {};
     if (cached && cached.hot) cached.hot.data = bundle.hotData;
     if (cached && cached.hot && cached.hot._disposeCallbacks.length) cached.hot._disposeCallbacks.forEach(function(cb) {
         cb(bundle.hotData);
@@ -526,15 +521,16 @@ var _locomotiveScroll = require("locomotive-scroll");
 var _locomotiveScrollDefault = parcelHelpers.interopDefault(_locomotiveScroll);
 var _swiperBundleCss = require("swiper/swiper-bundle.css");
 var _cursor = require("./cursor");
-var _projects = require("./projects");
+var _sliders = require("./sliders");
 var _buttonCtrl = require("./buttonCtrl");
 var _buttonCtrlDefault = parcelHelpers.interopDefault(_buttonCtrl);
 const nav = document.querySelectorAll(".menu")[0];
 if (nav) nav.addEventListener("click", function() {
     nav.classList.toggle("opened");
 });
-_projects.projectsSlider();
-_projects.productsSlider();
+_sliders.sliderSlider();
+_sliders.productsSlider();
+_sliders.blockchainSlider();
 const buttonEl = document.querySelectorAll('.button')[0];
 const cursorEl = document.querySelectorAll('.cursor')[0];
 const cursor = new _cursor.Cursor(cursorEl);
@@ -554,8 +550,7 @@ if (buttonEl && cursorEl) {
 // https://locomotivemtl.github.io/locomotive-scroll/
 const lscroll = new _locomotiveScrollDefault.default({
     el: document.querySelector('[data-scroll-container]'),
-    smooth: true,
-    direction: 'up'
+    smooth: true
 }); // const hero = document.querySelector('[data-hero]')
  //
  // window.addEventListener('mousemove', (e) => {
@@ -571,7 +566,7 @@ const lscroll = new _locomotiveScrollDefault.default({
  //   })
  // })
 
-},{"gsap":"fPSuC","locomotive-scroll":"iDXE3","swiper/swiper-bundle.css":"aErfw","./cursor":"3v1v0","./projects":"82j8t","./buttonCtrl":"bnzgd","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fPSuC":[function(require,module,exports) {
+},{"gsap":"fPSuC","locomotive-scroll":"iDXE3","swiper/swiper-bundle.css":"aErfw","./cursor":"3v1v0","./sliders":"T7LTX","./buttonCtrl":"bnzgd","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fPSuC":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "gsap", ()=>gsapWithCSS
@@ -769,6 +764,8 @@ parcelHelpers.export(exports, "_getCache", ()=>_getCache
 );
 parcelHelpers.export(exports, "_colorExp", ()=>_colorExp
 );
+parcelHelpers.export(exports, "_parseRelative", ()=>_parseRelative
+);
 function _assertThisInitialized(self) {
     if (self === void 0) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
     return self;
@@ -779,10 +776,10 @@ function _inheritsLoose(subClass, superClass) {
     subClass.__proto__ = superClass;
 }
 /*!
- * GSAP 3.9.1
+ * GSAP 3.10.2
  * https://greensock.com
  *
- * @license Copyright 2008-2021, GreenSock. All rights reserved.
+ * @license Copyright 2008-2022, GreenSock. All rights reserved.
  * Subject to the terms at https://greensock.com/standard-license or for
  * Club GreenSock members, the agreement issued with that membership.
  * @author: Jack Doyle, jack@greensock.com
@@ -813,15 +810,12 @@ function _inheritsLoose(subClass, superClass) {
     return typeof window !== "undefined";
 }, _isFuncOrString = function _isFuncOrString(value) {
     return _isFunction(value) || _isString(value);
-}, _isTypedArray = typeof ArrayBuffer === "function" && ArrayBuffer.isView || function() {
-}, // note: IE10 has ArrayBuffer, but NOT ArrayBuffer.isView().
+}, _isTypedArray = typeof ArrayBuffer === "function" && ArrayBuffer.isView || function() {}, // note: IE10 has ArrayBuffer, but NOT ArrayBuffer.isView().
 _isArray = Array.isArray, _strictNumExp = /(?:-?\.?\d|\.)+/gi, //only numbers (including negatives and decimals) but NOT relative values.
 _numExp = /[-+=.]*\d+[.e\-+]*\d*[e\-+]*\d*/g, //finds any numbers, including ones that start with += or -=, negative numbers, and ones in scientific notation like 1e-8.
 _numWithUnitExp = /[-+=.]*\d+[.e-]*\d*[a-z%]*/g, _complexStringNumExp = /[-+=.]*\d+\.?\d*(?:e-|e\+)?\d*/gi, //duplicate so that while we're looping through matches from exec(), it doesn't contaminate the lastIndex of _numExp which we use to search for colors too.
 _relExp = /[+-]=-?[.\d]+/, _delimitedValueExp = /[^,'"\[\]\s]+/gi, // previously /[#\-+.]*\b[a-z\d\-=+%.]+/gi but didn't catch special characters.
-_unitExp = /[\d.+\-=]+(?:e[-+]\d*)*/i, _globalTimeline, _win, _coreInitted, _doc, _globals = {
-}, _installScope = {
-}, _coreReady, _install = function _install(scope) {
+_unitExp = /^[+\-=e\s\d]*\d+[.\d]*([a-z]*|%)\s*$/i, _globalTimeline, _win, _coreInitted, _doc, _globals = {}, _installScope = {}, _coreReady, _install = function _install(scope) {
     return (_installScope = _merge(scope, _globals)) && gsap;
 }, _missingPlugin = function _missingPlugin(property, value) {
     return console.warn("Invalid property", property, "set to", value, "Missing plugin? gsap.registerPlugin()");
@@ -831,17 +825,12 @@ _unitExp = /[\d.+\-=]+(?:e[-+]\d*)*/i, _globalTimeline, _win, _coreInitted, _doc
     return name && (_globals[name] = obj) && _installScope && (_installScope[name] = obj) || _globals;
 }, _emptyFunc = function _emptyFunc() {
     return 0;
-}, _reservedProps = {
-}, _lazyTweens = [], _lazyLookup = {
-}, _lastRenderedFrame, _plugins = {
-}, _effects = {
-}, _nextGCFrame = 30, _harnessPlugins = [], _callbackNames = "", _harness = function _harness(targets) {
+}, _reservedProps = {}, _lazyTweens = [], _lazyLookup = {}, _lastRenderedFrame, _plugins = {}, _effects = {}, _nextGCFrame = 30, _harnessPlugins = [], _callbackNames = "", _harness = function _harness(targets) {
     var target = targets[0], harnessPlugin, i;
     _isObject(target) || _isFunction(target) || (targets = [
         targets
     ]);
-    if (!(harnessPlugin = (target._gsap || {
-    }).harness)) {
+    if (!(harnessPlugin = (target._gsap || {}).harness)) {
         // find the first target with a harness. We assume targets passed into an animation will be of similar type, meaning the same kind of harness can be used for them all (performance optimization)
         i = _harnessPlugins.length;
         while((i--) && !_harnessPlugins[i].targetTest(target));
@@ -862,15 +851,18 @@ _round = function _round(value) {
 }, _roundPrecise = function _roundPrecise(value) {
     return Math.round(value * 10000000) / 10000000 || 0;
 }, // increased precision mostly for timing values.
-_arrayContainsAny = function _arrayContainsAny(toSearch, toFind) {
+_parseRelative = function _parseRelative(start, value) {
+    var operator = value.charAt(0), end = parseFloat(value.substr(2));
+    start = parseFloat(start);
+    return operator === "+" ? start + end : operator === "-" ? start - end : operator === "*" ? start * end : start / end;
+}, _arrayContainsAny = function _arrayContainsAny(toSearch, toFind) {
     //searches one array to find matches for any of the items in the toFind array. As soon as one is found, it returns true. It does NOT return all the matches; it's simply a boolean search.
     var l = toFind.length, i = 0;
     for(; toSearch.indexOf(toFind[i]) < 0 && ++i < l;);
     return i < l;
 }, _lazyRender = function _lazyRender() {
     var l = _lazyTweens.length, a = _lazyTweens.slice(0), i, tween;
-    _lazyLookup = {
-    };
+    _lazyLookup = {};
     _lazyTweens.length = 0;
     for(i = 0; i < l; i++){
         tween = a[i];
@@ -896,12 +888,10 @@ _arrayContainsAny = function _arrayContainsAny(toSearch, toFind) {
     for(var p in toMerge)base[p] = toMerge[p];
     return base;
 }, _mergeDeep = function _mergeDeep1(base, toMerge) {
-    for(var p in toMerge)p !== "__proto__" && p !== "constructor" && p !== "prototype" && (base[p] = _isObject(toMerge[p]) ? _mergeDeep1(base[p] || (base[p] = {
-    }), toMerge[p]) : toMerge[p]);
+    for(var p in toMerge)p !== "__proto__" && p !== "constructor" && p !== "prototype" && (base[p] = _isObject(toMerge[p]) ? _mergeDeep1(base[p] || (base[p] = {}), toMerge[p]) : toMerge[p]);
     return base;
 }, _copyExcluding = function _copyExcluding(obj, excluding) {
-    var copy = {
-    }, p;
+    var copy = {}, p;
     for(p in obj)p in excluding || (copy[p] = obj[p]);
     return copy;
 }, _inheritDefaults = function _inheritDefaults(vars) {
@@ -1141,8 +1131,7 @@ _isFromOrFromStart = function _isFromOrFromStart(_ref2) {
         parent = timeline;
         while(parent && !("immediateRender" in irVars)){
             // inheritance hasn't happened yet, but someone may have set a default in an ancestor timeline. We could do vars.immediateRender = _isNotFalse(_inheritDefaults(vars).immediateRender) but that'd exact a slight performance penalty because _inheritDefaults() also runs in the Tween constructor. We're paying a small kb price here to gain speed.
-            irVars = parent.vars.defaults || {
-            };
+            irVars = parent.vars.defaults || {};
             parent = _isNotFalse(parent.vars.inherit) && parent.parent;
         }
         vars.immediateRender = _isNotFalse(irVars.immediateRender);
@@ -1154,7 +1143,7 @@ _isFromOrFromStart = function _isFromOrFromStart(_ref2) {
 }, _clamp = function _clamp(min, max, value) {
     return value < min ? min : value > max ? max : value;
 }, getUnit = function getUnit(value, v) {
-    return !_isString(value) || !(v = _unitExp.exec(value)) ? "" : value.substr(v.index + v[0].length);
+    return !_isString(value) || !(v = _unitExp.exec(value)) ? "" : v[1];
 }, // note: protect against padded numbers as strings, like "100.100". That shouldn't return "00" as the unit. If it's numeric, return no unit.
 clamp = function clamp(min, max, value) {
     return _conditionalReturn(value, function(v) {
@@ -1174,8 +1163,7 @@ toArray = function toArray(value, scope, leaveStrings) {
         value
     ] : [];
 }, selector = function selector(value) {
-    value = toArray(value)[0] || _warn("Invalid scope") || {
-    };
+    value = toArray(value)[0] || _warn("Invalid scope") || {};
     return function(v) {
         var el = value.current || value.nativeElement || value;
         return toArray(v, el.querySelectorAll ? el : el === value ? _warn("Invalid scope") || _doc.createElement("div") : value);
@@ -1191,8 +1179,7 @@ distribute = function distribute(v) {
     var vars = _isObject(v) ? v : {
         each: v
     }, //n:1 is just to indicate v was a number; we leverage that later to set v according to the length we get. If a number is passed in, we treat it like the old stagger value where 0.1, for example, would mean that things would be distributed with 0.1 between each element in the array rather than a total "amount" that's chunked out among them all.
-    ease = _parseEase(vars.ease), from = vars.from || 0, base = parseFloat(vars.base) || 0, cache = {
-    }, isDecimal = from > 0 && from < 1, ratios = isNaN(from) || isDecimal, axis = vars.axis, ratioX = from, ratioY = from;
+    ease = _parseEase(vars.ease), from = vars.from || 0, base = parseFloat(vars.base) || 0, cache = {}, isDecimal = from > 0 && from < 1, ratios = isNaN(from) || isDecimal, axis = vars.axis, ratioX = from, ratioY = from;
     if (_isString(from)) ratioX = ratioY = ({
         center: 0.5,
         edges: 0.5,
@@ -1322,12 +1309,11 @@ distribute = function distribute(v) {
         return outMin + ((value - inMin) / inRange * outRange || 0);
     });
 }, interpolate = function interpolate1(start, end, progress, mutate) {
-    var func = isNaN(start + end) ? 0 : function(p) {
+    var _func = isNaN(start + end) ? 0 : function(p) {
         return (1 - p) * start + p * end;
     };
-    if (!func) {
-        var isString = _isString(start), master = {
-        }, p1, i1, interpolators, l, il;
+    if (!_func) {
+        var isString = _isString(start), master = {}, p1, i1, interpolators, l, il;
         progress === true && (mutate = 1) && (progress = null);
         if (isString) {
             start = {
@@ -1342,22 +1328,21 @@ distribute = function distribute(v) {
             il = l - 2;
             for(i1 = 1; i1 < l; i1++)interpolators.push(interpolate1(start[i1 - 1], start[i1])); //build the interpolators up front as a performance optimization so that when the function is called many times, it can just reuse them.
             l--;
-            func = function func(p) {
+            _func = function func(p) {
                 p *= l;
                 var i = Math.min(il, ~~p);
                 return interpolators[i](p - i);
             };
             progress = end;
-        } else if (!mutate) start = _merge(_isArray(start) ? [] : {
-        }, start);
+        } else if (!mutate) start = _merge(_isArray(start) ? [] : {}, start);
         if (!interpolators) {
             for(p1 in end)_addPropTween.call(master, start, p1, "get", end[p1]);
-            func = function func(p) {
+            _func = function func(p) {
                 return _renderPropTweens(p, master) || (isString ? start.p : start);
             };
         }
     }
-    return _conditionalReturn(progress, func);
+    return _conditionalReturn(progress, _func);
 }, _getLabelInDirection = function _getLabelInDirection(timeline, fromTime, backward) {
     //used for nextLabel() and previousLabel()
     var labels = timeline.labels, min = _bigNum, p, distance, label;
@@ -1397,8 +1382,7 @@ distribute = function distribute(v) {
         targetTest: 0,
         get: 0,
         getSetter: _getSetter,
-        aliases: {
-        },
+        aliases: {},
         register: 0
     };
     _wake();
@@ -1677,12 +1661,10 @@ _hue = function _hue(h, m1, m2) {
             if (_coreReady) {
                 if (!_coreInitted && _windowExists()) {
                     _win = _coreInitted = window;
-                    _doc = _win.document || {
-                    };
+                    _doc = _win.document || {};
                     _globals.gsap = gsap;
                     (_win.gsapVersions || (_win.gsapVersions = [])).push(gsap.version);
-                    _install(_installScope || _win.GreenSockGlobals || !_win.gsap && _win || {
-                    });
+                    _install(_installScope || _win.GreenSockGlobals || !_win.gsap && _win || {});
                     _raf = _win.requestAnimationFrame;
                 }
                 _id && _self.sleep();
@@ -1706,9 +1688,15 @@ _hue = function _hue(h, m1, m2) {
             _gap = 1000 / (_fps || 240);
             _nextTime = _self.time * 1000 + _gap;
         },
-        add: function add(callback) {
-            _listeners.indexOf(callback) < 0 && _listeners.push(callback);
+        add: function add(callback, once, prioritize) {
+            var func = once ? function(t, d, f, v) {
+                callback(t, d, f, v);
+                _self.remove(func);
+            } : callback;
+            _self.remove(callback);
+            _listeners[prioritize ? "unshift" : "push"](func);
             _wake();
+            return func;
         },
         remove: function remove(callback, i) {
             ~(i = _listeners.indexOf(callback)) && _listeners.splice(i, 1) && _i >= i && _i--;
@@ -1723,11 +1711,9 @@ _hue = function _hue(h, m1, m2) {
 * -------------------------------------------------
 * EASING
 * -------------------------------------------------
-*/ _easeMap = {
-}, _customEaseExp = /^[\d.\-M][\d.\-,\s]/, _quotesExp = /["']/g, _parseObjectInString = function _parseObjectInString(value) {
+*/ _easeMap = {}, _customEaseExp = /^[\d.\-M][\d.\-,\s]/, _quotesExp = /["']/g, _parseObjectInString = function _parseObjectInString(value) {
     //takes a string like "{wiggles:10, type:anticipate})" and turns it into a real object. Notice it ends in ")" and includes the {} wrappers. This is because we only use this function for parsing ease configs and prioritized optimization rather than reusability.
-    var obj = {
-    }, split = value.substr(1, value.length - 3).split(":"), key = split[0], i = 1, l = split.length, index, val, parsedVal;
+    var obj = {}, split = value.substr(1, value.length - 3).split(":"), key = split[0], i = 1, l = split.length, index, val, parsedVal;
     for(; i < l; i++){
         val = split[i];
         index = i !== l - 1 ? val.lastIndexOf(",") : val.length;
@@ -1957,9 +1943,9 @@ var Animation = /*#__PURE__*/ function() {
         // prioritize rendering where the parent's playhead lines up instead of this._tTime because there could be a tween that's animating another tween's timeScale in the same rendering loop (same parent), thus if the timeScale tween renders first, it would alter _start BEFORE _tTime was set on that tick (in the rendering loop), effectively freezing it until the timeScale tween finishes.
         this._rts = +value || 0;
         this._ts = this._ps || value === -_tinyNum ? 0 : this._rts; // _ts is the functional timeScale which would be 0 if the animation is paused.
-        _recacheAncestors(this.totalTime(_clamp(-this._delay, this._tDur, tTime), true));
+        this.totalTime(_clamp(-this._delay, this._tDur, tTime), true);
         _setEnd(this); // if parent.smoothChildTiming was false, the end time didn't get updated in the _alignPlayhead() method, so do it here.
-        return this;
+        return _recacheAncestors(this);
     };
     _proto.paused = function paused(value) {
         if (!arguments.length) return this._ps;
@@ -2116,11 +2102,9 @@ var Timeline = /*#__PURE__*/ function(_Animation) {
     _inheritsLoose(Timeline1, _Animation);
     function Timeline1(vars, position) {
         var _this;
-        if (vars === void 0) vars = {
-        };
+        if (vars === void 0) vars = {};
         _this = _Animation.call(this, vars) || this;
-        _this.labels = {
-        };
+        _this.labels = {};
         _this.smoothChildTiming = !!vars.smoothChildTiming;
         _this.autoRemoveChildren = !!vars.autoRemoveChildren;
         _this._sort = _isNotFalse(vars.sortChildren);
@@ -2313,9 +2297,10 @@ var Timeline = /*#__PURE__*/ function(_Animation) {
                 }
             }
             this._onUpdate && !suppressEvents && _callback(this, "onUpdate", true);
-            if (tTime === tDur && tDur >= this.totalDuration() || !tTime && prevTime) {
+            if (tTime === tDur && this._tTime >= this.totalDuration() || !tTime && prevTime) {
                 if (prevStart === this._start || Math.abs(timeScale) !== Math.abs(this._ts)) {
                     if (!this._lock) {
+                        // remember, a child's callback may alter this timeline's playhead or timeScale which is why we need to add some of these checks.
                         (totalTime || !dur) && (tTime === tDur && this._ts > 0 || !tTime && this._ts < 0) && _removeFromParent(this, 1); // don't remove if the timeline is reversed and the playhead isn't at 0, otherwise tl.progress(1).reverse() won't work. Only remove if the playhead is at the end and timeScale is positive, or if the playhead is at 0 and the timeScale is negative.
                         if (!suppressEvents && !(totalTime < 0 && !prevTime) && (tTime || prevTime || !tDur)) {
                             _callback(this, tTime === tDur && totalTime >= 0 ? "onComplete" : "onReverseComplete", true);
@@ -2424,8 +2409,7 @@ var Timeline = /*#__PURE__*/ function(_Animation) {
     } // potential future feature - targets() on timelines
     ;
     _proto2.tweenTo = function tweenTo(position, vars) {
-        vars = vars || {
-        };
+        vars = vars || {};
         var tl = this, endTime = _parsePosition(tl, position), _vars = vars, startAt = _vars.startAt, _onStart = _vars.onStart, onStartParams = _vars.onStartParams, immediateRender = _vars.immediateRender, initted, tween = Tween.to(tl, _setDefaults({
             ease: vars.ease || "none",
             lazy: false,
@@ -2499,8 +2483,7 @@ var Timeline = /*#__PURE__*/ function(_Animation) {
             child = next;
         }
         this._dp && (this._time = this._tTime = this._pTime = 0);
-        includeLabels && (this.labels = {
-        });
+        includeLabels && (this.labels = {});
         return _uncache(this);
     };
     _proto2.totalDuration = function totalDuration(value) {
@@ -2589,7 +2572,7 @@ var _addComplexStringPropTween = function _addComplexStringPropTween(target, pro
                 p: chunk || matchIndex === 1 ? chunk : ",",
                 //note: SVG spec allows omission of comma/space when a negative sign is wedged between two numbers, like 2.5-5.3 instead of 2.5,-5.3 but when tweening, the negative value may switch to positive, so we insert the comma just in case.
                 s: startNum,
-                c: endNum.charAt(1) === "=" ? parseFloat(endNum.substr(2)) * (endNum.charAt(0) === "-" ? -1 : 1) : parseFloat(endNum) - startNum,
+                c: endNum.charAt(1) === "=" ? _parseRelative(startNum, endNum) - startNum : parseFloat(endNum) - startNum,
                 m: color && color < 4 ? Math.round : 0
             };
             index = _complexStringNumExp.lastIndex;
@@ -2606,12 +2589,12 @@ var _addComplexStringPropTween = function _addComplexStringPropTween(target, pro
     if (_isString(end)) {
         if (~end.indexOf("random(")) end = _replaceRandom(end);
         if (end.charAt(1) === "=") {
-            pt = parseFloat(parsedStart) + parseFloat(end.substr(2)) * (end.charAt(0) === "-" ? -1 : 1) + (getUnit(parsedStart) || 0);
+            pt = _parseRelative(parsedStart, end) + (getUnit(parsedStart) || 0);
             if (pt || pt === 0) // to avoid isNaN, like if someone passes in a value like "!= whatever"
             end = pt;
         }
     }
-    if (parsedStart !== end) {
+    if (parsedStart !== end || _forceAllPropTweens) {
         if (!isNaN(parsedStart * end) && end !== "") {
             // fun fact: any number multiplied by "" is evaluated as the number 0!
             pt = new PropTween(this._pt, target, prop, +parsedStart || 0, end - (parsedStart || 0), typeof currentValue === "boolean" ? _renderBoolean : _renderPlain, 0, setter);
@@ -2626,8 +2609,7 @@ var _addComplexStringPropTween = function _addComplexStringPropTween(target, pro
 _processVars = function _processVars(vars, index, target, targets, tween) {
     _isFunction(vars) && (vars = _parseFuncOrString(vars, tween, index, target, targets));
     if (!_isObject(vars) || vars.style && vars.nodeType || _isArray(vars) || _isTypedArray(vars)) return _isString(vars) ? _parseFuncOrString(vars, tween, index, target, targets) : vars;
-    var copy = {
-    }, p;
+    var copy = {}, p;
     for(p in vars)copy[p] = _parseFuncOrString(vars[p], tween, index, target, targets);
     return copy;
 }, _checkPlugin = function _checkPlugin(property, vars, tween, index, target, targets) {
@@ -2642,7 +2624,7 @@ _processVars = function _processVars(vars, index, target, targets, tween) {
     }
     return plugin;
 }, _overwritingTween, //store a reference temporarily so we can avoid overwriting itself.
-_initTween = function _initTween1(tween, time) {
+_forceAllPropTweens, _initTween = function _initTween1(tween, time) {
     var vars = tween.vars, ease = vars.ease, startAt = vars.startAt, immediateRender = vars.immediateRender, lazy = vars.lazy, onUpdate = vars.onUpdate, onUpdateParams = vars.onUpdateParams, callbackScope = vars.callbackScope, runBackwards = vars.runBackwards, yoyoEase = vars.yoyoEase, keyframes = vars.keyframes, autoRevert = vars.autoRevert, dur = tween._dur, prevStartAt = tween._startAt, targets = tween._targets, parent = tween.parent, fullTargets = parent && parent.data === "nested" ? parent.parent._targets : targets, autoOverwrite = tween._overwrite === "auto" && !_suppressOverwrites, tl = tween.timeline, cleanVars, i, p, pt, target, hasPriority, gsData, harness, plugin, ptLookup, index, harnessVars, overwritten;
     tl && (!keyframes || !ease) && (ease = "none");
     tween._ease = _parseEase(ease, _defaults.ease);
@@ -2659,7 +2641,10 @@ _initTween = function _initTween1(tween, time) {
         harness = targets[0] ? _getCache(targets[0]).harness : 0;
         harnessVars = harness && vars[harness.prop]; //someone may need to specify CSS-specific values AND non-CSS values, like if the element has an "x" property plus it's a standard DOM element. We allow people to distinguish by wrapping plugin-specific stuff in a css:{} object for example.
         cleanVars = _copyExcluding(vars, _reservedProps);
-        prevStartAt && _removeFromParent(prevStartAt.render(-1, true));
+        if (prevStartAt) {
+            _removeFromParent(prevStartAt.render(-1, true));
+            prevStartAt._lazy = 0;
+        }
         if (startAt) {
             _removeFromParent(tween._startAt = Tween.set(targets, _setDefaults({
                 data: "isStart",
@@ -2710,13 +2695,12 @@ _initTween = function _initTween1(tween, time) {
                 else if (!time) return;
             }
         }
-        tween._pt = 0;
+        tween._pt = tween._ptCache = 0;
         lazy = dur && _isNotFalse(lazy) || lazy && !dur;
         for(i = 0; i < targets.length; i++){
             target = targets[i];
             gsData = target._gsap || _harness(targets)[i]._gsap;
-            tween._ptLookup[i] = ptLookup = {
-            };
+            tween._ptLookup[i] = ptLookup = {};
             _lazyLookup[gsData.id] && _lazyTweens.length && _lazyRender(); //if other tweens of the same target have recently initted but haven't rendered yet, we've got to force the render so that the starting values are correct (imagine populating a timeline with a bunch of sequential tweens and then jumping to the end)
             index = fullTargets === targets ? i : fullTargets.indexOf(target);
             if (harness && (plugin = new harness()).init(target, harnessVars || cleanVars, tween, index, fullTargets) !== false) {
@@ -2745,11 +2729,43 @@ _initTween = function _initTween1(tween, time) {
     tween._onUpdate = onUpdate;
     tween._initted = (!tween._op || tween._pt) && !overwritten; // if overwrittenProps resulted in the entire tween being killed, do NOT flag it as initted or else it may render for one tick.
     keyframes && time <= 0 && tl.render(_bigNum, true, true); // if there's a 0% keyframe, it'll render in the "before" state for any staggered/delayed animations thus when the following tween initializes, it'll use the "before" state instead of the "after" state as the initial values.
+}, _updatePropTweens = function _updatePropTweens(tween, property, value, start, startIsRelative, ratio, time) {
+    var ptCache = (tween._pt && tween._ptCache || (tween._ptCache = {}))[property], pt, lookup, i;
+    if (!ptCache) {
+        ptCache = tween._ptCache[property] = [];
+        lookup = tween._ptLookup;
+        i = tween._targets.length;
+        while(i--){
+            pt = lookup[i][property];
+            if (pt && pt.d && pt.d._pt) {
+                // it's a plugin, so find the nested PropTween
+                pt = pt.d._pt;
+                while(pt && pt.p !== property)pt = pt._next;
+            }
+            if (!pt) {
+                // there is no PropTween associated with that property, so we must FORCE one to be created and ditch out of this
+                // if the tween has other properties that already rendered at new positions, we'd normally have to rewind to put them back like tween.render(0, true) before forcing an _initTween(), but that can create another edge case like tweening a timeline's progress would trigger onUpdates to fire which could move other things around. It's better to just inform users that .resetTo() should ONLY be used for tweens that already have that property. For example, you can't gsap.to(...{ y: 0 }) and then tween.restTo("x", 200) for example.
+                _forceAllPropTweens = 1; // otherwise, when we _addPropTween() and it finds no change between the start and end values, it skips creating a PropTween (for efficiency...why tween when there's no difference?) but in this case we NEED that PropTween created so we can edit it.
+                tween.vars[property] = "+=0";
+                _initTween(tween, time);
+                _forceAllPropTweens = 0;
+                return 1;
+            }
+            ptCache.push(pt);
+        }
+    }
+    i = ptCache.length;
+    while(i--){
+        pt = ptCache[i];
+        pt.s = (start || start === 0) && !startIsRelative ? start : pt.s + (start || 0) + ratio * pt.c;
+        pt.c = value - pt.s;
+        pt.e && (pt.e = _round(value) + getUnit(pt.e)); // mainly for CSSPlugin (end value)
+        pt.b && (pt.b = pt.s + getUnit(pt.b)); // (beginning value)
+    }
 }, _addAliasesToVars = function _addAliasesToVars(targets, vars) {
     var harness = targets[0] ? _getCache(targets[0]).harness : 0, propertyAliases = harness && harness.aliases, copy, p, i, aliases;
     if (!propertyAliases) return vars;
-    copy = _merge({
-    }, vars);
+    copy = _merge({}, vars);
     for(p in propertyAliases)if (p in copy) {
         aliases = propertyAliases[p].split(",");
         i = aliases.length;
@@ -2778,8 +2794,7 @@ _parseKeyframe = function _parseKeyframe(prop, obj, allProps, easeEach) {
     }
 }, _parseFuncOrString = function _parseFuncOrString(value, tween, i, target, targets) {
     return _isFunction(value) ? value.call(tween, i, target, targets) : _isString(value) && ~value.indexOf("random(") ? _replaceRandom(value) : value;
-}, _staggerTweenProps = _callbackNames + "repeat,repeatDelay,yoyo,repeatRefresh,yoyoEase", _staggerPropsToSkip = {
-};
+}, _staggerTweenProps = _callbackNames + "repeat,repeatDelay,yoyo,repeatRefresh,yoyoEase,autoRevert", _staggerPropsToSkip = {};
 _forEachName(_staggerTweenProps + ",id,stagger,delay,duration,paused,scrollTrigger", function(name) {
     return _staggerPropsToSkip[name] = 1;
 });
@@ -2803,8 +2818,7 @@ var Tween = /*#__PURE__*/ function(_Animation2) {
             vars = _this3.vars;
             tl = _this3.timeline = new Timeline({
                 data: "nested",
-                defaults: defaults || {
-                }
+                defaults: defaults || {}
             });
             tl.kill();
             tl.parent = tl._dp = _assertThisInitialized(_this3);
@@ -2815,8 +2829,7 @@ var Tween = /*#__PURE__*/ function(_Animation2) {
                 if (_isObject(stagger)) {
                     //users can pass in callbacks like onStart/onComplete in the stagger object. These should fire with each individual tween.
                     for(p in stagger)if (~_staggerTweenProps.indexOf(p)) {
-                        staggerVarsToMerge || (staggerVarsToMerge = {
-                        });
+                        staggerVarsToMerge || (staggerVarsToMerge = {});
                         staggerVarsToMerge[p] = stagger[p];
                     }
                 }
@@ -2843,32 +2856,30 @@ var Tween = /*#__PURE__*/ function(_Animation2) {
                     ease: "none"
                 }));
                 tl._ease = _parseEase(keyframes.ease || vars.ease || "none");
-                var time = 0, a1, kf, v;
+                var time = 0, a3, kf, v;
                 if (_isArray(keyframes)) keyframes.forEach(function(frame) {
                     return tl.to(parsedTargets, frame, ">");
                 });
                 else {
-                    copy = {
-                    };
+                    copy = {};
                     for(p in keyframes)p === "ease" || p === "easeEach" || _parseKeyframe(p, keyframes[p], copy, keyframes.easeEach);
                     for(p in copy){
-                        a1 = copy[p].sort(function(a, b) {
+                        a3 = copy[p].sort(function(a, b) {
                             return a.t - b.t;
                         });
                         time = 0;
-                        for(i = 0; i < a1.length; i++){
-                            kf = a1[i];
+                        for(i = 0; i < a3.length; i++){
+                            kf = a3[i];
                             v = {
                                 ease: kf.e,
-                                duration: (kf.t - (i ? a1[i - 1].t : 0)) / 100 * duration
+                                duration: (kf.t - (i ? a3[i - 1].t : 0)) / 100 * duration
                             };
                             v[p] = kf.v;
                             tl.to(parsedTargets, v, time);
                             time += v.duration;
                         }
                     }
-                    tl.duration() < duration && tl.to({
-                    }, {
+                    tl.duration() < duration && tl.to({}, {
                         duration: duration - tl.duration()
                     }); // in case keyframes didn't go to 100%
                 }
@@ -2921,8 +2932,11 @@ var Tween = /*#__PURE__*/ function(_Animation2) {
                     time = dur - time;
                 }
                 prevIteration = _animationCycle(this._tTime, cycleDuration);
-                if (time === prevTime && !force && this._initted) //could be during the repeatDelay part. No need to render and fire callbacks.
-                return this;
+                if (time === prevTime && !force && this._initted) {
+                    //could be during the repeatDelay part. No need to render and fire callbacks.
+                    this._tTime = tTime;
+                    return this;
+                }
                 if (iteration !== prevIteration) {
                     timeline && this._yEase && _propagateYoyoEase(timeline, isYoyo); //repeatRefresh functionality
                     if (this.vars.repeatRefresh && !isYoyo && !this._lock) {
@@ -2936,6 +2950,8 @@ var Tween = /*#__PURE__*/ function(_Animation2) {
                     this._tTime = 0; // in constructor if immediateRender is true, we set _tTime to -_tinyNum to have the playhead cross the starting point but we can't leave _tTime as a negative number.
                     return this;
                 }
+                if (prevTime !== this._time) // rare edge case - during initialization, an onUpdate in the _startAt (.fromTo()) might force this tween to render at a different spot in which case we should ditch this render() call so that it doesn't revert the values.
+                return this;
                 if (dur !== this._dur) // while initting, a plugin like InertiaPlugin might alter the duration, so rerun from the start to ensure everything renders as it should.
                 return this.render(totalTime, suppressEvents, force);
             }
@@ -2984,6 +3000,26 @@ var Tween = /*#__PURE__*/ function(_Animation2) {
         this.timeline && this.timeline.invalidate();
         return _Animation2.prototype.invalidate.call(this);
     };
+    _proto3.resetTo = function resetTo(property, value, start, startIsRelative) {
+        _tickerActive || _ticker.wake();
+        this._ts || this.play();
+        var time = Math.min(this._dur, (this._dp._time - this._start) * this._ts), ratio, p;
+        this._initted || _initTween(this, time);
+        ratio = this._ease(time / this._dur); // don't just get tween.ratio because it may not have rendered yet.
+        // possible future addition to allow an object with multiple values to update, like tween.resetTo({x: 100, y: 200}); At this point, it doesn't seem worth the added kb given the fact that most users will likely opt for the convenient gsap.quickTo() way of interacting with this method.
+        // if (_isObject(property)) { // performance optimization
+        // 	for (p in property) {
+        // 		if (_updatePropTweens(this, p, property[p], value ? value[p] : null, start, ratio, time)) {
+        // 			return this.resetTo(property, value, start, startIsRelative); // if a PropTween wasn't found for the property, it'll get forced with a re-initialization so we need to jump out and start over again.
+        // 		}
+        // 	}
+        // } else {
+        if (_updatePropTweens(this, property, value, start, startIsRelative, ratio, time)) return this.resetTo(property, value, start, startIsRelative); // if a PropTween wasn't found for the property, it'll get forced with a re-initialization so we need to jump out and start over again.
+         //}
+        _alignPlayhead(this, 0);
+        this.parent || _addLinkedListItem(this._dp, this, "_first", "_last", this._dp._sort ? "_start" : 0);
+        return this.render(0);
+    };
     _proto3.kill = function kill(targets, vars) {
         if (vars === void 0) vars = "all";
         if (!targets && (!vars || vars === "all")) {
@@ -3005,8 +3041,7 @@ var Tween = /*#__PURE__*/ function(_Animation2) {
         if (vars !== "all") {
             //so people can pass in a comma-delimited list of property names
             if (_isString(vars)) {
-                p = {
-                };
+                p = {};
                 _forEachName(vars, function(name) {
                     return p[name] = 1;
                 });
@@ -3020,11 +3055,9 @@ var Tween = /*#__PURE__*/ function(_Animation2) {
             if (vars === "all") {
                 overwrittenProps[i] = vars;
                 props = curLookup;
-                curOverwriteProps = {
-                };
+                curOverwriteProps = {};
             } else {
-                curOverwriteProps = overwrittenProps[i] = overwrittenProps[i] || {
-                };
+                curOverwriteProps = overwrittenProps[i] = overwrittenProps[i] || {};
                 props = vars;
             }
             for(p in props){
@@ -3217,8 +3250,7 @@ _config.stringFilter = _colorStringFilter;
     },
     getProperty: function getProperty(target, property1, unit1, uncache1) {
         _isString(target) && (target = toArray(target)[0]); //in case selector text or an array is passed in
-        var getter = _getCache(target || {
-        }).get, format = unit1 ? _passThrough : _numericIfPossible;
+        var getter = _getCache(target || {}).get, format = unit1 ? _passThrough : _numericIfPossible;
         unit1 === "native" && (unit1 = "");
         return !target ? target : !property1 ? function(property, unit, uncache) {
             return format((_plugins[property] && _plugins[property].get || getter)(target, property, unit, uncache));
@@ -3235,10 +3267,8 @@ _config.stringFilter = _colorStringFilter;
                 while(i--)setters[i](value);
             };
         }
-        target = target[0] || {
-        };
-        var Plugin = _plugins[property], cache = _getCache(target), p2 = cache.harness && (cache.harness.aliases || {
-        })[property] || property, // in case it's an alias, like "rotate" for "rotation".
+        target = target[0] || {};
+        var Plugin = _plugins[property], cache = _getCache(target), p4 = cache.harness && (cache.harness.aliases || {})[property] || property, // in case it's an alias, like "rotate" for "rotation".
         setter = Plugin ? function(value) {
             var p = new Plugin();
             _quickTween._pt = 0;
@@ -3247,22 +3277,28 @@ _config.stringFilter = _colorStringFilter;
             ]);
             p.render(1, p);
             _quickTween._pt && _renderPropTweens(1, _quickTween);
-        } : cache.set(target, p2);
+        } : cache.set(target, p4);
         return Plugin ? setter : function(value) {
-            return setter(target, p2, unit ? value + unit : value, cache, 1);
+            return setter(target, p4, unit ? value + unit : value, cache, 1);
         };
+    },
+    quickTo: function quickTo(target, property, vars) {
+        var _merge2;
+        var tween = gsap.to(target, _merge((_merge2 = {}, _merge2[property] = "+=0.1", _merge2.paused = true, _merge2), vars || {})), func = function func(value, start, startIsRelative) {
+            return tween.resetTo(property, value, start, startIsRelative);
+        };
+        func.tween = tween;
+        return func;
     },
     isTweening: function isTweening(targets) {
         return _globalTimeline.getTweensOf(targets, true).length > 0;
     },
     defaults: function defaults(value) {
         value && value.ease && (value.ease = _parseEase(value.ease, _defaults.ease));
-        return _mergeDeep(_defaults, value || {
-        });
+        return _mergeDeep(_defaults, value || {});
     },
     config: function config(value) {
-        return _mergeDeep(_config, value || {
-        });
+        return _mergeDeep(_config, value || {});
     },
     registerEffect: function registerEffect(_ref3) {
         var name = _ref3.name, effect = _ref3.effect, plugins = _ref3.plugins, defaults = _ref3.defaults, extendTimeline = _ref3.extendTimeline;
@@ -3270,12 +3306,10 @@ _config.stringFilter = _colorStringFilter;
             return pluginName && !_plugins[pluginName] && !_globals[pluginName] && _warn(name + " effect requires " + pluginName + " plugin.");
         });
         _effects[name] = function(targets, vars, tl) {
-            return effect(toArray(targets), _setDefaults(vars || {
-            }, defaults), tl);
+            return effect(toArray(targets), _setDefaults(vars || {}, defaults), tl);
         };
         if (extendTimeline) Timeline.prototype[name] = function(targets, vars, position) {
-            return this.add(_effects[name](targets, _isObject(vars) ? vars : (position = vars) && {
-            }, this), position);
+            return this.add(_effects[name](targets, _isObject(vars) ? vars : (position = vars) && {}, this), position);
         };
     },
     registerEase: function registerEase(name, ease) {
@@ -3288,8 +3322,7 @@ _config.stringFilter = _colorStringFilter;
         return _globalTimeline.getById(id);
     },
     exportRoot: function exportRoot(vars, includeDelayedCalls) {
-        if (vars === void 0) vars = {
-        };
+        if (vars === void 0) vars = {};
         var tl = new Timeline(vars), child, next;
         tl.smoothChildTiming = _isNotFalse(vars.smoothChildTiming);
         _globalTimeline.remove(tl);
@@ -3345,8 +3378,7 @@ _forEachName("to,from,fromTo,delayedCall,set,killTweensOf", function(name) {
     return _gsap[name] = Tween[name];
 });
 _ticker.add(Timeline.updateRoot);
-_quickTween = _gsap.to({
-}, {
+_quickTween = _gsap.to({}, {
     duration: 0
 }); // ---- EXTRA PLUGINS --------------------------------------------------------
 var _getPluginPropTween = function _getPluginPropTween(plugin, prop) {
@@ -3366,25 +3398,23 @@ var _getPluginPropTween = function _getPluginPropTween(plugin, prop) {
             }
         }
     }
-}, _buildModifierPlugin = function _buildModifierPlugin(name, modifier) {
+}, _buildModifierPlugin = function _buildModifierPlugin(name1, modifier) {
     return {
-        name: name,
+        name: name1,
         rawVars: 1,
         //don't pre-process function-based values or "random()" strings.
         init: function init(target, vars, tween1) {
             tween1._onInit = function(tween) {
                 var temp, p;
                 if (_isString(vars)) {
-                    temp = {
-                    };
+                    temp = {};
                     _forEachName(vars, function(name) {
                         return temp[name] = 1;
                     }); //if the user passes in a comma-delimited list of property names to roundProps, like "x,y", we round to whole numbers.
                     vars = temp;
                 }
                 if (modifier) {
-                    temp = {
-                    };
+                    temp = {};
                     for(p in vars)temp[p] = modifier(vars[p]);
                     vars = temp;
                 }
@@ -3410,7 +3440,7 @@ var gsap = _gsap.registerPlugin({
         while(i--)this.add(target, i, target[i] || 0, value[i]);
     }
 }, _buildModifierPlugin("roundProps", _roundModifier), _buildModifierPlugin("modifiers"), _buildModifierPlugin("snap", snap)) || _gsap; //to prevent the core plugins from being dropped via aggressive tree shaking, we must include them in the variable declaration in this way.
-Tween.version = Timeline.version = gsap.version = "3.9.1";
+Tween.version = Timeline.version = gsap.version = "3.10.2";
 _coreReady = 1;
 _windowExists() && _wake();
 var Power0 = _easeMap.Power0, Power1 = _easeMap.Power1, Power2 = _easeMap.Power2, Power3 = _easeMap.Power3, Power4 = _easeMap.Power4, Linear = _easeMap.Linear, Quad = _easeMap.Quad, Cubic = _easeMap.Cubic, Quart = _easeMap.Quart, Quint = _easeMap.Quint, Strong = _easeMap.Strong, Elastic = _easeMap.Elastic, Back = _easeMap.Back, SteppedEase = _easeMap.SteppedEase, Bounce = _easeMap.Bounce, Sine = _easeMap.Sine, Expo = _easeMap.Expo, Circ = _easeMap.Circ;
@@ -3459,18 +3489,17 @@ parcelHelpers.export(exports, "_createElement", ()=>_createElement
 parcelHelpers.export(exports, "checkPrefix", ()=>_checkPropPrefix
 );
 /*!
- * CSSPlugin 3.9.1
+ * CSSPlugin 3.10.2
  * https://greensock.com
  *
- * Copyright 2008-2021, GreenSock. All rights reserved.
+ * Copyright 2008-2022, GreenSock. All rights reserved.
  * Subject to the terms at https://greensock.com/standard-license or for
  * Club GreenSock members, the agreement issued with that membership.
  * @author: Jack Doyle, jack@greensock.com
 */ /* eslint-disable */ var _gsapCoreJs = require("./gsap-core.js");
 var _win, _doc, _docElement, _pluginInitted, _tempDiv, _tempDivStyler, _recentSetterPlugin, _windowExists = function _windowExists() {
     return typeof window !== "undefined";
-}, _transformProps = {
-}, _RAD2DEG = 180 / Math.PI, _DEG2RAD = Math.PI / 180, _atan2 = Math.atan2, _bigNum = 100000000, _capsExp = /([A-Z])/g, _horizontalExp = /(?:left|right|width|margin|padding|x)/i, _complexExp = /[\s,\(]\S/, _propertyAliases = {
+}, _transformProps = {}, _RAD2DEG = 180 / Math.PI, _DEG2RAD = Math.PI / 180, _atan2 = Math.atan2, _bigNum = 100000000, _capsExp = /([A-Z])/g, _horizontalExp = /(left|right|width|margin|padding|x)/i, _complexExp = /[\s,\(]\S/, _propertyAliases = {
     autoAlpha: "opacity,visibility",
     scale: "scaleX,scaleY",
     alpha: "opacity"
@@ -3522,8 +3551,7 @@ _renderRoundedCSSProp = function _renderRoundedCSSProp(ratio, data) {
         _doc = _win.document;
         _docElement = _doc.documentElement;
         _tempDiv = _createElement("div") || {
-            style: {
-            }
+            style: {}
         };
         _tempDivStyler = _createElement("div");
         _transformProp = _checkPropPrefix(_transformProp);
@@ -3542,8 +3570,7 @@ _renderRoundedCSSProp = function _renderRoundedCSSProp(ratio, data) {
         bbox = this.getBBox();
         this._gsapBBox = this.getBBox; //store the original
         this.getBBox = _getBBoxHack1;
-    } catch (e) {
-    }
+    } catch (e) {}
     else if (this._gsapBBox) bbox = this._gsapBBox();
     if (oldParent) {
         if (oldSibling) oldParent.insertBefore(this, oldSibling);
@@ -3617,8 +3644,7 @@ _convertToUnit = function _convertToUnit1(target, property, value, unit) {
     }
     style[horizontal ? "width" : "height"] = amount + (toPixels ? curUnit : unit);
     parent = ~property.indexOf("adius") || unit === "em" && target.appendChild && !isRootSVG ? target : target.parentNode;
-    if (isSVG) parent = (target.ownerSVGElement || {
-    }).parentNode;
+    if (isSVG) parent = (target.ownerSVGElement || {}).parentNode;
     if (!parent || parent === _doc || !parent.appendChild) parent = _doc.body;
     cache = parent._gsap;
     if (cache && toPercent && cache.width && horizontal && cache.time === _gsapCoreJs._ticker.time) return _gsapCoreJs._round(curValue / cache.width * amount);
@@ -3652,7 +3678,7 @@ _convertToUnit = function _convertToUnit1(target, property, value, unit) {
     }
     return unit && !~(value + "").trim().indexOf(" ") ? _convertToUnit(target, property, value, unit) + unit : value;
 }, _tweenComplexCSSString = function _tweenComplexCSSString(target, prop, start, end) {
-    //note: we call _tweenComplexCSSString.call(pluginInstance...) to ensure that it's scoped properly. We may call it from within a plugin too, thus "this" would refer to the plugin.
+    // note: we call _tweenComplexCSSString.call(pluginInstance...) to ensure that it's scoped properly. We may call it from within a plugin too, thus "this" would refer to the plugin.
     if (!start || start === "none") {
         // some browsers like Safari actually PREFER the prefixed property and mis-report the unprefixed value like clipPath (BUG). In other words, even though clipPath exists in the style ("clipPath" in target.style) and it's set in the CSS properly (along with -webkit-clip-path), Safari reports clipPath as "none" whereas WebkitClipPath reports accurately like "ellipse(100% 0% at 50% 0%)", so in this case we must SWITCH to using the prefixed property instead. See https://greensock.com/forums/topic/18310-clippath-doesnt-work-on-ios/
         var p = _checkPropPrefix(prop, target, 1), s = p && _getComputedProperty(target, p, 1);
@@ -3661,10 +3687,10 @@ _convertToUnit = function _convertToUnit1(target, property, value, unit) {
             start = s;
         } else if (prop === "borderColor") start = _getComputedProperty(target, "borderTopColor"); // Firefox bug: always reports "borderColor" as "", so we must fall back to borderTopColor. See https://greensock.com/forums/topic/24583-how-to-return-colors-that-i-had-after-reverse/
     }
-    var pt = new _gsapCoreJs.PropTween(this._pt, target.style, prop, 0, 1, _gsapCoreJs._renderComplexString), index = 0, matchIndex = 0, a, result, startValues, startNum, color, startValue, endValue, endNum, chunk, endUnit, startUnit, relative, endValues;
+    var pt = new _gsapCoreJs.PropTween(this._pt, target.style, prop, 0, 1, _gsapCoreJs._renderComplexString), index = 0, matchIndex = 0, a, result, startValues, startNum, color, startValue, endValue, endNum, chunk, endUnit, startUnit, endValues;
     pt.b = start;
     pt.e = end;
-    start += ""; //ensure values are strings
+    start += ""; // ensure values are strings
     end += "";
     if (end === "auto") {
         target.style[prop] = end;
@@ -3675,7 +3701,7 @@ _convertToUnit = function _convertToUnit1(target, property, value, unit) {
         start,
         end
     ];
-    _gsapCoreJs._colorStringFilter(a); //pass an array with the starting and ending values and let the filter do whatever it needs to the values. If colors are found, it returns true and then we must match where the color shows up order-wise because for things like boxShadow, sometimes the browser provides the computed values with the color FIRST, but the user provides it with the color LAST, so flip them if necessary. Same for drop-shadow().
+    _gsapCoreJs._colorStringFilter(a); // pass an array with the starting and ending values and let the filter do whatever it needs to the values. If colors are found, it returns true and then we must match where the color shows up order-wise because for things like boxShadow, sometimes the browser provides the computed values with the color FIRST, but the user provides it with the color LAST, so flip them if necessary. Same for drop-shadow().
     start = a[0];
     end = a[1];
     startValues = start.match(_gsapCoreJs._numWithUnitExp) || [];
@@ -3689,8 +3715,7 @@ _convertToUnit = function _convertToUnit1(target, property, value, unit) {
             if (endValue !== (startValue = startValues[matchIndex++] || "")) {
                 startNum = parseFloat(startValue) || 0;
                 startUnit = startValue.substr((startNum + "").length);
-                relative = endValue.charAt(1) === "=" ? +(endValue.charAt(0) + "1") : 0;
-                if (relative) endValue = endValue.substr(2);
+                endValue.charAt(1) === "=" && (endValue = _gsapCoreJs._parseRelative(startNum, endValue) + startUnit);
                 endNum = parseFloat(endValue);
                 endUnit = endValue.substr((endNum + "").length);
                 index = _gsapCoreJs._numWithUnitExp.lastIndex - endUnit.length;
@@ -3703,13 +3728,13 @@ _convertToUnit = function _convertToUnit1(target, property, value, unit) {
                     }
                 }
                 if (startUnit !== endUnit) startNum = _convertToUnit(target, prop, startValue, endUnit) || 0;
-                 //these nested PropTweens are handled in a special way - we'll never actually call a render or setter method on them. We'll just loop through them in the parent complex string PropTween's render method.
+                 // these nested PropTweens are handled in a special way - we'll never actually call a render or setter method on them. We'll just loop through them in the parent complex string PropTween's render method.
                 pt._pt = {
                     _next: pt._pt,
                     p: chunk || matchIndex === 1 ? chunk : ",",
                     //note: SVG spec allows omission of comma/space when a negative sign is wedged between two numbers, like 2.5-5.3 instead of 2.5,-5.3 but when tweening, the negative value may switch to positive, so we insert the comma just in case.
                     s: startNum,
-                    c: relative ? relative * endNum : endNum - startNum,
+                    c: endNum - startNum,
                     m: color && color < 4 || prop === "zIndex" ? Math.round : 0
                 };
             }
@@ -3786,8 +3811,7 @@ _specialProps = {
     1,
     0,
     0
-], _rotationalProperties = {
-}, _isNullTransform = function _isNullTransform(value) {
+], _rotationalProperties = {}, _isNullTransform = function _isNullTransform(value) {
     return value === "matrix(1, 0, 0, 1, 0, 0)" || value === "none" || !value;
 }, _getComputedTransformMatrixAsArray = function _getComputedTransformMatrixAsArray(target) {
     var matrixString = _getComputedProperty(target, _transformProp);
@@ -3971,8 +3995,9 @@ _specialProps = {
             skewX += skewX <= 0 ? 180 : -180;
         }
     }
-    cache.x = x - ((cache.xPercent = x && (cache.xPercent || (Math.round(target.offsetWidth / 2) === Math.round(-x) ? -50 : 0))) ? target.offsetWidth * cache.xPercent / 100 : 0) + px;
-    cache.y = y - ((cache.yPercent = y && (cache.yPercent || (Math.round(target.offsetHeight / 2) === Math.round(-y) ? -50 : 0))) ? target.offsetHeight * cache.yPercent / 100 : 0) + px;
+    uncache = uncache || cache.uncache;
+    cache.x = x - ((cache.xPercent = x && (!uncache && cache.xPercent || (Math.round(target.offsetWidth / 2) === Math.round(-x) ? -50 : 0))) ? target.offsetWidth * cache.xPercent / 100 : 0) + px;
+    cache.y = y - ((cache.yPercent = y && (!uncache && cache.yPercent || (Math.round(target.offsetHeight / 2) === Math.round(-y) ? -50 : 0))) ? target.offsetHeight * cache.yPercent / 100 : 0) + px;
     cache.z = z + px;
     cache.scaleX = _gsapCoreJs._round(scaleX);
     cache.scaleY = _gsapCoreJs._round(scaleY);
@@ -4075,8 +4100,8 @@ _addPxTranslate = function _addPxTranslate(target, start, value) {
     temp = "matrix(" + a11 + "," + a21 + "," + a12 + "," + a22 + "," + tx + "," + ty + ")";
     target.setAttribute("transform", temp);
     forceCSS && (target.style[_transformProp] = temp); //some browsers prioritize CSS transforms over the transform attribute. When we sense that the user has CSS transforms applied, we must overwrite them this way (otherwise some browser simply won't render the  transform attribute changes!)
-}, _addRotationalPropTween = function _addRotationalPropTween(plugin, target, property, startNum, endValue, relative) {
-    var cap = 360, isString = _gsapCoreJs._isString(endValue), endNum = parseFloat(endValue) * (isString && ~endValue.indexOf("rad") ? _RAD2DEG : 1), change = relative ? endNum * relative : endNum - startNum, finalValue = startNum + change + "deg", direction, pt;
+}, _addRotationalPropTween = function _addRotationalPropTween(plugin, target, property, startNum, endValue) {
+    var cap = 360, isString = _gsapCoreJs._isString(endValue), endNum = parseFloat(endValue) * (isString && ~endValue.indexOf("rad") ? _RAD2DEG : 1), change = endNum - startNum, finalValue = startNum + change + "deg", direction, pt;
     if (isString) {
         direction = endValue.split("_")[1];
         if (direction === "short") {
@@ -4097,8 +4122,7 @@ _addPxTranslate = function _addPxTranslate(target, start, value) {
     return target;
 }, _addRawTransformPTs = function _addRawTransformPTs(plugin, transforms, target) {
     //for handling cases where someone passes in a whole transform string, like transform: "scale(2, 3) rotate(20deg) translateY(30em)"
-    var startCache = _assign({
-    }, target._gsap), exclude = "perspective,force3D,transformOrigin,svgOrigin", style = target.style, endCache, p, startValue, endValue, startNum, endNum, startUnit, endUnit;
+    var startCache = _assign({}, target._gsap), exclude = "perspective,force3D,transformOrigin,svgOrigin", style = target.style, endCache, p, startValue, endValue, startNum, endNum, startUnit, endUnit;
     if (startCache.svg) {
         startValue = target.getAttribute("transform");
         target.setAttribute("transform", "");
@@ -4153,8 +4177,7 @@ _gsapCoreJs._forEachName("padding,margin,Width,Radius", function(name, index) {
             return vars.split(a[0]).length === 5 ? a[0] : vars;
         }
         a = (endValue + "").split(" ");
-        vars = {
-        };
+        vars = {};
         props.forEach(function(prop, i) {
             return vars[prop] = a[i] = a[i] || a[(i - 1) / 2 | 0];
         });
@@ -4204,7 +4227,7 @@ var CSSPlugin = {
                     (startValue + "").charAt(1) === "=" && (startValue = _get(target, p)); // can't work with relative values
                 } else startValue = _get(target, p);
                 startNum = parseFloat(startValue);
-                relative = type === "string" && endValue.charAt(1) === "=" ? +(endValue.charAt(0) + "1") : 0;
+                relative = type === "string" && endValue.charAt(1) === "=" && endValue.substr(0, 2);
                 relative && (endValue = endValue.substr(2));
                 endNum = parseFloat(endValue);
                 if (p in _propertyAliases) {
@@ -4229,7 +4252,7 @@ var CSSPlugin = {
                         transformPropTween.dep = 1; //flag it as dependent so that if things get killed/overwritten and this is the only PropTween left, we can safely kill the whole tween.
                     }
                     if (p === "scale") {
-                        this._pt = new _gsapCoreJs.PropTween(this._pt, cache, "scaleY", cache.scaleY, (relative ? relative * endNum : endNum - cache.scaleY) || 0);
+                        this._pt = new _gsapCoreJs.PropTween(this._pt, cache, "scaleY", cache.scaleY, (relative ? _gsapCoreJs._parseRelative(cache.scaleY, relative + endNum) : endNum) - cache.scaleY || 0);
                         props.push("scaleY", p);
                         p += "X";
                     } else if (p === "transformOrigin") {
@@ -4245,7 +4268,7 @@ var CSSPlugin = {
                         _applySVGOrigin(target, endValue, 1, smooth, 0, this);
                         continue;
                     } else if (p in _rotationalProperties) {
-                        _addRotationalPropTween(this, cache, p, startNum, endValue, relative);
+                        _addRotationalPropTween(this, cache, p, startNum, relative ? _gsapCoreJs._parseRelative(startNum, relative + endValue) : endValue);
                         continue;
                     } else if (p === "smoothOrigin") {
                         _addNonTweeningPT(this, cache, "smooth", cache.smooth, endValue);
@@ -4263,7 +4286,7 @@ var CSSPlugin = {
                     endNum || (endNum = 0); // protect against NaN
                     endUnit = _gsapCoreJs.getUnit(endValue) || (p in _gsapCoreJs._config.units ? _gsapCoreJs._config.units[p] : startUnit);
                     startUnit !== endUnit && (startNum = _convertToUnit(target, p, startValue, endUnit));
-                    this._pt = new _gsapCoreJs.PropTween(this._pt, isTransformRelated ? cache : style, p, startNum, relative ? relative * endNum : endNum - startNum, !isTransformRelated && (endUnit === "px" || p === "zIndex") && vars.autoRound !== false ? _renderRoundedCSSProp : _renderCSSProp);
+                    this._pt = new _gsapCoreJs.PropTween(this._pt, isTransformRelated ? cache : style, p, startNum, (relative ? _gsapCoreJs._parseRelative(startNum, relative + endNum) : endNum) - startNum, !isTransformRelated && (endUnit === "px" || p === "zIndex") && vars.autoRound !== false ? _renderRoundedCSSProp : _renderCSSProp);
                     this._pt.u = endUnit || 0;
                     if (startUnit !== endUnit && endUnit !== "%") {
                         //when the tween goes all the way back to the beginning, we need to revert it to the OLD/ORIGINAL value (with those units). We record that as a "b" (beginning) property and point to a render method that handles that. (performance optimization)
@@ -4272,12 +4295,12 @@ var CSSPlugin = {
                     }
                 } else if (!(p in style)) {
                     if (p in target) //maybe it's not a style - it could be a property added directly to an element in which case we'll try to animate that.
-                    this.add(target, p, startValue || target[p], endValue, index, targets);
+                    this.add(target, p, startValue || target[p], relative ? relative + endValue : endValue, index, targets);
                     else {
                         _gsapCoreJs._missingPlugin(p, endValue);
                         continue;
                     }
-                } else _tweenComplexCSSString.call(this, target, p, startValue, endValue);
+                } else _tweenComplexCSSString.call(this, target, p, startValue, relative ? relative + endValue : endValue);
                 props.push(p);
             }
         }
@@ -4289,8 +4312,7 @@ var CSSPlugin = {
         //returns a setter function that accepts target, property, value and applies it accordingly. Remember, properties like "x" aren't as simple as target.style.property = value because they've got to be applied to a proxy object and then merged into a transform string in a renderer.
         var p = _propertyAliases[property];
         p && p.indexOf(",") < 0 && (property = p);
-        return property in _transformProps && property !== _transformOriginProp && (target._gsap.x || _get(target, "x")) ? plugin && _recentSetterPlugin === plugin ? property === "scale" ? _setterScale : _setterTransform : (_recentSetterPlugin = plugin || {
-        }, property === "scale" ? _setterScaleWithRender : _setterTransformWithRender) : target.style && !_gsapCoreJs._isUndefined(target.style[property]) ? _setterCSSStyle : ~property.indexOf("-") ? _setterCSSProp : _gsapCoreJs._getSetter(target, property);
+        return property in _transformProps && property !== _transformOriginProp && (target._gsap.x || _get(target, "x")) ? plugin && _recentSetterPlugin === plugin ? property === "scale" ? _setterScale : _setterTransform : (_recentSetterPlugin = plugin || {}, property === "scale" ? _setterScaleWithRender : _setterTransformWithRender) : target.style && !_gsapCoreJs._isUndefined(target.style[property]) ? _setterCSSStyle : ~property.indexOf("-") ? _setterCSSProp : _gsapCoreJs._getSetter(target, property);
     },
     core: {
         _removeProperty: _removeProperty,
@@ -4365,8 +4387,7 @@ function ownKeys(object, enumerableOnly) {
 }
 function _objectSpread2(target) {
     for(var i = 1; i < arguments.length; i++){
-        var source = arguments[i] != null ? arguments[i] : {
-        };
+        var source = arguments[i] != null ? arguments[i] : {};
         if (i % 2) ownKeys(Object(source), true).forEach(function(key) {
             _defineProperty(target, key, source[key]);
         });
@@ -4406,8 +4427,7 @@ function _isNativeReflectConstruct() {
     if (Reflect.construct.sham) return false;
     if (typeof Proxy === "function") return true;
     try {
-        Date.prototype.toString.call(Reflect.construct(Date, [], function() {
-        }));
+        Date.prototype.toString.call(Reflect.construct(Date, [], function() {}));
         return true;
     } catch (e) {
         return false;
@@ -4552,8 +4572,7 @@ var defaults = {
 };
 var _default = /*#__PURE__*/ function() {
     function _default1() {
-        var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-        };
+        var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
         _classCallCheck(this, _default1);
         Object.assign(this, defaults, options);
         this.smartphone = defaults.smartphone;
@@ -4568,12 +4587,9 @@ var _default = /*#__PURE__*/ function() {
             x: this.windowWidth / 2,
             y: this.windowHeight / 2
         };
-        this.els = {
-        };
-        this.currentElements = {
-        };
-        this.listeners = {
-        };
+        this.els = {};
+        this.currentElements = {};
+        this.listeners = {};
         this.hasScrollTicking = false;
         this.hasCallEventSet = false;
         this.checkScroll = this.checkScroll.bind(this);
@@ -4630,8 +4646,7 @@ var _default = /*#__PURE__*/ function() {
         },
         {
             key: "resize",
-            value: function resize() {
-            }
+            value: function resize() {}
         },
         {
             key: "checkContext",
@@ -4673,8 +4688,7 @@ var _default = /*#__PURE__*/ function() {
         },
         {
             key: "addElements",
-            value: function addElements() {
-            }
+            value: function addElements() {}
         },
         {
             key: "detectElements",
@@ -4802,13 +4816,11 @@ var _default = /*#__PURE__*/ function() {
         },
         {
             key: "startScroll",
-            value: function startScroll() {
-            }
+            value: function startScroll() {}
         },
         {
             key: "stopScroll",
-            value: function stopScroll() {
-            }
+            value: function stopScroll() {}
         },
         {
             key: "setScroll",
@@ -4827,8 +4839,7 @@ var _default = /*#__PURE__*/ function() {
                 Object.keys(this.listeners).forEach(function(event) {
                     _this6.el.removeEventListener(_this6.namespace + event, _this6.checkEvent, false);
                 });
-                this.listeners = {
-                };
+                this.listeners = {};
                 this.scrollToEls.forEach(function(el) {
                     el.removeEventListener('click', _this6.setScrollTo, false);
                 });
@@ -4838,16 +4849,14 @@ var _default = /*#__PURE__*/ function() {
     ]);
     return _default1;
 }();
-var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {
-};
+var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 function createCommonjsModule(fn, module) {
     return module = {
-        exports: {
-        }
+        exports: {}
     }, fn(module, module.exports), module.exports;
 }
 var smoothscroll = createCommonjsModule(function(module, exports) {
-    (function() {
+    /* smoothscroll v0.4.4 - 2019 - Dustan Kasten, Jeremias Menichelli - MIT License */ (function() {
         // polyfill
         function polyfill() {
             // aliases
@@ -5113,8 +5122,7 @@ var _default$1 = /*#__PURE__*/ function(_Core) {
     var _super = _createSuper(_default2);
     function _default2() {
         var _this;
-        var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-        };
+        var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
         _classCallCheck(this, _default2);
         _this = _super.call(this, options);
         if (_this.resetNativeScroll) {
@@ -5189,8 +5197,7 @@ var _default$1 = /*#__PURE__*/ function(_Core) {
             key: "addElements",
             value: function addElements() {
                 var _this3 = this;
-                this.els = {
-                };
+                this.els = {};
                 var els = this.el.querySelectorAll('[data-' + this.name + ']');
                 els.forEach(function(el, index) {
                     var BCR = el.getBoundingClientRect();
@@ -5270,8 +5277,7 @@ var _default$1 = /*#__PURE__*/ function(_Core) {
         {
             key: "scrollTo",
             value: function scrollTo(target) {
-                var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
-                };
+                var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
                 // Parse options
                 var offset = parseInt(options.offset) || 0; // An offset to apply on top of given `target` or `sourceElem`'s target
                 var callback = options.callback ? options.callback : false; // function called when scrollTo completes (note that it won't wait for lerp to stabilize)
@@ -5348,25 +5354,22 @@ function shouldUseNative() {
         if (!Object.assign) return false;
         // Detect buggy property enumeration order in older V8 versions.
         // https://bugs.chromium.org/p/v8/issues/detail?id=4118
-        var test1 = "abc"; // eslint-disable-line no-new-wrappers
+        var test1 = new String('abc'); // eslint-disable-line no-new-wrappers
         test1[5] = 'de';
         if (Object.getOwnPropertyNames(test1)[0] === '5') return false;
         // https://bugs.chromium.org/p/v8/issues/detail?id=3056
-        var test2 = {
-        };
+        var test2 = {};
         for(var i = 0; i < 10; i++)test2['_' + String.fromCharCode(i)] = i;
         var order2 = Object.getOwnPropertyNames(test2).map(function(n) {
             return test2[n];
         });
         if (order2.join('') !== '0123456789') return false;
         // https://bugs.chromium.org/p/v8/issues/detail?id=3056
-        var test3 = {
-        };
+        var test3 = {};
         'abcdefghijklmnopqrst'.split('').forEach(function(letter) {
             test3[letter] = letter;
         });
-        if (Object.keys(Object.assign({
-        }, test3)).join('') !== 'abcdefghijklmnopqrst') return false;
+        if (Object.keys(Object.assign({}, test3)).join('') !== 'abcdefghijklmnopqrst') return false;
         return true;
     } catch (err) {
         // We don't expect any of the above to throw, but better to be safe.
@@ -5393,8 +5396,7 @@ function E() {
 }
 E.prototype = {
     on: function(name, callback, ctx) {
-        var e = this.e || (this.e = {
-        });
+        var e = this.e || (this.e = {});
         (e[name] || (e[name] = [])).push({
             fn: callback,
             ctx: ctx
@@ -5412,16 +5414,14 @@ E.prototype = {
     },
     emit: function(name) {
         var data = [].slice.call(arguments, 1);
-        var evtArr = ((this.e || (this.e = {
-        }))[name] || []).slice();
+        var evtArr = ((this.e || (this.e = {}))[name] || []).slice();
         var i = 0;
         var len = evtArr.length;
         for(; i < len; i++)evtArr[i].fn.apply(evtArr[i].ctx, data);
         return this;
     },
     off: function(name, callback) {
-        var e = this.e || (this.e = {
-        });
+        var e = this.e || (this.e = {});
         var evts = e[name];
         var liveEvents = [];
         if (evts && callback) {
@@ -5440,7 +5440,7 @@ var lethargy = createCommonjsModule(function(module, exports) {
     (function() {
         var root;
         root = exports !== null ? exports : this;
-        root.Lethargy = (function() {
+        root.Lethargy = function() {
             function Lethargy1(stability, sensitivity, tolerance, delay) {
                 this.stability = stability != null ? Math.abs(stability) : 8;
                 this.sensitivity = sensitivity != null ? 1 + Math.abs(sensitivity) : 100;
@@ -5508,7 +5508,7 @@ var lethargy = createCommonjsModule(function(module, exports) {
                 return this.lastDownDeltas;
             };
             return Lethargy1;
-        })();
+        }();
     }).call(commonjsGlobal);
 });
 var support = function getSupport() {
@@ -5717,8 +5717,7 @@ function lerp(start, end, amt) {
     return (1 - amt) * start + amt * end;
 }
 function getTranslate(el) {
-    var translate = {
-    };
+    var translate = {};
     if (!window.getComputedStyle) return;
     var style = getComputedStyle(el);
     var transform = style.transform || style.webkitTransform || style.mozTransform;
@@ -5839,8 +5838,7 @@ var _default$2 = /*#__PURE__*/ function(_Core) {
     var _super = _createSuper(_default3);
     function _default3() {
         var _this;
-        var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-        };
+        var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
         _classCallCheck(this, _default3);
         if (history.scrollRestoration) history.scrollRestoration = 'manual';
         window.scrollTo(0, 0);
@@ -5850,8 +5848,7 @@ var _default$2 = /*#__PURE__*/ function(_Core) {
         _this.isDraggingScrollbar = false;
         _this.isTicking = false;
         _this.hasScrollTicking = false;
-        _this.parallaxElements = {
-        };
+        _this.parallaxElements = {};
         _this.stop = false;
         _this.scrollbarContainer = options.scrollbarContainer;
         _this.checkKey = _this.checkKey.bind(_assertThisInitialized(_this));
@@ -6221,10 +6218,8 @@ var _default$2 = /*#__PURE__*/ function(_Core) {
             key: "addElements",
             value: function addElements() {
                 var _this6 = this;
-                this.els = {
-                };
-                this.parallaxElements = {
-                }; // this.sections.forEach((section, y) => {
+                this.els = {};
+                this.parallaxElements = {}; // this.sections.forEach((section, y) => {
                 var els = this.el.querySelectorAll("[data-".concat(this.name, "]"));
                 els.forEach(function(el, index) {
                     // Try and find the target's parent section
@@ -6341,8 +6336,7 @@ var _default$2 = /*#__PURE__*/ function(_Core) {
             key: "addSections",
             value: function addSections() {
                 var _this7 = this;
-                this.sections = {
-                };
+                this.sections = {};
                 var sections = this.el.querySelectorAll("[data-".concat(this.name, "-section]"));
                 if (sections.length === 0) sections = [
                     this.el
@@ -6451,8 +6445,7 @@ var _default$2 = /*#__PURE__*/ function(_Core) {
             key: "scrollTo",
             value: function scrollTo(target) {
                 var _this9 = this;
-                var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
-                };
+                var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
                 // Parse options
                 var offset = parseInt(options.offset) || 0; // An offset to apply on top of given `target` or `sourceElem`'s target
                 var duration = !isNaN(parseInt(options.duration)) ? parseInt(options.duration) : 1000; // Duration of the scroll animation in milliseconds
@@ -6571,9 +6564,7 @@ var _default$2 = /*#__PURE__*/ function(_Core) {
         {
             key: "setScroll",
             value: function setScroll(x, y) {
-                this.instance = _objectSpread2(_objectSpread2({
-                }, this.instance), {
-                }, {
+                this.instance = _objectSpread2(_objectSpread2({}, this.instance), {}, {
                     scroll: {
                         x: x,
                         y: y
@@ -6602,8 +6593,7 @@ var _default$2 = /*#__PURE__*/ function(_Core) {
 }(_default);
 var Smooth = /*#__PURE__*/ function() {
     function Smooth1() {
-        var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-        };
+        var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
         _classCallCheck(this, Smooth1);
         this.options = options; // Override default options with given ones
         Object.assign(this, defaults, options);
@@ -6686,8 +6676,7 @@ var Smooth = /*#__PURE__*/ function() {
 }();
 var Native = /*#__PURE__*/ function() {
     function Native1() {
-        var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-        };
+        var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
         _classCallCheck(this, Native1);
         this.options = options; // Override default options with given ones
         Object.assign(this, defaults, options);
@@ -6896,42 +6885,36 @@ const distance = (x1, y1, x2, y2)=>{
 const getRandomFloat = (min, max)=>(Math.random() * (max - min) + min).toFixed(2)
 ;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"82j8t":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"T7LTX":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "projectsSlider", ()=>projectsSlider
+parcelHelpers.export(exports, "sliderSlider", ()=>sliderSlider
 );
 parcelHelpers.export(exports, "productsSlider", ()=>productsSlider
+);
+parcelHelpers.export(exports, "blockchainSlider", ()=>blockchainSlider
 );
 var _swiper = require("swiper");
 var _swiperDefault = parcelHelpers.interopDefault(_swiper);
 var _i18N = require("../i18n");
-function projectsSlider() {
+function sliderSlider() {
     let el = document.querySelector('#projects .swiper');
     if (!el) return;
     const swiper = new _swiperDefault.default('#projects .swiper', {
         modules: [
-            _swiper.Navigation,
-            _swiper.Pagination,
-            _swiper.Scrollbar
+            _swiper.Navigation
         ],
         loop: true,
-        // scrollbar
+        slidesPerView: "auto",
+        // spaceBetween: 20,
         scrollbar: {
             el: "#projects .swiper-scrollbar",
             draggable: true
         },
         // Navigation arrows
         navigation: {
-            nextEl: '#projects .projects-next',
-            prevEl: '#projects .projects-prev'
-        },
-        pagination: {
-            el: '#projects .swiper-pagination',
-            clickable: true,
-            renderBullet: function(index, className) {
-                return '<button class="' + className + '">' + _i18N.projects[index].title + '</button>';
-            }
+            nextEl: '#projects .slider-next',
+            prevEl: '#projects .slider-prev'
         }
     });
 }
@@ -6952,14 +6935,43 @@ function productsSlider() {
         },
         // Navigation arrows
         navigation: {
-            nextEl: '#products .projects-next',
-            prevEl: '#products .projects-prev'
+            nextEl: '#products .slider-next',
+            prevEl: '#products .slider-prev'
         },
         pagination: {
             el: '#products .swiper-pagination',
             clickable: true,
             renderBullet: function(index, className) {
                 return '<button class="' + className + '">' + _i18N.products[index].title + '</button>';
+            }
+        }
+    });
+}
+function blockchainSlider() {
+    let el = document.querySelector('#blockchain .swiper');
+    if (!el) return;
+    const swiper = new _swiperDefault.default('#blockchain .swiper', {
+        modules: [
+            _swiper.Navigation,
+            _swiper.Pagination,
+            _swiper.Scrollbar
+        ],
+        loop: true,
+        // scrollbar
+        scrollbar: {
+            el: "#blockchain .swiper-scrollbar",
+            draggable: true
+        },
+        // Navigation arrows
+        navigation: {
+            nextEl: '#blockchain .slider-next',
+            prevEl: '#blockchain .slider-prev'
+        },
+        pagination: {
+            el: '#blockchain .swiper-pagination',
+            clickable: true,
+            renderBullet: function(index, className) {
+                return '<button class="' + className + '">' + _i18N.blockchain[index].title + '</button>';
             }
         }
     });
@@ -7137,8 +7149,7 @@ const prototypes = {
     classes: _indexJsDefault8.default,
     images: _indexJsDefault9.default
 };
-const extendedDefaults = {
-};
+const extendedDefaults = {};
 class Swiper {
     constructor(){
         let el;
@@ -7146,16 +7157,13 @@ class Swiper {
         for(var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)args[_key] = arguments[_key];
         if (args.length === 1 && args[0].constructor && Object.prototype.toString.call(args[0]).slice(8, -1) === 'Object') params = args[0];
         else [el, params] = args;
-        if (!params) params = {
-        };
-        params = _utilsJs.extend({
-        }, params);
+        if (!params) params = {};
+        params = _utilsJs.extend({}, params);
         if (el && !params.el) params.el = el;
         if (params.el && _domJsDefault.default(params.el).length > 1) {
             const swipers = [];
             _domJsDefault.default(params.el).each((containerEl)=>{
-                const newParams = _utilsJs.extend({
-                }, params, {
+                const newParams = _utilsJs.extend({}, params, {
                     el: containerEl
                 });
                 swipers.push(new Swiper(newParams));
@@ -7169,15 +7177,13 @@ class Swiper {
             userAgent: params.userAgent
         });
         swiper.browser = _getBrowserJs.getBrowser();
-        swiper.eventsListeners = {
-        };
+        swiper.eventsListeners = {};
         swiper.eventsAnyListeners = [];
         swiper.modules = [
             ...swiper.__modules__
         ];
         if (params.modules && Array.isArray(params.modules)) swiper.modules.push(...params.modules);
-        const allModulesParams = {
-        };
+        const allModulesParams = {};
         swiper.modules.forEach((mod)=>{
             mod({
                 swiper,
@@ -7188,14 +7194,10 @@ class Swiper {
                 emit: swiper.emit.bind(swiper)
             });
         }); // Extend defaults with modules params
-        const swiperParams = _utilsJs.extend({
-        }, _defaultsJsDefault.default, allModulesParams); // Extend defaults with passed params
-        swiper.params = _utilsJs.extend({
-        }, swiperParams, extendedDefaults, params);
-        swiper.originalParams = _utilsJs.extend({
-        }, swiper.params);
-        swiper.passedParams = _utilsJs.extend({
-        }, params); // add event listeners
+        const swiperParams = _utilsJs.extend({}, _defaultsJsDefault.default, allModulesParams); // Extend defaults with passed params
+        swiper.params = _utilsJs.extend({}, swiperParams, extendedDefaults, params);
+        swiper.originalParams = _utilsJs.extend({}, swiper.params);
+        swiper.passedParams = _utilsJs.extend({}, params); // add event listeners
         if (swiper.params && swiper.params.on) Object.keys(swiper.params.on).forEach((eventName)=>{
             swiper.on(eventName, swiper.params.on[eventName]);
         });
@@ -7595,24 +7597,18 @@ parcelHelpers.export(exports, "ssrWindow", ()=>ssrWindow
  */ /* eslint-disable no-param-reassign */ function isObject(obj) {
     return obj !== null && typeof obj === 'object' && 'constructor' in obj && obj.constructor === Object;
 }
-function extend(target = {
-}, src = {
-}) {
+function extend(target = {}, src = {}) {
     Object.keys(src).forEach((key)=>{
         if (typeof target[key] === 'undefined') target[key] = src[key];
         else if (isObject(src[key]) && isObject(target[key]) && Object.keys(src[key]).length > 0) extend(target[key], src[key]);
     });
 }
 const ssrDocument = {
-    body: {
-    },
-    addEventListener () {
-    },
-    removeEventListener () {
-    },
+    body: {},
+    addEventListener () {},
+    removeEventListener () {},
     activeElement: {
-        blur () {
-        },
+        blur () {},
         nodeName: ''
     },
     querySelector () {
@@ -7626,26 +7622,22 @@ const ssrDocument = {
     },
     createEvent () {
         return {
-            initEvent () {
-            }
+            initEvent () {}
         };
     },
     createElement () {
         return {
             children: [],
             childNodes: [],
-            style: {
-            },
-            setAttribute () {
-            },
+            style: {},
+            setAttribute () {},
             getElementsByTagName () {
                 return [];
             }
         };
     },
     createElementNS () {
-        return {
-        };
+        return {};
     },
     importNode () {
         return null;
@@ -7662,8 +7654,7 @@ const ssrDocument = {
     }
 };
 function getDocument() {
-    const doc = typeof document !== 'undefined' ? document : {
-    };
+    const doc = typeof document !== 'undefined' ? document : {};
     extend(doc, ssrDocument);
     return doc;
 }
@@ -7683,22 +7674,16 @@ const ssrWindow = {
         search: ''
     },
     history: {
-        replaceState () {
-        },
-        pushState () {
-        },
-        go () {
-        },
-        back () {
-        }
+        replaceState () {},
+        pushState () {},
+        go () {},
+        back () {}
     },
     CustomEvent: function CustomEvent() {
         return this;
     },
-    addEventListener () {
-    },
-    removeEventListener () {
-    },
+    addEventListener () {},
+    removeEventListener () {},
     getComputedStyle () {
         return {
             getPropertyValue () {
@@ -7706,19 +7691,13 @@ const ssrWindow = {
             }
         };
     },
-    Image () {
-    },
-    Date () {
-    },
-    screen: {
-    },
-    setTimeout () {
-    },
-    clearTimeout () {
-    },
+    Image () {},
+    Date () {},
+    screen: {},
+    setTimeout () {},
+    clearTimeout () {},
     matchMedia () {
-        return {
-        };
+        return {};
     },
     requestAnimationFrame (callback) {
         if (typeof setTimeout === 'undefined') {
@@ -7733,8 +7712,7 @@ const ssrWindow = {
     }
 };
 function getWindow() {
-    const win = typeof window !== 'undefined' ? window : {
-    };
+    const win = typeof window !== 'undefined' ? window : {};
     extend(win, ssrWindow);
     return win;
 }
@@ -8132,8 +8110,7 @@ function data(key, value4) {
     } // Set value
     for(let i = 0; i < this.length; i += 1){
         el = this[i];
-        if (!el.dom7ElementDataStorage) el.dom7ElementDataStorage = {
-        };
+        if (!el.dom7ElementDataStorage) el.dom7ElementDataStorage = {};
         el.dom7ElementDataStorage[key] = value4;
     }
     return this;
@@ -8150,8 +8127,7 @@ function removeData(key) {
 function dataset() {
     const el = this[0];
     if (!el) return undefined;
-    const dataset1 = {
-    }; // eslint-disable-line
+    const dataset1 = {}; // eslint-disable-line
     if (el.dataset) for(const dataKey in el.dataset)dataset1[dataKey] = el.dataset[dataKey];
     else for(let i = 0; i < el.attributes.length; i += 1){
         const attr2 = el.attributes[i];
@@ -8223,8 +8199,7 @@ function on(...args) {
         const el = this[i];
         if (!targetSelector) for(j = 0; j < events.length; j += 1){
             const event = events[j];
-            if (!el.dom7Listeners) el.dom7Listeners = {
-            };
+            if (!el.dom7Listeners) el.dom7Listeners = {};
             if (!el.dom7Listeners[event]) el.dom7Listeners[event] = [];
             el.dom7Listeners[event].push({
                 listener,
@@ -8235,8 +8210,7 @@ function on(...args) {
         else // Live events
         for(j = 0; j < events.length; j += 1){
             const event = events[j];
-            if (!el.dom7LiveListeners) el.dom7LiveListeners = {
-            };
+            if (!el.dom7LiveListeners) el.dom7LiveListeners = {};
             if (!el.dom7LiveListeners[event]) el.dom7LiveListeners[event] = [];
             el.dom7LiveListeners[event].push({
                 listener,
@@ -8405,8 +8379,7 @@ function show() {
 function styles() {
     const window = _ssrWindow.getWindow();
     if (this[0]) return window.getComputedStyle(this[0], null);
-    return {
-    };
+    return {};
 }
 function css(props, value7) {
     const window = _ssrWindow.getWindow();
@@ -8417,7 +8390,7 @@ function css(props, value7) {
             if (this[0]) return window.getComputedStyle(this[0], null).getPropertyValue(props);
         } else {
             // .css({ width: '100px' })
-            for(i = 0; i < this.length; i += 1)for(const prop in props)this[i].style[prop] = props[prop];
+            for(i = 0; i < this.length; i += 1)for(const prop1 in props)this[i].style[prop1] = props[prop1];
             return this;
         }
     }
@@ -8791,8 +8764,7 @@ function animate(initialProps, initialParams) {
     const window = _ssrWindow.getWindow();
     const els = this;
     const a = {
-        props: Object.assign({
-        }, initialProps),
+        props: Object.assign({}, initialProps),
         params: Object.assign({
             duration: 300,
             easing: 'swing' // or 'linear'
@@ -8835,23 +8807,23 @@ function animate(initialProps, initialParams) {
                 return a;
             }
             const elements = []; // Define & Cache Initials & Units
-            a.elements.each((el, index)=>{
+            a.elements.each((el, index3)=>{
                 let initialFullValue;
                 let initialValue;
                 let unit;
                 let finalValue;
                 let finalFullValue;
-                if (!el.dom7AnimateInstance) a.elements[index].dom7AnimateInstance = a;
-                elements[index] = {
+                if (!el.dom7AnimateInstance) a.elements[index3].dom7AnimateInstance = a;
+                elements[index3] = {
                     container: el
                 };
-                Object.keys(props).forEach((prop1)=>{
-                    initialFullValue = window.getComputedStyle(el, null).getPropertyValue(prop1).replace(',', '.');
+                Object.keys(props).forEach((prop2)=>{
+                    initialFullValue = window.getComputedStyle(el, null).getPropertyValue(prop2).replace(',', '.');
                     initialValue = parseFloat(initialFullValue);
                     unit = initialFullValue.replace(initialValue, '');
-                    finalValue = parseFloat(props[prop1]);
-                    finalFullValue = props[prop1] + unit;
-                    elements[index][prop1] = {
+                    finalValue = parseFloat(props[prop2]);
+                    finalFullValue = props[prop2] + unit;
+                    elements[index3][prop2] = {
                         initialFullValue,
                         initialValue,
                         unit,
@@ -8882,15 +8854,15 @@ function animate(initialProps, initialParams) {
                 elements.forEach((element)=>{
                     const el = element;
                     if (done || el.done) return;
-                    Object.keys(props).forEach((prop)=>{
+                    Object.keys(props).forEach((prop3)=>{
                         if (done || el.done) return;
                         progress = Math.max(Math.min((time - startTime) / params.duration, 1), 0);
                         easeProgress = a.easingProgress(params.easing, progress);
-                        const { initialValue , finalValue , unit  } = el[prop];
-                        el[prop].currentValue = initialValue + easeProgress * (finalValue - initialValue);
-                        const currentValue = el[prop].currentValue;
+                        const { initialValue , finalValue , unit  } = el[prop3];
+                        el[prop3].currentValue = initialValue + easeProgress * (finalValue - initialValue);
+                        const currentValue = el[prop3].currentValue;
                         if (finalValue > initialValue && currentValue >= finalValue || finalValue < initialValue && currentValue <= finalValue) {
-                            el.container.style[prop] = finalValue + unit;
+                            el.container.style[prop3] = finalValue + unit;
                             propsDone += 1;
                             if (propsDone === Object.keys(props).length) {
                                 el.done = true;
@@ -8902,7 +8874,7 @@ function animate(initialProps, initialParams) {
                             a.done(params.complete);
                             return;
                         }
-                        el.container.style[prop] = currentValue + unit;
+                        el.container.style[prop3] = currentValue + unit;
                     });
                 });
                 if (done) return; // Then call
@@ -8990,12 +8962,10 @@ function deleteProps(obj) {
     Object.keys(object).forEach((key)=>{
         try {
             object[key] = null;
-        } catch (e) {
-        }
+        } catch (e) {}
         try {
             delete object[key];
-        } catch (e1) {
-        }
+        } catch (e1) {}
     });
 }
 function nextTick(callback, delay) {
@@ -9073,8 +9043,7 @@ function extend() {
                         if (nextSource[nextKey].__swiper__) to[nextKey] = nextSource[nextKey];
                         else extend(to[nextKey], nextSource[nextKey]);
                     } else if (!isObject(to[nextKey]) && isObject(nextSource[nextKey])) {
-                        to[nextKey] = {
-                        };
+                        to[nextKey] = {};
                         if (nextSource[nextKey].__swiper__) to[nextKey] = nextSource[nextKey];
                         else extend(to[nextKey], nextSource[nextKey]);
                     } else to[nextKey] = nextSource[nextKey];
@@ -9140,24 +9109,22 @@ function calcSupport() {
     return {
         smoothScroll: document.documentElement && 'scrollBehavior' in document.documentElement.style,
         touch: !!('ontouchstart' in window || window.DocumentTouch && document instanceof window.DocumentTouch),
-        passiveListener: (function checkPassiveListener() {
+        passiveListener: function checkPassiveListener() {
             let supportsPassive = false;
             try {
-                const opts = Object.defineProperty({
-                }, 'passive', {
+                const opts = Object.defineProperty({}, 'passive', {
                     // eslint-disable-next-line
                     get () {
                         supportsPassive = true;
                     }
                 });
                 window.addEventListener('testPassiveListener', null, opts);
-            } catch (e) {
-            }
+            } catch (e) {}
             return supportsPassive;
-        })(),
-        gestures: (function checkGestures() {
+        }(),
+        gestures: function checkGestures() {
             return 'ongesturestart' in window;
-        })()
+        }()
     };
 }
 function getSupport() {
@@ -9174,8 +9141,7 @@ var _ssrWindow = require("ssr-window");
 var _getSupportJs = require("./get-support.js");
 let deviceCached;
 function calcDevice(_temp) {
-    let { userAgent  } = _temp === void 0 ? {
-    } : _temp;
+    let { userAgent  } = _temp === void 0 ? {} : _temp;
     const support = _getSupportJs.getSupport();
     const window = _ssrWindow.getWindow();
     const platform = window.navigator.platform;
@@ -9226,8 +9192,7 @@ function calcDevice(_temp) {
     return device;
 }
 function getDevice(overrides) {
-    if (overrides === void 0) overrides = {
-    };
+    if (overrides === void 0) overrides = {};
     if (!deviceCached) deviceCached = calcDevice(overrides);
     return deviceCached;
 }
@@ -9323,8 +9288,7 @@ function Observer(_ref) {
     const observers = [];
     const window = _ssrWindow.getWindow();
     const attach = function(target, options) {
-        if (options === void 0) options = {
-        };
+        if (options === void 0) options = {};
         const ObserverFunc = window.MutationObserver || window.WebkitMutationObserver;
         const observer = new ObserverFunc((mutations)=>{
             // The observerUpdate event should only be triggered
@@ -9379,7 +9343,7 @@ exports.default = Observer;
 },{"ssr-window":"3lyfI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"970nW":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-exports.default = {
+/* eslint-disable no-underscore-dangle */ exports.default = {
     on (events, handler, priority) {
         const self = this;
         if (typeof handler !== 'function') return self;
@@ -10671,8 +10635,7 @@ var _onClickJsDefault = parcelHelpers.interopDefault(_onClickJs);
 var _onScrollJs = require("./onScroll.js");
 var _onScrollJsDefault = parcelHelpers.interopDefault(_onScrollJs);
 let dummyEventAttached = false;
-function dummyEventListener() {
-}
+function dummyEventListener() {}
 const events = (swiper, method)=>{
     const document = _ssrWindow.getDocument();
     const { params , touchEvents , el , wrapperEl , device , support  } = swiper;
@@ -11521,8 +11484,7 @@ parcelHelpers.defineInteropFlag(exports);
 var _utilsJs = require("../shared/utils.js");
 function moduleExtendParams(params, allModulesParams) {
     return function extendParams(obj) {
-        if (obj === void 0) obj = {
-        };
+        if (obj === void 0) obj = {};
         const moduleParamName = Object.keys(obj)[0];
         const moduleParams = obj[moduleParamName];
         if (typeof moduleParams !== 'object' || moduleParams === null) {
@@ -11574,8 +11536,7 @@ function Virtual(_ref) {
     });
     let cssModeTimeout;
     swiper.virtual = {
-        cache: {
-        },
+        cache: {},
         from: undefined,
         to: undefined,
         slides: [],
@@ -11685,8 +11646,7 @@ function Virtual(_ref) {
         } else swiper.virtual.slides.unshift(slides);
         if (swiper.params.virtual.cache) {
             const cache = swiper.virtual.cache;
-            const newCache = {
-            };
+            const newCache = {};
             Object.keys(cache).forEach((cachedIndex)=>{
                 const $cachedEl = cache[cachedIndex];
                 const cachedElIndex = $cachedEl.attr('data-swiper-slide-index');
@@ -11718,8 +11678,7 @@ function Virtual(_ref) {
     }
     function removeAllSlides() {
         swiper.virtual.slides = [];
-        if (swiper.params.virtual.cache) swiper.virtual.cache = {
-        };
+        if (swiper.params.virtual.cache) swiper.virtual.cache = {};
         update(true);
         swiper.slideTo(0, 0);
     }
@@ -13004,10 +12963,8 @@ function Zoom(_ref) {
         height: undefined,
         startX: undefined,
         startY: undefined,
-        touchesStart: {
-        },
-        touchesCurrent: {
-        }
+        touchesStart: {},
+        touchesCurrent: {}
     };
     const velocity = {
         x: undefined,
@@ -13434,8 +13391,7 @@ function Lazy(_ref) {
             preloaderClass: 'swiper-lazy-preloader'
         }
     });
-    swiper.lazy = {
-    };
+    swiper.lazy = {};
     let scrollHandlerAttached = false;
     let initialImageLoaded = false;
     function loadInSlide(index, loadInDuplicate) {
@@ -13997,8 +13953,7 @@ function History(_ref) {
         }
     });
     let initialized = false;
-    let paths = {
-    };
+    let paths = {};
     const slugify = (text)=>{
         return text.toString().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-').replace(/^-+/, '').replace(/-+$/, '');
     };
@@ -14405,8 +14360,7 @@ function Thumb(_ref) {
                 slideToClickedSlide: false
             });
         } else if (_utilsJs.isObject(thumbsParams.swiper)) {
-            const thumbsSwiperParams = Object.assign({
-            }, thumbsParams.swiper);
+            const thumbsSwiperParams = Object.assign({}, thumbsParams.swiper);
             Object.assign(thumbsSwiperParams, {
                 watchSlidesProgress: true,
                 slideToClickedSlide: false
@@ -14971,8 +14925,7 @@ function effectInit(params) {
         if (swiper.params.effect !== effect) return;
         swiper.classNames.push(`${swiper.params.containerModifierClass}${effect}`);
         if (perspective && perspective()) swiper.classNames.push(`${swiper.params.containerModifierClass}3d`);
-        const overwriteParamsResult = overwriteParams ? overwriteParams() : {
-        };
+        const overwriteParamsResult = overwriteParams ? overwriteParams() : {};
         Object.assign(swiper.params, overwriteParamsResult);
         Object.assign(swiper.originalParams, overwriteParamsResult);
     });
@@ -15625,14 +15578,16 @@ const menu = require('./menu.js');
 const about = require('./about.js');
 const projects = require('./projects.js');
 const products = require('./products.js');
+const blockchain = require('./blockchain.js');
 module.exports = {
     menu: menu,
     about: about,
     projects: projects,
-    products: products
+    products: products,
+    blockchain: blockchain
 };
 
-},{"./menu.js":"cAsPv","./about.js":"csC5d","./projects.js":"eXGfZ","./products.js":"bEAbK"}],"cAsPv":[function(require,module,exports) {
+},{"./menu.js":"cAsPv","./about.js":"csC5d","./projects.js":"eXGfZ","./products.js":"bEAbK","./blockchain.js":"i6Xg9"}],"cAsPv":[function(require,module,exports) {
 module.exports = [
     {
         title: 'Что делаем',
@@ -15640,7 +15595,7 @@ module.exports = [
     },
     {
         title: 'Проекты',
-        link: 'projects'
+        link: 'slider'
     },
     {
         title: 'Импортозамещение',
@@ -15655,10 +15610,12 @@ module.exports = [
 },{}],"csC5d":[function(require,module,exports) {
 module.exports = {
     list: [
-        'Запустим ваш стартап методом гибких итераций.',
-        'Обучим самым эффективным подходам и методологиям, тонкостям разработки софта, а также поможем научиться мыслить в формате MVP.',
+        'Запустим ваш стартап методом гибких итераций. Такой подход поможет оперативно отслеживать ход реализации и запустить идею в разумные сроки.',
         'Поможем рассчитать объём каждой итерации, спроектировать гибкую архитектуру, разработаем дизайн и воплотим ваши смелые идеи в жизнь.',
-        'Поможем генерировать и проверять продуктовые гипотезы, управлять бэклогом задач и продуктивно управлять командой разработки.'
+        'Обучим самым эффективным подходам и методологиям, тонкостям разработки софта, а также поможем научиться мыслить в формате MVP.',
+        'Поможем генерировать и проверять продуктовые гипотезы, управлять бэклогом задач и продуктивно управлять командой разработки.',
+        'Обладаем широкой экспертизой в blockchain и поможем реализовать проекты с использованием передовых технологий.',
+        'Проектируем и запускаем собственный необанк.', 
     ]
 };
 
@@ -15791,6 +15748,70 @@ module.exports = [
         name: 'Система Управления Информацией (аналог SAP)',
         title: 'Система Управления Информацией (аналог SAP)',
         text: "Корпоративное ПО для автоматизации бизнес- процессов. Система позволяет улучшить автоматизацию, оптимизировать процессы любого уровня сложности и специфичности в организациях и на предприятиях."
+    }
+];
+
+},{}],"i6Xg9":[function(require,module,exports) {
+module.exports = [
+    {
+        title: 'COIN360',
+        text: `<p>Агрегатор оперативных данных о криптовалютах и криптобиржах, предоставляет важные рыночные данные в наглядной форме.</p><p>Независимо от того, является ли пользователь профессиональным или начинающим трейдером, СМИ, или просто интересуется криптовалютами, COIN360 предлагает незаменимые инструменты, позволяющие быть в курсе малейших движений криптовалютного рынка.</p>`,
+        stack: '#golang #node.js #mysql #gitlab #clickhouse #redis #rabbitmq #react #redux #helm #webpack #native js #typescript #docker #teraform #kuber #werf #ansible'
+    },
+    {
+        title: 'Marketmaking.pro',
+        text: `Платформа B2B маркетмейкинга со встроенным сервисом алгоритмических решений и интеграцией api. Подключено 48+ криптовалютных бирж.`,
+        stack: '#Rust #Solidity #JS #React'
+    },
+    {
+        title: 'CoinMena',
+        text: `UX-ориентированная кастодиальная криптобиржа для региона MENA.`,
+        stack: '#Redis #RabbitMQ #TypeScript #React #Redux #NextJS #Django #PostgreSQL #NextJS #Python'
+    },
+    {
+        title: 'Auto Farm',
+        text: `Платформа для автоматической повторной ставки на основе Biswap и Pancake v2. Позволяет пользователям делать ставки на такие монеты, как ALPACA/ATOM/EOS/Gala/BNB и другие.`,
+        stack: '#swift #Solidity #JS'
+    },
+    {
+        title: 'Disciplina',
+        text: `<p>Первая блокчейн-платформа для создания проверенных личных профилей на основе академических и профессиональных достижений.</p><p>Обеспечивает прозрачность работы и создает условия для поддержания конфиденциальности и достоверности информации, внесенной участниками системы.</p>`,
+        stack: '#Rust #Solidity #React #JS'
+    },
+    {
+        title: 'Blockchain cuties',
+        text: `Первая мультиблокчейн-коллекционная игра. Проект работает на следующих блокчейнах: ETH, EOS, MATIC, NEO, HECO и TRON.`,
+        stack: '#Java #Postgress #Spring Boot #Hibernate5 #TypeScrypt #Vue #AWS #Solidity #C++ #pyton #Chainlink Oracles #Polkadot'
+    },
+    {
+        title: 'Transcryptor',
+        text: `Криптокошелек, интегрированный с биржами, обменниками и поставщиками ликвидности. Поддерживает блокчейны Bitcoin, Ethereum и Tron.`,
+        stack: '#antive #native #ansible #AWS #vue #postgresql #flask #django #cellery'
+    },
+    {
+        title: 'Jwallet',
+        text: `<p>Крипто-кошелек на базе Ethereum c web, iOS и Android приложениями, ориентированный на безопасность и простоту использования.</p><p>Все приложения находятся на стороне клиента и работают непосредственно с узлами Ethereum. </p>`,
+        stack: '#TypeScript #React #redux-saga #Swift #Redux #Kotlin #Go #geth'
+    },
+    {
+        title: 'Pluton',
+        text: `Программа автоматизации выдачи факторинговых продуктов. Автоматизация операционного отдела по выдаче кредитов, учету задолженности, расчету штрафов и взаимозачетам. Интеграция с собственной скоринговой системой.`,
+        stack: '#django #flask #procrastinate #postgresql #terraform'
+    },
+    {
+        title: 'Lendos',
+        text: `<p>Веб-приложение P2P, которое соединяет заемщиков и инвесторов на рынке электронной коммерции.</p><p>Позволяет пользователям оценивать заемщиков на основе данных, автоматически полученных от их аккаунтов Amazon.</p>`,
+        stack: '#django #flask #procrastinate #postgresql #terraform'
+    },
+    {
+        title: 'Jibrel',
+        text: `<p>Платформа краудфандинговых венчурных инвестиций на основе токенов.</p><p>Версия B2B включает в себя юридические документы, стандартную эмиссию токенов, KYB, конструктор целевых страниц и простые инструменты аналитики.</p><p>Версия B2C включает в себя KYC и простую панель управления учетными записями для отслеживания заказов и токенов.</p>`,
+        stack: '#TypeScript #NodeJS #Python #PostgreSQL #React #Redux #Strapi #PostgreSQL #Redis #Django #RabbitMQ'
+    },
+    {
+        title: 'BitcoinWiki',
+        text: `Энциклопедия о блокчейне, биржах, майнинге и других криптотехнологиях. Статьи создаются анонимными участниками криптовалютного сообщества.`,
+        stack: '#JS #React'
     }
 ];
 
@@ -16287,6 +16308,6 @@ function eventTargetAgnosticAddListener(emitter, name, listener, flags) {
     else throw new TypeError('The "emitter" argument must be of type EventEmitter. Received type ' + typeof emitter);
 }
 
-},{}]},["g9TDx","1SICI"], "1SICI", "parcelRequire6b4d")
+},{}]},["6ARV3","1SICI"], "1SICI", "parcelRequire6b4d")
 
 //# sourceMappingURL=index.18dbc454.js.map

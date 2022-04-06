@@ -9,6 +9,12 @@ export function sliderSlider() {
     const swiper = new Swiper('#projects .swiper', {
         modules: [Navigation],
         loop: true,
+        slidesPerView: "auto",
+        // spaceBetween: 20,
+        scrollbar: {
+          el: "#projects .swiper-scrollbar",
+          draggable: true,
+        },
         // Navigation arrows
         navigation: {
             nextEl: '#projects .slider-next',

@@ -1,5 +1,5 @@
 .menu__list {
-  @apply hidden sm:flex;
+  @apply hidden md:flex;
   @apply bg-white absolute text-primary left-0 w-full top-full;
   @apply md:bg-transparent md:relative md:text-white md:w-auto;
 }

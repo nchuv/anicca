@@ -1,15 +1,15 @@
-section(data-scroll-section data-scroll-section-id="#neobank" class="py-14 md:py-20 lg:py-32 bg-primary text-white")
+section(data-scroll-section data-scroll-section-id="#neobank" class="neobank")
   .container
     h2 Необанк
-    .flex.gap-4.mt-20
-      div
-        p(class="uppercase text-lg font-medium") Современный сервис для удобной оплаты товаров и услуг в Интернете
-        a(href="../images/scheme.jpeg" target="_blank" rel="nofollow noopener" class="flex items-center text-accent uppercase gap-4 text-sm font-medium")
+    div(class="md:flex md:gap-4 my-11")
+      div(class="mb-8")
+        p(class="text-sm md:text-lg font-medium uppercase tracking-wider") Современный сервис для удобной оплаты товаров и услуг в Интернете
+        a(href="../images/scheme.jpeg" target="_blank" rel="nofollow noopener" class="hidden md:flex items-center text-accent uppercase gap-4 text-sm font-medium")
           |Скачать схему
           include ../general/circle-arrow.pug
-      div(class="font-light")
-        p.mb-4 Проектируемое решение даст пользователям в России возможность приобретать предоплаченные виртуальные карты иностранного банка с установленным номиналом ($10/ $20/$50/$100) для оплаты сервисов в Интернете.
+      div(class="font-light leading-relaxed")
+        p.mb-2 Проектируемое решение даст пользователям в России возможность приобретать предоплаченные виртуальные карты иностранного банка с установленным номиналом ($10/ $20/$50/$100) для оплаты сервисов в Интернете.
         p Карты выпускаются с ограниченным сроком действия, и по его истечении отзываются банком вместе с остатком на карте.
 
-    div
+    div(class="neobank-img")
       img(src="../images/scheme.jpeg")

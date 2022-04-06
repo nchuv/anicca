@@ -32,3 +32,20 @@
   @apply absolute flex justify-center items-center;
   @apply bg-white rounded-full text-xl;
 }
+
+.neobank {
+  @apply py-10 md:py-20 lg:py-32 bg-primary text-white relative;
+}
+.neobank .container {
+  @apply relative z-10;
+}
+.neobank:after {
+  content: " ";
+  @apply border border-x-0 border-black;
+  @apply absolute w-full h-32 bottom-0 bg-white;
+}
+
+.neobank-img {
+  @apply mb-6;
+  box-shadow: 4px 4px 0 0 #EF2500;
+}

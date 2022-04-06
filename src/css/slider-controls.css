@@ -1,9 +1,8 @@
 .slider-controls {
-  top: -108px;
+  top: -104px;
   width: 108px;
   @apply text-primary;
-  /*@apply lg:text-white lg:top-16;*/
-  @apply absolute right-4 z-10 lg:-top-20;
+  @apply absolute right-0 z-10 lg:-top-20;
   @apply flex items-center justify-between;
 }
 
@@ -13,37 +12,55 @@
   }
 }
 
-
 .slider-arrow {
   @apply relative flex-1 text-right;
 }
 .slider-arrow svg {
   @apply inline;
 }
+
+.slider-arrow:before {
+  content: " ";
+  @apply absolute w-10 h-10 -top-3;
+  @apply bg-[url('../images/circle.svg')] bg-contain bg-no-repeat;
+  @apply transition-all duration-200 ease-in-out;
+  @apply opacity-0;
+}
+
 .slider-arrow:after {
   content: " ";
-  @apply absolute bg-primary;
-  /*@apply lg:bg-white;*/
-  transition: .2s ease-in-out;
+  @apply absolute bg-primary ;
+  @apply transition-all duration-200 ease-in-out;
   width: 38px;
   height: 2px;
   top: 7px;
 }
+
 .slider-prev:after {
-  left: 2px;
+  @apply left-0.5;
 }
 .slider-next:after {
-  right: 2px;
+  @apply right-0.5;
+}
+.slider-prev:before {
+  @apply -left-3;
+}
+.slider-next:before {
+  @apply -right-3;
 }
 .slider-next:hover:after,
 .slider-prev:hover:after {
-  width: 56px;
+  @apply w-14;
 }
-.slider .swiper-scrollbar {
-  bottom: initial;
+.slider-next:hover:before,
+.slider-prev:hover:before {
+  @apply opacity-100;
+}
+
+.slider-swiper .swiper-scrollbar {
   @apply lg:hidden relative;
   @apply -top-9 bg-primary;
 }
-.slider .swiper-scrollbar-drag {
+.slider-swiper .swiper-scrollbar-drag {
   @apply bg-accent;
 }

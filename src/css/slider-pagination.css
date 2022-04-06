@@ -10,7 +10,7 @@
 .slider
 .swiper-pagination-bullet {
   @apply text-sm font-medium uppercase text-left;
-  @apply relative block w-full h-auto p-0 py-4 pl-16 pr-4;
+  @apply relative block w-full h-auto p-0 py-2 pl-16 pr-4;
   @apply opacity-100 bg-transparent rounded-none;
   @apply transition transition-colors ease-in-out;
 }
@@ -33,7 +33,7 @@
   @apply bg-accent;
 }
 
-#products.slider
-.swiper-pagination-bullet {
-  @apply py-1;
+.slider
+.swiper-pagination-bullet-active {
+  @apply text-accent text-lg;
 }

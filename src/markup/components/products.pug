@@ -1,2 +1,9 @@
 section#products.slider(data-scroll-section data-scroll-section-id="#products")
-  +slider("Импортозамещение", i18n.products)
+  .container
+    .flex.items-baseline
+      h2.mb-8 Импортозамещение
+      span.pl-2.text-accent!=i18n.blockchain.length
+    .flex
+      span.text-accent *
+      p Российские сервисы и платформы, которые помогут заменить иностранное ПО
+  +slider(i18n.blockchain)
