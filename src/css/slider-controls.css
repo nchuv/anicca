@@ -6,12 +6,6 @@
   @apply flex items-center justify-between;
 }
 
-@media (max-width: 540px) {
-  #products .slider-controls {
-    top: -67px;
-  }
-}
-
 .slider-arrow {
   @apply relative flex-1 text-right;
 }
@@ -63,4 +57,9 @@
 }
 .slider-swiper .swiper-scrollbar-drag {
   @apply bg-accent;
+}
+
+#products .slider-controls {
+  top: -92px;
+  left: 33%;
 }

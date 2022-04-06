@@ -4,8 +4,16 @@ module.exports = [
     link: 'about'
   },
   {
+    title: 'Блокчейн',
+    link: 'blockchain'
+  },
+  {
+    title: 'НЕОБАНК',
+    link: 'neobank'
+  },
+  {
     title: 'Проекты',
-    link: 'slider'
+    link: 'projects'
   },
   {
     title: 'Импортозамещение',

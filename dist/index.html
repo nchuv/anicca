@@ -22,9 +22,9 @@
     <div data-scroll-container="data-scroll-container">
       <header class="py-4 bg-black text-white fixed top-0 w-full z-20">
         <div class="container">
-          <div class="flex justify-between items-center"><a class="block" href="/"><img class="h-4 md:h-auto" src="/logo.cd13699a.svg"></a>
-            <nav class="menu md:block">
-              <button class="md:hidden"><span class="menu__icon">
+          <div class="flex justify-between items-center"><a class="block" href="/"><img class="h-4 lg:h-auto" src="/logo.cd13699a.svg"></a>
+            <nav class="menu lg:block">
+              <button class="lg:hidden"><span class="menu__icon">
                   <svg width="24" height="24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12.333 18.334h9.334M3 11.667h18.667M3 5h18.667" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                   </svg></span><span class="menu__close hidden">
@@ -33,7 +33,9 @@
                   </svg></span></button>
               <ul class="menu__list">
                 <li class="menu__item"><a class="block" href="#about" data-scroll-to="data-scroll-to"><span class="hover:text-accent">Что делаем</span></a></li>
-                <li class="menu__item"><a class="block" href="#slider" data-scroll-to="data-scroll-to"><span class="hover:text-accent">Проекты</span></a></li>
+                <li class="menu__item"><a class="block" href="#blockchain" data-scroll-to="data-scroll-to"><span class="hover:text-accent">Блокчейн</span></a></li>
+                <li class="menu__item"><a class="block" href="#neobank" data-scroll-to="data-scroll-to"><span class="hover:text-accent">НЕОБАНК</span></a></li>
+                <li class="menu__item"><a class="block" href="#projects" data-scroll-to="data-scroll-to"><span class="hover:text-accent">Проекты</span></a></li>
                 <li class="menu__item"><a class="block" href="#products" data-scroll-to="data-scroll-to"><span class="hover:text-accent">Импортозамещение</span></a></li>
                 <li class="menu__item"><a class="block" href="#contacts" data-scroll-to="data-scroll-to"><span class="hover:text-accent">Контакты</span></a></li>
               </ul>
@@ -41,8 +43,49 @@
           </div>
         </div>
       </header>
-      <!--include ./components/hero.pug-->
-      <!--include ./components/about.pug-->
+      <section class="section" data-scroll-section="data-scroll-section" data-scroll-section-id="#hero">
+        <div class="wrapper">
+          <div class="hero">
+            <div class="container">
+              <div class="md:flex md:flex-row-reverse md:pt-20">
+                <div class="flex-1"><img class="w-30 h-30 mx-auto md:w-auto md:h-auto" src="/hero.efee620a.svg"></div>
+                <div class="flex-1">
+                  <div class="sm:w-80 m-auto md:m-0">
+                    <h1 class="my-8">Запускаем корпоративные <span class="text-accent">стартапы</span></h1>
+                    <p class="my-8 font-light">Расскажите нам о своем проекте и задайте любые вопросы! Мы ответим в самое ближайшее время</p><a class="block w-60 m-auto md:w-44 md:m-0" href="#contacts" data-scroll-to="data-scroll-to">
+                      <button class="button">
+                        <div class="button__filler"></div>
+                        <div class="button__text">
+                          <div class="button__text-inner">Связаться</div>
+                        </div>
+                      </button></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--.hero.hero--secondary(area-hidden="true" data-hero class="text-center md:text-left")-->
+          <!--  .container-->
+          <!--    div(class="md:flex md:flex-row-reverse md:pt-20")-->
+          <!--      .flex-1-->
+          <!--        img(src="../images/hero-invert.svg" class="w-30 h-30 mx-auto md:w-auto md:h-auto")-->
+          <!--      div.flex-1-->
+          <!--        div(class="sm:w-80 m-auto md:m-0")-->
+        </div>
+      </section>
+      <section class="about" id="about" data-scroll-section="data-scroll-section" data-scroll-section-id="#about">
+        <div class="container">
+          <h2 class="mb-8">Чем занимаемся<span class="text-accent">?</span></h2>
+          <ul class="about-list">
+            <li class="about-item">Запустим ваш стартап методом гибких итераций. Такой подход поможет оперативно отслеживать ход реализации и запустить идею в разумные сроки.</li>
+            <li class="about-item">Поможем рассчитать объём каждой итерации, спроектировать гибкую архитектуру, разработаем дизайн и воплотим ваши смелые идеи в жизнь.</li>
+            <li class="about-item">Обучим самым эффективным подходам и методологиям, тонкостям разработки софта, а также поможем научиться мыслить в формате MVP.</li>
+            <li class="about-item">Поможем генерировать и проверять продуктовые гипотезы, управлять бэклогом задач и продуктивно управлять командой разработки.</li>
+            <li class="about-item">Обладаем широкой экспертизой в blockchain и поможем реализовать проекты с использованием передовых технологий.</li>
+            <li class="about-item">Проектируем и запускаем собственный необанк.</li>
+          </ul>
+        </div>
+      </section>
       <section class="slider" id="blockchain" data-scroll-section="data-scroll-section" data-scroll-section-id="#blockchain">
         <div class="container">
           <div class="flex items-baseline">
@@ -166,7 +209,7 @@
           </div>
         </div>
       </section>
-      <section class="neobank" data-scroll-section="data-scroll-section" data-scroll-section-id="#neobank">
+      <section class="neobank" data-scroll-section="data-scroll-section" data-scroll-section-id="#neobank" id="neobank">
         <div class="container">
           <h2>Необанк</h2>
           <div class="md:flex md:gap-4 my-11">
@@ -190,66 +233,208 @@
           <div class="flex items-baseline">
             <h2 class="mb-8">Проекты</h2><span class="pl-2 text-accent">5</span>
           </div>
-          <div>
-            <div class="swiper slider-swiper">
-              <div class="swiper-scrollbar slider-scrollbar"></div>
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <div class="projects-slide">
-                    <div class="projects-title">Образовательная платформа (NDA)</div>
-                    <div><p>Образовательная платформа для тех, кто хочет делиться знаниями и зарабатывать на этом и для тех, кто хочет учиться.</p><p>Представляет собой маркетплейс, где компании и предприниматели - авторы курсов размещают свои материлы, а пользователи, желающие пройти обучение, выбирают интересующие их темы.</p></div>
-                    <div class="projects-stack">#graphql #java #go #hasura #camunda #kafka #swift #swiftui #snapkit #rxswift #kotlin #coroutines #compose #typescript #react #effector</div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="projects-slide">
-                    <div class="projects-title">Обучающая AI Игра (NDA)</div>
-                    <div><p>Мобильное приложение для детей 5-7 лет, обучающее в игровой форме пониманию искусственного интеллекта и программированию.</p><p>Для детей версия включает в себя библиотеку контента с видео, мини-играми, тренажерами.</p><p>Для родителей доступна версия с личным кабинетом и расширенными данными об успехах детей в обучении.</p></div>
-                    <div class="projects-stack">#graphql #python #hasura #camunda #dart #flutter #bloc</div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="projects-slide">
-                    <div class="projects-title">СберКласс</div>
-                    <div>СберКласс — это современная цифровая платформа для школы. Помогает учителю персонализировать обучающие материалы, развивать у детей актуальные навыки, автоматизировать рутину и вовлечь учеников в образовательный процесс.</div>
-                    <div class="projects-stack">#typescript  #react  #react&nbsp;native  #effector  #graphql  #java  #hasura  #camunda  #kafka</div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="projects-slide">
-                    <div class="projects-title">Petshop</div>
-                    <div>Мобильное eCommerce приложение для крупнейшего магазина зоотоваров в России. В нем реализован удобный личный кабинет для совершения покупок, записи питомцев в ветеринарную клинику от Petshop, а также для онлайн-заказа услуг по выгулу и грумингу.</div>
-                    <div class="projects-stack">#swift   #kotlin   #firebase</div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="projects-slide">
-                    <div class="projects-title">LIS Sonata</div>
-                    <div>ПО для настройки и управления потоками работ и документооборотом в лабораториях. Данный софт оптимизирует процесс сбора, анализа и возврата лабораторных данных, а также отчетности по ним.</div>
-                    <div class="projects-stack">#java   #spring   #postgresql   #vaadin</div>
-                  </div>
+          <div class="swiper slider-swiper">
+            <div class="swiper-scrollbar slider-scrollbar"></div>
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="projects-slide">
+                  <div class="projects-title">Образовательная платформа (NDA)</div>
+                  <div><p>Образовательная платформа для тех, кто хочет делиться знаниями и зарабатывать на этом и для тех, кто хочет учиться.</p><p>Представляет собой маркетплейс, где компании и предприниматели - авторы курсов размещают свои материлы, а пользователи, желающие пройти обучение, выбирают интересующие их темы.</p></div>
+                  <div class="projects-stack">#graphql #java #go #hasura #camunda #kafka #swift #swiftui #snapkit #rxswift #kotlin #coroutines #compose #typescript #react #effector</div>
                 </div>
               </div>
-              <div class="slider-controls">
-                <div class="slider-prev slider-arrow">
-                  <div class="transform rotate-180">
-                    <svg width="10" height="16" fill="currentColor" viewbox="0 0 10 16" xmlns="http://www.w3.org/2000/svg">
-                      <path d="m8.709 8.71-6.364 6.364A1 1 0 1 1 .931 13.66l4.657-4.657v-2L.93 2.347A1 1 0 0 1 2.345.932l6.364 6.364a1 1 0 0 1 0 1.415Z"></path>
-                    </svg>
-                  </div>
+              <div class="swiper-slide">
+                <div class="projects-slide">
+                  <div class="projects-title">Обучающая AI Игра (NDA)</div>
+                  <div><p>Мобильное приложение для детей 5-7 лет, обучающее в игровой форме пониманию искусственного интеллекта и программированию.</p><p>Для детей версия включает в себя библиотеку контента с видео, мини-играми, тренажерами.</p><p>Для родителей доступна версия с личным кабинетом и расширенными данными об успехах детей в обучении.</p></div>
+                  <div class="projects-stack">#graphql #python #hasura #camunda #dart #flutter #bloc</div>
                 </div>
-                <div class="slider-next slider-arrow">
+              </div>
+              <div class="swiper-slide">
+                <div class="projects-slide">
+                  <div class="projects-title">СберКласс</div>
+                  <div>СберКласс — это современная цифровая платформа для школы. Помогает учителю персонализировать обучающие материалы, развивать у детей актуальные навыки, автоматизировать рутину и вовлечь учеников в образовательный процесс.</div>
+                  <div class="projects-stack">#typescript  #react  #react&nbsp;native  #effector  #graphql  #java  #hasura  #camunda  #kafka</div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="projects-slide">
+                  <div class="projects-title">Petshop</div>
+                  <div>Мобильное eCommerce приложение для крупнейшего магазина зоотоваров в России. В нем реализован удобный личный кабинет для совершения покупок, записи питомцев в ветеринарную клинику от Petshop, а также для онлайн-заказа услуг по выгулу и грумингу.</div>
+                  <div class="projects-stack">#swift   #kotlin   #firebase</div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="projects-slide">
+                  <div class="projects-title">LIS Sonata</div>
+                  <div>ПО для настройки и управления потоками работ и документооборотом в лабораториях. Данный софт оптимизирует процесс сбора, анализа и возврата лабораторных данных, а также отчетности по ним.</div>
+                  <div class="projects-stack">#java   #spring   #postgresql   #vaadin</div>
+                </div>
+              </div>
+            </div>
+            <div class="slider-controls">
+              <div class="slider-prev slider-arrow">
+                <div class="transform rotate-180">
                   <svg width="10" height="16" fill="currentColor" viewbox="0 0 10 16" xmlns="http://www.w3.org/2000/svg">
                     <path d="m8.709 8.71-6.364 6.364A1 1 0 1 1 .931 13.66l4.657-4.657v-2L.93 2.347A1 1 0 0 1 2.345.932l6.364 6.364a1 1 0 0 1 0 1.415Z"></path>
                   </svg>
+                </div>
+              </div>
+              <div class="slider-next slider-arrow">
+                <svg width="10" height="16" fill="currentColor" viewbox="0 0 10 16" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m8.709 8.71-6.364 6.364A1 1 0 1 1 .931 13.66l4.657-4.657v-2L.93 2.347A1 1 0 0 1 2.345.932l6.364 6.364a1 1 0 0 1 0 1.415Z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="slider" id="products" data-scroll-section="data-scroll-section" data-scroll-section-id="#products">
+        <div class="container">
+          <div class="flex items-baseline">
+            <h2 class="mb-4">Импортозамещение</h2><span class="pl-2 text-accent">12</span>
+          </div>
+          <div class="flex gap-4"><span class="text-5xl text-accent">*</span>
+            <p class="font-light pt-1">Российские сервисы и платформы, которые помогут заменить иностранное ПО</p>
+          </div>
+        </div>
+        <div class="slider-inner">
+          <div class="container">
+            <div class="relative">
+              <div class="lg:flex -mx-6 md:-mx-8 lg:-mx-0 lg:mt-8">
+                <div class="lg:w-1/2 pagination">
+                  <div class="swiper-pagination"></div>
+                </div>
+                <div class="lg:w-1/2">
+                  <div class="swiper slider-swiper">
+                    <div class="swiper-scrollbar slider-scrollbar"></div>
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <div class="flex flex-col h-full">
+                          <div class="swiper-title">COIN360</div>
+                          <div class="swiper-text"><p>Агрегатор оперативных данных о криптовалютах и криптобиржах, предоставляет важные рыночные данные в наглядной форме.</p><p>Независимо от того, является ли пользователь профессиональным или начинающим трейдером, СМИ, или просто интересуется криптовалютами, COIN360 предлагает незаменимые инструменты, позволяющие быть в курсе малейших движений криптовалютного рынка.</p></div>
+                          <div class="swiper-stack">#golang #node.js #mysql #gitlab #clickhouse #redis #rabbitmq #react #redux #helm #webpack #native js #typescript #docker #teraform #kuber #werf #ansible</div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="flex flex-col h-full">
+                          <div class="swiper-title">Marketmaking.pro</div>
+                          <div class="swiper-text">Платформа B2B маркетмейкинга со встроенным сервисом алгоритмических решений и интеграцией api. Подключено 48+ криптовалютных бирж.</div>
+                          <div class="swiper-stack">#Rust #Solidity #JS #React</div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="flex flex-col h-full">
+                          <div class="swiper-title">CoinMena</div>
+                          <div class="swiper-text">UX-ориентированная кастодиальная криптобиржа для региона MENA.</div>
+                          <div class="swiper-stack">#Redis #RabbitMQ #TypeScript #React #Redux #NextJS #Django #PostgreSQL #NextJS #Python</div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="flex flex-col h-full">
+                          <div class="swiper-title">Auto Farm</div>
+                          <div class="swiper-text">Платформа для автоматической повторной ставки на основе Biswap и Pancake v2. Позволяет пользователям делать ставки на такие монеты, как ALPACA/ATOM/EOS/Gala/BNB и другие.</div>
+                          <div class="swiper-stack">#swift #Solidity #JS</div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="flex flex-col h-full">
+                          <div class="swiper-title">Disciplina</div>
+                          <div class="swiper-text"><p>Первая блокчейн-платформа для создания проверенных личных профилей на основе академических и профессиональных достижений.</p><p>Обеспечивает прозрачность работы и создает условия для поддержания конфиденциальности и достоверности информации, внесенной участниками системы.</p></div>
+                          <div class="swiper-stack">#Rust #Solidity #React #JS</div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="flex flex-col h-full">
+                          <div class="swiper-title">Blockchain cuties</div>
+                          <div class="swiper-text">Первая мультиблокчейн-коллекционная игра. Проект работает на следующих блокчейнах: ETH, EOS, MATIC, NEO, HECO и TRON.</div>
+                          <div class="swiper-stack">#Java #Postgress #Spring Boot #Hibernate5 #TypeScrypt #Vue #AWS #Solidity #C++ #pyton #Chainlink Oracles #Polkadot</div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="flex flex-col h-full">
+                          <div class="swiper-title">Transcryptor</div>
+                          <div class="swiper-text">Криптокошелек, интегрированный с биржами, обменниками и поставщиками ликвидности. Поддерживает блокчейны Bitcoin, Ethereum и Tron.</div>
+                          <div class="swiper-stack">#antive #native #ansible #AWS #vue #postgresql #flask #django #cellery</div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="flex flex-col h-full">
+                          <div class="swiper-title">Jwallet</div>
+                          <div class="swiper-text"><p>Крипто-кошелек на базе Ethereum c web, iOS и Android приложениями, ориентированный на безопасность и простоту использования.</p><p>Все приложения находятся на стороне клиента и работают непосредственно с узлами Ethereum. </p></div>
+                          <div class="swiper-stack">#TypeScript #React #redux-saga #Swift #Redux #Kotlin #Go #geth</div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="flex flex-col h-full">
+                          <div class="swiper-title">Pluton</div>
+                          <div class="swiper-text">Программа автоматизации выдачи факторинговых продуктов. Автоматизация операционного отдела по выдаче кредитов, учету задолженности, расчету штрафов и взаимозачетам. Интеграция с собственной скоринговой системой.</div>
+                          <div class="swiper-stack">#django #flask #procrastinate #postgresql #terraform</div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="flex flex-col h-full">
+                          <div class="swiper-title">Lendos</div>
+                          <div class="swiper-text"><p>Веб-приложение P2P, которое соединяет заемщиков и инвесторов на рынке электронной коммерции.</p><p>Позволяет пользователям оценивать заемщиков на основе данных, автоматически полученных от их аккаунтов Amazon.</p></div>
+                          <div class="swiper-stack">#django #flask #procrastinate #postgresql #terraform</div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="flex flex-col h-full">
+                          <div class="swiper-title">Jibrel</div>
+                          <div class="swiper-text"><p>Платформа краудфандинговых венчурных инвестиций на основе токенов.</p><p>Версия B2B включает в себя юридические документы, стандартную эмиссию токенов, KYB, конструктор целевых страниц и простые инструменты аналитики.</p><p>Версия B2C включает в себя KYC и простую панель управления учетными записями для отслеживания заказов и токенов.</p></div>
+                          <div class="swiper-stack">#TypeScript #NodeJS #Python #PostgreSQL #React #Redux #Strapi #PostgreSQL #Redis #Django #RabbitMQ</div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="flex flex-col h-full">
+                          <div class="swiper-title">BitcoinWiki</div>
+                          <div class="swiper-text">Энциклопедия о блокчейне, биржах, майнинге и других криптотехнологиях. Статьи создаются анонимными участниками криптовалютного сообщества.</div>
+                          <div class="swiper-stack">#JS #React</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="slider-controls">
+                    <div class="slider-prev slider-arrow">
+                      <div class="transform rotate-180">
+                        <svg width="10" height="16" fill="currentColor" viewbox="0 0 10 16" xmlns="http://www.w3.org/2000/svg">
+                          <path d="m8.709 8.71-6.364 6.364A1 1 0 1 1 .931 13.66l4.657-4.657v-2L.93 2.347A1 1 0 0 1 2.345.932l6.364 6.364a1 1 0 0 1 0 1.415Z"></path>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="slider-next slider-arrow">
+                      <svg width="10" height="16" fill="currentColor" viewbox="0 0 10 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m8.709 8.71-6.364 6.364A1 1 0 1 1 .931 13.66l4.657-4.657v-2L.93 2.347A1 1 0 0 1 2.345.932l6.364 6.364a1 1 0 0 1 0 1.415Z"></path>
+                      </svg>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <!--include ./components/products.pug-->
-      <!--include ./components/contacts.pug-->
+      <section class="py-14 md:py-20 lg:pt-32 bg-secondary" id="contacts" data-scroll-section="data-scroll-section" data-scroll-section-id="#contacts">
+        <div class="container">
+          <h2>Связаться с нами</h2>
+          <div class="md:grid md:grid-cols-2 md:gap-8 md:mt-8 lg:mt-18 lg:grid-cols-3">
+            <p class="my-9 font-light md:my-0">Расскажите нам о своих IT-планах и&nbsp;задайте любые вопросы, мы очень быстро ответим!</p>
+            <!--div(class="md:row-span-2 lg:col-span-2 lg:pl-20" style="min-height:520px")-->
+            <div class="md:row-span-2 lg:col-span-2 lg:pl-20">
+              <!--iframe(width="100%" src="https://forms.yandex.ru/cloud/62386f1234ca5557b6a6d1f3/?iframe=1" frameborder="0" name="ya-form-62386f1234ca5557b6a6d1f3" )-->
+            </div>
+            <ul class="mt-8 md:mt-0 lg:mt-10">
+                    <li class="mb-6"><a class="flex items-start hover:text-accent" href="mailto:namaste@anicca.su">
+                        <div class="w-8 min-w-8"><img src="/email.81126b85.svg"></div>
+                        <h3 class="px-4">namaste@anicca.su</h3></a></li>
+                    <li class="mb-6"><a class="flex items-start hover:text-accent" href="#">
+                        <div class="w-8 min-w-8"><img src="/location.d97c0fff.svg"></div>
+                        <h3 class="px-4">191015, г. Санкт-Петербург, Таврическая ул., д. 37, лит. А, пом. 16Н, оф. 11</h3></a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
       <footer class="py-5 md:py-6 bg-black text-white" data-scroll-section="data-scroll-section" data-scroll-section-id="#footer">
         <div class="container">
           <div class="flex justify-between items-center"><a class="block" href=""><img class="h-5 md:h-auto" src="/logo.cd13699a.svg"></a>

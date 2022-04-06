@@ -7,10 +7,10 @@ export function sliderSlider() {
         return;
     }
     const swiper = new Swiper('#projects .swiper', {
-        modules: [Navigation],
+        modules: [Navigation, Scrollbar],
         loop: true,
-        slidesPerView: "auto",
-        // spaceBetween: 20,
+        slidesPerView: 1,
+      // slidesPerView: "auto",
         scrollbar: {
           el: "#projects .swiper-scrollbar",
           draggable: true,

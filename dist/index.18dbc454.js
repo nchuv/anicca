@@ -6902,11 +6902,12 @@ function sliderSlider() {
     if (!el) return;
     const swiper = new _swiperDefault.default('#projects .swiper', {
         modules: [
-            _swiper.Navigation
+            _swiper.Navigation,
+            _swiper.Scrollbar
         ],
         loop: true,
-        slidesPerView: "auto",
-        // spaceBetween: 20,
+        slidesPerView: 1,
+        // slidesPerView: "auto",
         scrollbar: {
             el: "#projects .swiper-scrollbar",
             draggable: true
@@ -15594,8 +15595,16 @@ module.exports = [
         link: 'about'
     },
     {
+        title: 'Блокчейн',
+        link: 'blockchain'
+    },
+    {
+        title: 'НЕОБАНК',
+        link: 'neobank'
+    },
+    {
         title: 'Проекты',
-        link: 'slider'
+        link: 'projects'
     },
     {
         title: 'Импортозамещение',

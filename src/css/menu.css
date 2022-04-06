@@ -1,7 +1,7 @@
 .menu__list {
-  @apply hidden md:flex;
+  @apply hidden lg:flex;
   @apply bg-white absolute text-primary left-0 w-full top-full;
-  @apply md:bg-transparent md:relative md:text-white md:w-auto;
+  @apply lg:bg-transparent lg:relative lg:text-white lg:w-auto;
 }
 
 @media (max-width: 1023px) {
@@ -17,7 +17,7 @@
   @apply block;
 }
 .menu__item {
-  @apply flex-grow p-4 lg:ml-4;
+  @apply flex-grow p-4 xl:ml-4;
   @apply text-sm uppercase font-medium  tracking-wider;
 }
 
