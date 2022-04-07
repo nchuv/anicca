@@ -20,7 +20,17 @@ export function sliderSlider() {
             nextEl: '#projects .slider-next',
             prevEl: '#projects .slider-prev',
         },
-
+      breakpoints: {
+        // when window width is >= 320px
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 20
+        },
+        1024: {
+          slidesPerView: "auto",
+          spaceBetween: 25
+        },
+      }
     });
 }
 

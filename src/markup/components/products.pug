@@ -3,7 +3,7 @@ section#products.slider(data-scroll-section data-scroll-section-id="#products")
     .flex.items-baseline
       h2.mb-4 Импортозамещение
       span.pl-2.text-accent!=i18n.blockchain.length
-    .flex.gap-4
+    div(class="flex gap-4 max-w-md lg:mt-6 lg:mb-18")
       span.text-5xl.text-accent *
-      p.font-light.pt-1 Российские сервисы и платформы, которые помогут заменить иностранное ПО
+      p.text-base.font-light.pt-1 Российские сервисы и платформы, которые помогут заменить иностранное ПО
   +slider(i18n.blockchain)

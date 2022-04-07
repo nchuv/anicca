@@ -61,5 +61,7 @@
 
 #products .slider-controls {
   top: -92px;
-  left: 33%;
+  right: 33%;
+  transform: translateX(-50%);
+  @apply md:right-0 md:-top-32 lg:-top-48;
 }

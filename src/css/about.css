@@ -43,9 +43,9 @@
   content: " ";
   @apply border border-x-0 border-black;
   @apply absolute w-full h-32 bottom-0 bg-white;
+  @apply md:h-64 lg:h-96;
 }
 
 .neobank-img {
-  @apply mb-6;
-  box-shadow: 4px 4px 0 0 #EF2500;
+  @apply mb-6 shadow shadow-image-xs md:shadow-image-md;
 }

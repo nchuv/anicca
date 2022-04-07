@@ -6,6 +6,10 @@ module.exports = {
   darkMode: "media", // 'media' or 'class'
   theme: {
     extend: {
+      boxShadow: {
+        'image-xs': '4px 4px 0 0 #EF2500',
+        'image-md': '11px 11px 0 0 #EF2500',
+      },
       screens: {
         sm: '480px',
         md: '768px',
