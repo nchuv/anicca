@@ -142,10 +142,10 @@
       this[globalName] = mainExports;
     }
   }
-})({"g9TDx":[function(require,module,exports) {
+})({"6ARV3":[function(require,module,exports) {
 "use strict";
 var HMR_HOST = null;
-var HMR_PORT = null;
+var HMR_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
 module.bundle.HMR_BUNDLE_ID = "0bcb44a518dbc454";
@@ -16328,6 +16328,6 @@ function eventTargetAgnosticAddListener(emitter, name, listener, flags) {
     else throw new TypeError('The "emitter" argument must be of type EventEmitter. Received type ' + typeof emitter);
 }
 
-},{}]},["g9TDx","1SICI"], "1SICI", "parcelRequire6b4d")
+},{}]},["6ARV3","1SICI"], "1SICI", "parcelRequire6b4d")
 
 //# sourceMappingURL=index.18dbc454.js.map
