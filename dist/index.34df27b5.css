@@ -564,11 +564,6 @@ h1, h2 {
   text-align: center;
 }
 
-.text-sm {
-  font-size: .875rem;
-  line-height: 1.25rem;
-}
-
 .text-5xl {
   font-size: 50px;
   line-height: 50px;
@@ -577,6 +572,11 @@ h1, h2 {
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
+}
+
+.text-sm {
+  font-size: .875rem;
+  line-height: 1.25rem;
 }
 
 .font-light {
@@ -722,6 +722,14 @@ h1, h2 {
     margin-right: 0;
   }
 
+  .lg\:mt-6 {
+    margin-top: 1.5rem;
+  }
+
+  .lg\:mb-18 {
+    margin-bottom: 4.5rem;
+  }
+
   .lg\:mt-18 {
     margin-top: 4.5rem;
   }
@@ -732,14 +740,6 @@ h1, h2 {
 
   .lg\:mb-6 {
     margin-bottom: 1.5rem;
-  }
-
-  .lg\:mt-6 {
-    margin-top: 1.5rem;
-  }
-
-  .lg\:mb-18 {
-    margin-bottom: 4.5rem;
   }
 
   .lg\:mt-8 {
@@ -1310,7 +1310,7 @@ body {
 
 @media (min-width: 768px) {
   #products.slider .swiper {
-    margin-top: 2.5rem;
+    margin-top: 3.5rem;
   }
 }
 
@@ -1435,7 +1435,7 @@ body {
   color: rgb(13 13 13 / var(--tw-text-opacity) );
   z-index: 10;
   position: absolute;
-  top: -104px;
+  top: -136px;
   right: 0;
 }
 
@@ -1549,6 +1549,19 @@ body {
 
 @media (min-width: 1024px) {
   #products .slider-controls {
+    top: -12rem;
+  }
+}
+
+@media (min-width: 768px) {
+  #blockchain .slider-controls {
+    top: -9rem;
+    right: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  #blockchain .slider-controls {
     top: -12rem;
   }
 }

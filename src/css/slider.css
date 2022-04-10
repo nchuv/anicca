@@ -49,7 +49,7 @@
 }
 
 #products.slider .swiper {
-  @apply mt-32 md:mt-10 lg:mt-0;
+  @apply mt-32 md:mt-14 lg:mt-0;
 }
 
 #products .swiper-title {

@@ -1,5 +1,5 @@
 .slider-controls {
-  top: -104px;
+  top: -136px;
   width: 108px;
   @apply text-primary;
   @apply absolute right-0 z-10 lg:-top-20;
@@ -64,4 +64,8 @@
   right: 33%;
   transform: translateX(-50%);
   @apply md:right-0 md:-top-32 lg:-top-48;
+}
+
+#blockchain .slider-controls {
+  @apply md:right-0 md:-top-36 lg:-top-48;
 }
