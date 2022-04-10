@@ -1,0 +1,67 @@
+.projects {
+  @apply pt-14 pb-16 md:py-20 lg:py-32;
+  @apply overflow-hidden relative;
+  @apply border border-x-0 border-black;
+}
+
+.projects .swiper {
+  @apply mt-10 overflow-visible;
+}
+
+.projects .swiper-wrapper {
+  @apply h-auto;
+}
+
+.projects .swiper-slide {
+  @apply lg:w-98 h-auto;
+  @apply border-2 border-white md:border-black;
+}
+
+.projects .swiper-slide-active {
+  @apply border-2 border-black;
+}
+
+.projects .slider-controls {
+  @apply -top-24;
+}
+
+.projects-slide {
+  @apply flex flex-col h-full p-6 ;
+  @apply leading-relaxed text-base;
+  @apply relative transition-all duration-100 ease-in-out;
+}
+
+.projects-slide:hover {
+  @apply bg-primary text-white;
+}
+
+.projects-title {
+  @apply text-lg font-medium uppercase mb-4 text-accent;
+}
+
+.projects-stack {
+  @apply font-medium text-sm uppercase mt-auto pt-6;
+  @apply lg:absolute lg:top-full lg:w-98 lg:-left-0.5 lg:bg-primary lg:px-6 lg:pt-0;
+  @apply lg:overflow-hidden lg:transition-all lg:duration-100 lg:ease-in-out;
+  @apply lg:max-h-0
+}
+
+.projects-slide:hover .projects-stack {
+  @apply lg:pb-6 lg:max-h-96;
+}
+.projects:after,
+.projects:before {
+  content: "";
+  @apply hidden absolute bottom-0 z-10 w-40 h-128;
+  @apply xl:block;
+}
+.projects:before {
+  content: "";
+  left: 0;
+  background: linear-gradient(to right, white 15%, transparent);
+}
+.projects:after {
+  content: "";
+  right: 0;
+  background: linear-gradient(to left, white 15%, transparent);
+}
