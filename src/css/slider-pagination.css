@@ -37,3 +37,12 @@
 .swiper-pagination-bullet-active {
   @apply text-accent text-lg;
 }
+
+#products.slider .swiper-pagination-bullet {
+  @apply py-1;
+}
+
+#products.slider
+.swiper-pagination-bullet-active {
+  @apply text-base;
+}

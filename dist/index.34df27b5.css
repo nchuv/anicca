@@ -1541,6 +1541,16 @@ body {
   line-height: 1.75rem;
 }
 
+#products.slider .swiper-pagination-bullet {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+}
+
+#products.slider .swiper-pagination-bullet-active {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
 .projects {
   padding-top: 3.5rem;
   padding-bottom: 4rem;
